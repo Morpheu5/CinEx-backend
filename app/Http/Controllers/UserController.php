@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PhotoController extends Controller {
+use App\Models\User;
+
+class UserController extends Controller
+{
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        $photos = Photo::all();
-        return $photos;
+        $users = User::all();
+        return $users;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create() {
+        //
     }
 
     /**
@@ -25,23 +35,27 @@ class PhotoController extends Controller {
      * Display the specified resource.
      */
     public function show(string $id) {
-        print_r($id);
-        $photo = Photo::find($id);
+        return User::find($id);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id) {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
+    public function update(Request $request, string $id) {
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
+    public function destroy(string $id) {
         //
     }
 }
