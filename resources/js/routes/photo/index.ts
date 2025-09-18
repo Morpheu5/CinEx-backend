@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/photos',
+    url: '/photo',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\PhotoController::index
 * @see app/Http/Controllers/PhotoController.php:12
-* @route '/photos'
+* @route '/photo'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -83,7 +83,7 @@ index.form = indexForm
 /**
 * @see \App\Http\Controllers\PhotoController::store
 * @see app/Http/Controllers/PhotoController.php:20
-* @route '/photos'
+* @route '/photo'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -92,13 +92,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '/photos',
+    url: '/photo',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\PhotoController::store
 * @see app/Http/Controllers/PhotoController.php:20
-* @route '/photos'
+* @route '/photo'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -107,7 +107,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\PhotoController::store
 * @see app/Http/Controllers/PhotoController.php:20
-* @route '/photos'
+* @route '/photo'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -117,7 +117,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \App\Http\Controllers\PhotoController::store
 * @see app/Http/Controllers/PhotoController.php:20
-* @route '/photos'
+* @route '/photo'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -127,7 +127,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 /**
 * @see \App\Http\Controllers\PhotoController::store
 * @see app/Http/Controllers/PhotoController.php:20
-* @route '/photos'
+* @route '/photo'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -139,7 +139,7 @@ store.form = storeForm
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 export const show = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -148,13 +148,13 @@ export const show = (args: { photo: string | number } | [photo: string | number 
 
 show.definition = {
     methods: ["get","head"],
-    url: '/photos/{photo}',
+    url: '/photo/{photo}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 show.url = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -181,7 +181,7 @@ show.url = (args: { photo: string | number } | [photo: string | number ] | strin
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 show.get = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -191,7 +191,7 @@ show.get = (args: { photo: string | number } | [photo: string | number ] | strin
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 show.head = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
@@ -201,7 +201,7 @@ show.head = (args: { photo: string | number } | [photo: string | number ] | stri
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 const showForm = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -211,7 +211,7 @@ const showForm = (args: { photo: string | number } | [photo: string | number ] |
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 showForm.get = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -221,7 +221,7 @@ showForm.get = (args: { photo: string | number } | [photo: string | number ] | s
 /**
 * @see \App\Http\Controllers\PhotoController::show
 * @see app/Http/Controllers/PhotoController.php:27
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 showForm.head = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
@@ -238,7 +238,7 @@ show.form = showForm
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 export const update = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -247,13 +247,13 @@ export const update = (args: { photo: string | number } | [photo: string | numbe
 
 update.definition = {
     methods: ["put","patch"],
-    url: '/photos/{photo}',
+    url: '/photo/{photo}',
 } satisfies RouteDefinition<["put","patch"]>
 
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 update.url = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -280,7 +280,7 @@ update.url = (args: { photo: string | number } | [photo: string | number ] | str
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 update.put = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -290,7 +290,7 @@ update.put = (args: { photo: string | number } | [photo: string | number ] | str
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 update.patch = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
@@ -300,7 +300,7 @@ update.patch = (args: { photo: string | number } | [photo: string | number ] | s
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 const updateForm = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -315,7 +315,7 @@ const updateForm = (args: { photo: string | number } | [photo: string | number ]
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 updateForm.put = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -330,7 +330,7 @@ updateForm.put = (args: { photo: string | number } | [photo: string | number ] |
 /**
 * @see \App\Http\Controllers\PhotoController::update
 * @see app/Http/Controllers/PhotoController.php:35
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 updateForm.patch = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -347,7 +347,7 @@ update.form = updateForm
 /**
 * @see \App\Http\Controllers\PhotoController::destroy
 * @see app/Http/Controllers/PhotoController.php:43
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 export const destroy = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -356,13 +356,13 @@ export const destroy = (args: { photo: string | number } | [photo: string | numb
 
 destroy.definition = {
     methods: ["delete"],
-    url: '/photos/{photo}',
+    url: '/photo/{photo}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \App\Http\Controllers\PhotoController::destroy
 * @see app/Http/Controllers/PhotoController.php:43
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 destroy.url = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -389,7 +389,7 @@ destroy.url = (args: { photo: string | number } | [photo: string | number ] | st
 /**
 * @see \App\Http\Controllers\PhotoController::destroy
 * @see app/Http/Controllers/PhotoController.php:43
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 destroy.delete = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -399,7 +399,7 @@ destroy.delete = (args: { photo: string | number } | [photo: string | number ] |
 /**
 * @see \App\Http\Controllers\PhotoController::destroy
 * @see app/Http/Controllers/PhotoController.php:43
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 const destroyForm = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -414,7 +414,7 @@ const destroyForm = (args: { photo: string | number } | [photo: string | number 
 /**
 * @see \App\Http\Controllers\PhotoController::destroy
 * @see app/Http/Controllers/PhotoController.php:43
-* @route '/photos/{photo}'
+* @route '/photo/{photo}'
 */
 destroyForm.delete = (args: { photo: string | number } | [photo: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -428,7 +428,7 @@ destroyForm.delete = (args: { photo: string | number } | [photo: string | number
 
 destroy.form = destroyForm
 
-const photos = {
+const photo = {
     index: Object.assign(index, index),
     store: Object.assign(store, store),
     show: Object.assign(show, show),
@@ -436,4 +436,4 @@ const photos = {
     destroy: Object.assign(destroy, destroy),
 }
 
-export default photos
+export default photo

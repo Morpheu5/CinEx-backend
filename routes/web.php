@@ -18,12 +18,17 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::apiResource('users', UserController::class);
-Route::apiResource('theatres', TheatreController::class);
-Route::apiResource('photospheres', PhotosphereController::class);
-Route::apiResource('galleries', GalleryController::class);
-Route::apiResource('photos', PhotoController::class);
+Route::apiResource('user', UserController::class);
+Route::apiResource('theatre', TheatreController::class);
+Route::apiResource('photosphere', PhotosphereController::class);
+Route::apiResource('gallery', GalleryController::class);
+Route::apiResource('photo', PhotoController::class);
 
+Route::prefix('dashboard')->group(function () {
+    // Route::inertia('/theatre', 'dashboard/Theatre');
+    Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('dashboard.theatre.index');
+    Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('dashboard.theatre.show');
+})->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
