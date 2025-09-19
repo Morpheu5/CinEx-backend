@@ -179,9 +179,109 @@ showForm.head = (args: { theatre: string | number } | [theatre: string | number 
 
 show.form = showForm
 
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+export const edit = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: edit.url(args, options),
+    method: 'get',
+})
+
+edit.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/theatre/{theatre}/edit',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+edit.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { theatre: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            theatre: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        theatre: args.theatre,
+    }
+
+    return edit.definition.url
+            .replace('{theatre}', parsedArgs.theatre.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+edit.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+edit.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: edit.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+const editForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+editForm.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::edit
+* @see app/Http/Controllers/TheatreController.php:63
+* @route '/dashboard/theatre/{theatre}/edit'
+*/
+editForm.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
+
 const theatre = {
     index: Object.assign(index, index),
     show: Object.assign(show, show),
+    edit: Object.assign(edit, edit),
 }
 
 export default theatre

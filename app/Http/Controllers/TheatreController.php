@@ -46,7 +46,6 @@ class TheatreController extends Controller {
      * Display the specified resource.
      */
     public function show(Request $request, string $id) {
-        print_r($request->acceptsJson());
         $theatre = Theatre::find($id);
 
         if ($request->wantsJson()) {
@@ -61,9 +60,16 @@ class TheatreController extends Controller {
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(Request $request, string $id) {
+        $theatre = Theatre::find($id);
+
+        if ($request->wantsJson()) {
+            return $theatre;
+        }
+
+        return Inertia::render('dashboard/theatre/edit', [
+            'theatre' => $theatre,
+        ]);
     }
 
     /**

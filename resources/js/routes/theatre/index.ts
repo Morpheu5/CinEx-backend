@@ -237,7 +237,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 export const update = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -252,7 +252,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 update.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -279,7 +279,7 @@ update.url = (args: { theatre: string | number } | [theatre: string | number ] |
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 update.put = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -289,7 +289,7 @@ update.put = (args: { theatre: string | number } | [theatre: string | number ] |
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 update.patch = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -299,7 +299,7 @@ update.patch = (args: { theatre: string | number } | [theatre: string | number ]
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 const updateForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -314,7 +314,7 @@ const updateForm = (args: { theatre: string | number } | [theatre: string | numb
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 updateForm.put = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -329,7 +329,7 @@ updateForm.put = (args: { theatre: string | number } | [theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:72
+* @see app/Http/Controllers/TheatreController.php:78
 * @route '/theatre/{theatre}'
 */
 updateForm.patch = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -346,7 +346,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:80
+* @see app/Http/Controllers/TheatreController.php:86
 * @route '/theatre/{theatre}'
 */
 export const destroy = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -361,7 +361,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:80
+* @see app/Http/Controllers/TheatreController.php:86
 * @route '/theatre/{theatre}'
 */
 destroy.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -388,7 +388,7 @@ destroy.url = (args: { theatre: string | number } | [theatre: string | number ] 
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:80
+* @see app/Http/Controllers/TheatreController.php:86
 * @route '/theatre/{theatre}'
 */
 destroy.delete = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -398,7 +398,7 @@ destroy.delete = (args: { theatre: string | number } | [theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:80
+* @see app/Http/Controllers/TheatreController.php:86
 * @route '/theatre/{theatre}'
 */
 const destroyForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -413,7 +413,7 @@ const destroyForm = (args: { theatre: string | number } | [theatre: string | num
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:80
+* @see app/Http/Controllers/TheatreController.php:86
 * @route '/theatre/{theatre}'
 */
 destroyForm.delete = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

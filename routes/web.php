@@ -28,6 +28,7 @@ Route::prefix('dashboard')->group(function () {
     // Route::inertia('/theatre', 'dashboard/Theatre');
     Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('dashboard.theatre.index');
     Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('dashboard.theatre.show');
+    Route::get('theatre/{theatre}/edit', [App\Http\Controllers\TheatreController::class, 'edit'])->name('dashboard.theatre.edit');
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';
