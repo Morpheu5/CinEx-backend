@@ -29,17 +29,26 @@ class TheatreController extends Controller {
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return Inertia::render('dashboard/theatre/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        $request->user()->theatres()->create($data);
+
+        return redirect()->route('theatre.index')
+            ->with('success', 'Theatre created.');
     }
 
     /**
@@ -75,16 +84,29 @@ class TheatreController extends Controller {
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, Theatre $theatre) {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        $theatre->update($data);
+
+        return redirect()
+            ->route('dashboard.theatre.edit', $theatre)
+            ->with('success', 'Theatre updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(Theatre $theatre) {
+        $theatre->delete();
+
+        return redirect()->route('theatre.index')
+            ->with('success', 'Theatre deleted');
     }
 }

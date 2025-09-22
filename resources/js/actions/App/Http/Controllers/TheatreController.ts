@@ -167,7 +167,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::store
-* @see app/Http/Controllers/TheatreController.php:40
+* @see app/Http/Controllers/TheatreController.php:39
 * @route '/theatre'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -182,7 +182,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::store
-* @see app/Http/Controllers/TheatreController.php:40
+* @see app/Http/Controllers/TheatreController.php:39
 * @route '/theatre'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -191,7 +191,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\TheatreController::store
-* @see app/Http/Controllers/TheatreController.php:40
+* @see app/Http/Controllers/TheatreController.php:39
 * @route '/theatre'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -201,7 +201,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\TheatreController::store
-* @see app/Http/Controllers/TheatreController.php:40
+* @see app/Http/Controllers/TheatreController.php:39
 * @route '/theatre'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -211,7 +211,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\TheatreController::store
-* @see app/Http/Controllers/TheatreController.php:40
+* @see app/Http/Controllers/TheatreController.php:39
 * @route '/theatre'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -223,7 +223,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 const show9081357f22a2487c296a5e8e924cb931 = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -238,7 +238,7 @@ show9081357f22a2487c296a5e8e924cb931.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 show9081357f22a2487c296a5e8e924cb931.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -265,7 +265,7 @@ show9081357f22a2487c296a5e8e924cb931.url = (args: { theatre: string | number } |
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 show9081357f22a2487c296a5e8e924cb931.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -275,7 +275,7 @@ show9081357f22a2487c296a5e8e924cb931.get = (args: { theatre: string | number } |
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 show9081357f22a2487c296a5e8e924cb931.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -285,7 +285,7 @@ show9081357f22a2487c296a5e8e924cb931.head = (args: { theatre: string | number } 
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 const show9081357f22a2487c296a5e8e924cb931Form = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -295,7 +295,7 @@ const show9081357f22a2487c296a5e8e924cb931Form = (args: { theatre: string | numb
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 show9081357f22a2487c296a5e8e924cb931Form.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -305,7 +305,7 @@ show9081357f22a2487c296a5e8e924cb931Form.get = (args: { theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/theatre/{theatre}'
 */
 show9081357f22a2487c296a5e8e924cb931Form.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -321,7 +321,7 @@ show9081357f22a2487c296a5e8e924cb931Form.head = (args: { theatre: string | numbe
 show9081357f22a2487c296a5e8e924cb931.form = show9081357f22a2487c296a5e8e924cb931Form
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 const showb98d307297dbcaf3ee0523cbac1a9a99 = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -336,7 +336,7 @@ showb98d307297dbcaf3ee0523cbac1a9a99.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 showb98d307297dbcaf3ee0523cbac1a9a99.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -363,7 +363,7 @@ showb98d307297dbcaf3ee0523cbac1a9a99.url = (args: { theatre: string | number } |
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 showb98d307297dbcaf3ee0523cbac1a9a99.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -373,7 +373,7 @@ showb98d307297dbcaf3ee0523cbac1a9a99.get = (args: { theatre: string | number } |
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 showb98d307297dbcaf3ee0523cbac1a9a99.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -383,7 +383,7 @@ showb98d307297dbcaf3ee0523cbac1a9a99.head = (args: { theatre: string | number } 
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 const showb98d307297dbcaf3ee0523cbac1a9a99Form = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -393,7 +393,7 @@ const showb98d307297dbcaf3ee0523cbac1a9a99Form = (args: { theatre: string | numb
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 showb98d307297dbcaf3ee0523cbac1a9a99Form.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -403,7 +403,7 @@ showb98d307297dbcaf3ee0523cbac1a9a99Form.get = (args: { theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::show
-* @see app/Http/Controllers/TheatreController.php:48
+* @see app/Http/Controllers/TheatreController.php:57
 * @route '/dashboard/theatre/{theatre}'
 */
 showb98d307297dbcaf3ee0523cbac1a9a99Form.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -425,10 +425,10 @@ export const show = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-export const update = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -440,12 +440,16 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-update.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
+update.url = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { theatre: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { theatre: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -457,7 +461,9 @@ update.url = (args: { theatre: string | number } | [theatre: string | number ] |
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        theatre: args.theatre,
+        theatre: typeof args.theatre === 'object'
+        ? args.theatre.id
+        : args.theatre,
     }
 
     return update.definition.url
@@ -467,30 +473,30 @@ update.url = (args: { theatre: string | number } | [theatre: string | number ] |
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-update.put = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-update.patch = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-const updateForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -502,10 +508,10 @@ const updateForm = (args: { theatre: string | number } | [theatre: string | numb
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-updateForm.put = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -517,10 +523,10 @@ updateForm.put = (args: { theatre: string | number } | [theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::update
-* @see app/Http/Controllers/TheatreController.php:78
+* @see app/Http/Controllers/TheatreController.php:87
 * @route '/theatre/{theatre}'
 */
-updateForm.patch = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -534,10 +540,10 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:86
+* @see app/Http/Controllers/TheatreController.php:106
 * @route '/theatre/{theatre}'
 */
-export const destroy = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -549,12 +555,16 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:86
+* @see app/Http/Controllers/TheatreController.php:106
 * @route '/theatre/{theatre}'
 */
-destroy.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
+destroy.url = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { theatre: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { theatre: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -566,7 +576,9 @@ destroy.url = (args: { theatre: string | number } | [theatre: string | number ] 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        theatre: args.theatre,
+        theatre: typeof args.theatre === 'object'
+        ? args.theatre.id
+        : args.theatre,
     }
 
     return destroy.definition.url
@@ -576,20 +588,20 @@ destroy.url = (args: { theatre: string | number } | [theatre: string | number ] 
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:86
+* @see app/Http/Controllers/TheatreController.php:106
 * @route '/theatre/{theatre}'
 */
-destroy.delete = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:86
+* @see app/Http/Controllers/TheatreController.php:106
 * @route '/theatre/{theatre}'
 */
-const destroyForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -601,10 +613,10 @@ const destroyForm = (args: { theatre: string | number } | [theatre: string | num
 
 /**
 * @see \App\Http\Controllers\TheatreController::destroy
-* @see app/Http/Controllers/TheatreController.php:86
+* @see app/Http/Controllers/TheatreController.php:106
 * @route '/theatre/{theatre}'
 */
-destroyForm.delete = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { theatre: number | { id: number } } | [theatre: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -617,8 +629,89 @@ destroyForm.delete = (args: { theatre: string | number } | [theatre: string | nu
 destroy.form = destroyForm
 
 /**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: create.url(options),
+    method: 'get',
+})
+
+create.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/theatre/new',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+create.url = (options?: RouteQueryOptions) => {
+    return create.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: create.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\TheatreController::create
+* @see app/Http/Controllers/TheatreController.php:32
+* @route '/dashboard/theatre/new'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 export const edit = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -633,7 +726,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 edit.url = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -660,7 +753,7 @@ edit.url = (args: { theatre: string | number } | [theatre: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 edit.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -670,7 +763,7 @@ edit.get = (args: { theatre: string | number } | [theatre: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 edit.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -680,7 +773,7 @@ edit.head = (args: { theatre: string | number } | [theatre: string | number ] | 
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 const editForm = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -690,7 +783,7 @@ const editForm = (args: { theatre: string | number } | [theatre: string | number
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 editForm.get = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -700,7 +793,7 @@ editForm.get = (args: { theatre: string | number } | [theatre: string | number ]
 
 /**
 * @see \App\Http\Controllers\TheatreController::edit
-* @see app/Http/Controllers/TheatreController.php:63
+* @see app/Http/Controllers/TheatreController.php:72
 * @route '/dashboard/theatre/{theatre}/edit'
 */
 editForm.head = (args: { theatre: string | number } | [theatre: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -715,6 +808,6 @@ editForm.head = (args: { theatre: string | number } | [theatre: string | number 
 
 edit.form = editForm
 
-const TheatreController = { index, store, show, update, destroy, edit }
+const TheatreController = { index, store, show, update, destroy, create, edit }
 
 export default TheatreController

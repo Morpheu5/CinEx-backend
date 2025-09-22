@@ -25,8 +25,8 @@ Route::apiResource('gallery', GalleryController::class);
 Route::apiResource('photo', PhotoController::class);
 
 Route::prefix('dashboard')->group(function () {
-    // Route::inertia('/theatre', 'dashboard/Theatre');
     Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('dashboard.theatre.index');
+    Route::get('theatre/new', [App\Http\Controllers\TheatreController::class, 'create'])->name('dashboard.theatre.create');
     Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('dashboard.theatre.show');
     Route::get('theatre/{theatre}/edit', [App\Http\Controllers\TheatreController::class, 'edit'])->name('dashboard.theatre.edit');
 })->middleware(['auth', 'verified']);

@@ -29,9 +29,7 @@ const props = defineProps({
     }
 })
 
-const { defineField, handleSubmit } = useForm({
-    initialValues: { ...props.theatre },
-})
+const { defineField, handleSubmit } = useForm()
 const [ name, nameProp ] = defineField('name');
 const [ city, cityProp ] = defineField('city');
 const [ country, countryProp ] = defineField('country');
@@ -39,7 +37,7 @@ const [ latitude, latitudeProp ] = defineField('latitude');
 const [ longitude, longitudeProp ] = defineField('longitude');
 
 const onSubmit = handleSubmit((values) => {
-    router.put(`/theatre/${props.theatre.id}`, values, {
+    router.post(`/theatre`, values, {
         preserveScroll: true,
         onError: (errors) => {
             console.log(errors)
@@ -49,17 +47,6 @@ const onSubmit = handleSubmit((values) => {
         }
     })
 })
-
-const onDelete = () => {
-    if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
-        router.delete(`/theatre/${props.theatre.id}`, {
-            preserveScroll: true,
-            onSuccess: () => {
-
-            }
-        })
-    }
-}
 </script>
 
 <template>
@@ -68,7 +55,7 @@ const onDelete = () => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">Editing: <strong>{{ theatre.name }}</strong> (id: {{ theatre.id }})</h1>
+                <h1 class="text-xl py-3 inline mr-3">New theatre:</h1>
             </div>
             <form @submit="onSubmit">
                 <FormField name="name">
@@ -119,8 +106,6 @@ const onDelete = () => {
                 <div class="py-3 flex flex-row">
                     <div class="spacer w-30"></div>
                     <Button type="submit" variant="default" class="">Save</Button>
-                    <div class="spacer w-full"></div>
-                    <Button type="button" @click="onDelete" variant="destructive" class="">Delete</Button>
                 </div>
             </form>
         </div>

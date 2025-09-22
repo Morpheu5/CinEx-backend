@@ -45,13 +45,6 @@ class User extends Authenticatable
         ];
     }
 
-    // /**
-    //  * Get the photos associated with the user.
-    //  */
-    // public function photos(): HasMany {
-        
-    // }
-
     public function theatres() {
         return $this->hasMany(Theatre::class);
     }
