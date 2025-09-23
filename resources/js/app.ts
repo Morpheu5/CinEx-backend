@@ -6,6 +6,25 @@ import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import { initializeTheme } from './composables/useAppearance';
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import icons and add them to the Library */
+import {
+    faPenToSquare,
+    faSquarePlus,
+    faTrashCan,
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add([
+    faPenToSquare,
+    faSquarePlus,
+    faTrashCan,
+])
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -14,6 +33,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .component('fa', FontAwesomeIcon)
             .mount(el);
     },
     progress: {
