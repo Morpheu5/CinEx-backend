@@ -29,6 +29,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('theatre/new', [App\Http\Controllers\TheatreController::class, 'create'])->name('dashboard.theatre.create');
     Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('dashboard.theatre.show');
     Route::get('theatre/{theatre}/edit', [App\Http\Controllers\TheatreController::class, 'edit'])->name('dashboard.theatre.edit');
+
+    Route::get('photosphere', [App\Http\Controllers\PhotosphereController::class, 'index'])->name('dashboard.photosphere.index');
+    Route::get('photosphere/new', [App\Http\Controllers\PhotosphereController::class, 'create'])->name('dashboard.photosphere.create');
+    Route::get('photosphere/{photosphere}', [App\Http\Controllers\PhotosphereController::class, 'show'])->name('dashboard.photosphere.show');
+    Route::get('photosphere/{photosphere}/edit', [App\Http\Controllers\PhotosphereController::class, 'edit'])->name('dashboard.photosphere.edit');
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';

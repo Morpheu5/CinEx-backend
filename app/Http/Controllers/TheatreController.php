@@ -47,7 +47,7 @@ class TheatreController extends Controller {
 
         $request->user()->theatres()->create($data);
 
-        return redirect()->route('theatre.index')
+        return redirect()->route('dashboard.theatre.index')
             ->with('success', 'Theatre created.');
     }
 

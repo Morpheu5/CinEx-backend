@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use App\Models\User;
 use App\Models\Theatre;
+use App\Models\Photosphere;
 
 return new class extends Migration
 {
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->float('latitude');
             $table->float('longitude');
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Theatre::class);
+            $table->foreignIdFor(Photosphere::class);
         });
     }
 

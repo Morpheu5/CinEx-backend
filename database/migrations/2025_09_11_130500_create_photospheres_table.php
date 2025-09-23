@@ -17,6 +17,8 @@ return new class extends Migration
         Schema::create('photospheres', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->string('path');
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Theatre::class);
         });
