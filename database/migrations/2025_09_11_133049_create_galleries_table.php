@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('latitude');
             $table->float('longitude');
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Photosphere::class);
+            $table->foreignIdFor(Photosphere::class)->constrained()->cascadeOnDelete();
         });
     }
 
