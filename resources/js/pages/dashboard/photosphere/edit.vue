@@ -13,39 +13,52 @@ import { useForm } from 'vee-validate';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { toast } from 'vue-sonner';
-import { nextTick, computed } from 'vue';
-// import { toTypedSchema } from '@vee-validate/zod';
-// import * as z from 'zod';
+import { nextTick } from 'vue';
+import { toTypedSchema } from '@vee-validate/zod';
+import * as z from 'zod';
+
+const PhotosphereSchema = z.object({
+    name: z.string().min(1, 'Name is required'),
+    path: z.string().nullable().optional(),
+    file: z.instanceof(File).nullable().optional(),
+    theatre_id: z.coerce.number().int().positive('Select a theatre'),
+})
+
+type FormValues = z.infer<typeof PhotosphereSchema>
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
         href: dashboard().url,
     },
-];
+]
 
-const props = defineProps({
-    photosphere: {
-        type: Object,
-        required: true,
-    },
-    theatres: {
-        type: Array,
-        required: true,
-    },
-})
+const props = defineProps<{
+  photosphere: {
+    id: number
+    name: string
+    path?: string | null
+    theatre_id: number
+    theatre: { name: string }
+  },
+  theatres: Array<{ id: number; name: string }>
+}>()
 
-const { defineField, handleSubmit, setFieldValue } = useForm({
+const { defineField, handleSubmit, setFieldValue } = useForm<FormValues>({
+    validationSchema: toTypedSchema(PhotosphereSchema),
     initialValues: {
-        ...props.photosphere,
-        path: props.photosphere.path ?? '',
+        name: props.photosphere.name ?? '',
+        theatre_id: props.photosphere.theatre_id, // can be number or string; schema coerces
+        path: props.photosphere.path ?? null,
+        file: null,
     },
 })
-const [ name, nameProp ] = defineField('name');
-const [ path, pathProp ] = defineField('path');
-const [ theatreID, theatreIDProp ] = defineField('theatre_id');
+const [ name, nameProp ] = defineField('name')
+const [ path, pathProp ] = defineField('path')
+const [ theatreID, theatreIDProp ] = defineField('theatre_id')
 
 const onSubmit = handleSubmit((values) => {
+    debugger
     router.post(
         `/photosphere/${props.photosphere.id}`, { ...values, _method: 'put' },
         {
@@ -75,7 +88,7 @@ const removePath = async () => {
             <div class="py-3">
                 <h1 class="text-xl py-3 inline mr-3">Editing: {{ photosphere.name }} ({{ photosphere.theatre.name }})</h1>
             </div>
-            <form @submit="onSubmit">
+            <form @submit.prevent="onSubmit">
                 <FormField name="theatre_id">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="theatre_id">Theatre</FormLabel>
@@ -110,7 +123,10 @@ const removePath = async () => {
                         <FormControl>
                             <Input
                                 type="file"
-                                @change="(e: Event) => handleChange((e.target as HTMLInputElement).files?.[0] ?? null)"
+                                @change="(e: Event) => {
+                                    const f = (e.target as HTMLInputElement).files?.[0] ?? null
+                                    handleChange(f)
+                                }"
                                 aria-labelledby="file"
                             />
                         </FormControl>
