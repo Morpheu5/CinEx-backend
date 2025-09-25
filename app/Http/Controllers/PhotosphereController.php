@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Theatre;
@@ -65,32 +66,79 @@ class PhotosphereController extends Controller {
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(string $id) {
+        $photosphere = Photosphere::with('theatre')->find($id);
+        return $photosphere;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id) {
+        $photosphere = Photosphere::with('theatre')->find($id);
+
+        return Inertia::render('dashboard/photosphere/edit', [
+            'photosphere' => $photosphere->withRelationshipAutoloading(),
+            'theatres' => Theatre::all(),
+        ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, Photosphere $photosphere) {
+        // Validate inputs (adjust rules to your needs)
+        $validated = $request->validate([
+            'theatre_id' => ['required', 'integer', 'exists:theatres,id'],
+            'name'       => ['required', 'string', 'max:255'],
+            'file'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:20480'], // 20MB example
+            'path'       => ['nullable', 'string'],
+        ]);
+
+        // Always update non-file fields
+        $photosphere->theatre_id = (int) $validated['theatre_id'];
+        $photosphere->name       = $validated['name'];
+
+        // Disk & directory (change if you use another disk)
+        $disk = 'public';
+        $dir  = 'photospheres';
+
+        if ($request->hasFile('file')) {
+            // 1) Delete old file if present
+            $oldPath = $photosphere->path;
+            if ($oldPath && Storage::disk($disk)->exists($oldPath)) {
+                Storage::disk($disk)->delete($oldPath);
+            }
+
+            // 2) Store the new file and replace path
+            $newPath = $request->file('file')->store($dir, $disk);
+            $photosphere->path = $newPath;
+
+        } else {
+            // No new file: keep/store the path "as it came in"
+            // If the client sends '', this will persist '' (not null)
+            if ($request->exists('path')) {
+                $photosphere->path = $request->input('path');
+            }
+            // If 'path' isn't in the request at all, we leave the model's path untouched
+        }
+
+        $photosphere->save();
+
+        return redirect()->route('dashboard.photosphere.edit', $photosphere)
+            ->setStatusCode(303);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(Photosphere $photosphere) {
+        Storage::delete($photosphere->path);
+        $photosphere->delete();
+
+        return redirect()->route('photosphere.index')
+            ->with('success', 'Photosphere deleted');
+
     }
 }

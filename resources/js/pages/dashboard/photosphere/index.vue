@@ -5,6 +5,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { show, create, edit } from '@/routes/dashboard/photosphere';
 import { Button } from '@/components/ui/button';
+import { toast } from 'vue-sonner';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -29,7 +30,7 @@ const onDelete = (id: number) => {
         router.delete(`/photosphere/${id}`, {
             preserveScroll: true,
             onSuccess: () => {
-
+                toast("Photosphere deleted!");
             }
         })
     }

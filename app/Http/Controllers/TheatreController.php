@@ -72,10 +72,6 @@ class TheatreController extends Controller {
     public function edit(Request $request, string $id) {
         $theatre = Theatre::find($id);
 
-        if ($request->wantsJson()) {
-            return $theatre;
-        }
-
         return Inertia::render('dashboard/theatre/edit', [
             'theatre' => $theatre,
         ]);

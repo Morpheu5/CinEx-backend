@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 // import { toTypedSchema } from '@vee-validate/zod';
 // import * as z from 'zod';
+import { toast } from 'vue-sonner'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -42,10 +43,10 @@ const onSubmit = handleSubmit((values) => {
     router.put(`/theatre/${props.theatre.id}`, values, {
         preserveScroll: true,
         onError: (errors) => {
-            console.log(errors)
+            toast.error(JSON.stringify(errors))
         },
         onSuccess: () => {
-            console.log("Awesome!", { values })
+            toast.success("Theatre edited!")
         }
     })
 })

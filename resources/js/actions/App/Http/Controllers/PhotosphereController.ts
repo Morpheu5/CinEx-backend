@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 const indexd156b3921901de451eaad60a089068a0 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ indexd156b3921901de451eaad60a089068a0.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 indexd156b3921901de451eaad60a089068a0.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ indexd156b3921901de451eaad60a089068a0.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 indexd156b3921901de451eaad60a089068a0.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ indexd156b3921901de451eaad60a089068a0.get = (options?: RouteQueryOptions): Route
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 indexd156b3921901de451eaad60a089068a0.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ indexd156b3921901de451eaad60a089068a0.head = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 const indexd156b3921901de451eaad60a089068a0Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexd156b3921901de451eaad60a089068a0Form = (options?: RouteQueryOptions):
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 indexd156b3921901de451eaad60a089068a0Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexd156b3921901de451eaad60a089068a0Form.get = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/photosphere'
 */
 indexd156b3921901de451eaad60a089068a0Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -81,7 +81,7 @@ indexd156b3921901de451eaad60a089068a0Form.head = (options?: RouteQueryOptions): 
 indexd156b3921901de451eaad60a089068a0.form = indexd156b3921901de451eaad60a089068a0Form
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 const indexc66291f90a40544d8c0b5ad37f903f02 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -96,7 +96,7 @@ indexc66291f90a40544d8c0b5ad37f903f02.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 indexc66291f90a40544d8c0b5ad37f903f02.url = (options?: RouteQueryOptions) => {
@@ -105,7 +105,7 @@ indexc66291f90a40544d8c0b5ad37f903f02.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 indexc66291f90a40544d8c0b5ad37f903f02.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -115,7 +115,7 @@ indexc66291f90a40544d8c0b5ad37f903f02.get = (options?: RouteQueryOptions): Route
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 indexc66291f90a40544d8c0b5ad37f903f02.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -125,7 +125,7 @@ indexc66291f90a40544d8c0b5ad37f903f02.head = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 const indexc66291f90a40544d8c0b5ad37f903f02Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -135,7 +135,7 @@ const indexc66291f90a40544d8c0b5ad37f903f02Form = (options?: RouteQueryOptions):
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 indexc66291f90a40544d8c0b5ad37f903f02Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -145,7 +145,7 @@ indexc66291f90a40544d8c0b5ad37f903f02Form.get = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::index
-* @see app/Http/Controllers/PhotosphereController.php:16
+* @see app/Http/Controllers/PhotosphereController.php:17
 * @route '/dashboard/photosphere'
 */
 indexc66291f90a40544d8c0b5ad37f903f02Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -167,7 +167,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::store
-* @see app/Http/Controllers/PhotosphereController.php:48
+* @see app/Http/Controllers/PhotosphereController.php:49
 * @route '/photosphere'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -182,7 +182,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::store
-* @see app/Http/Controllers/PhotosphereController.php:48
+* @see app/Http/Controllers/PhotosphereController.php:49
 * @route '/photosphere'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -191,7 +191,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::store
-* @see app/Http/Controllers/PhotosphereController.php:48
+* @see app/Http/Controllers/PhotosphereController.php:49
 * @route '/photosphere'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -201,7 +201,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::store
-* @see app/Http/Controllers/PhotosphereController.php:48
+* @see app/Http/Controllers/PhotosphereController.php:49
 * @route '/photosphere'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -211,7 +211,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::store
-* @see app/Http/Controllers/PhotosphereController.php:48
+* @see app/Http/Controllers/PhotosphereController.php:49
 * @route '/photosphere'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -223,7 +223,7 @@ store.form = storeForm
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 const show3d909a467c6240b6ff88568bdb1a5f0f = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -238,7 +238,7 @@ show3d909a467c6240b6ff88568bdb1a5f0f.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 show3d909a467c6240b6ff88568bdb1a5f0f.url = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -265,7 +265,7 @@ show3d909a467c6240b6ff88568bdb1a5f0f.url = (args: { photosphere: string | number
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 show3d909a467c6240b6ff88568bdb1a5f0f.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -275,7 +275,7 @@ show3d909a467c6240b6ff88568bdb1a5f0f.get = (args: { photosphere: string | number
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 show3d909a467c6240b6ff88568bdb1a5f0f.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -285,7 +285,7 @@ show3d909a467c6240b6ff88568bdb1a5f0f.head = (args: { photosphere: string | numbe
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 const show3d909a467c6240b6ff88568bdb1a5f0fForm = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -295,7 +295,7 @@ const show3d909a467c6240b6ff88568bdb1a5f0fForm = (args: { photosphere: string | 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 show3d909a467c6240b6ff88568bdb1a5f0fForm.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -305,7 +305,7 @@ show3d909a467c6240b6ff88568bdb1a5f0fForm.get = (args: { photosphere: string | nu
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/photosphere/{photosphere}'
 */
 show3d909a467c6240b6ff88568bdb1a5f0fForm.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -321,7 +321,7 @@ show3d909a467c6240b6ff88568bdb1a5f0fForm.head = (args: { photosphere: string | n
 show3d909a467c6240b6ff88568bdb1a5f0f.form = show3d909a467c6240b6ff88568bdb1a5f0fForm
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 const showce4d4d3fb0dcfd36e348a7d08e7852a5 = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -336,7 +336,7 @@ showce4d4d3fb0dcfd36e348a7d08e7852a5.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 showce4d4d3fb0dcfd36e348a7d08e7852a5.url = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -363,7 +363,7 @@ showce4d4d3fb0dcfd36e348a7d08e7852a5.url = (args: { photosphere: string | number
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 showce4d4d3fb0dcfd36e348a7d08e7852a5.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -373,7 +373,7 @@ showce4d4d3fb0dcfd36e348a7d08e7852a5.get = (args: { photosphere: string | number
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 showce4d4d3fb0dcfd36e348a7d08e7852a5.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -383,7 +383,7 @@ showce4d4d3fb0dcfd36e348a7d08e7852a5.head = (args: { photosphere: string | numbe
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 const showce4d4d3fb0dcfd36e348a7d08e7852a5Form = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -393,7 +393,7 @@ const showce4d4d3fb0dcfd36e348a7d08e7852a5Form = (args: { photosphere: string | 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 showce4d4d3fb0dcfd36e348a7d08e7852a5Form.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -403,7 +403,7 @@ showce4d4d3fb0dcfd36e348a7d08e7852a5Form.get = (args: { photosphere: string | nu
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::show
-* @see app/Http/Controllers/PhotosphereController.php:68
+* @see app/Http/Controllers/PhotosphereController.php:69
 * @route '/dashboard/photosphere/{photosphere}'
 */
 showce4d4d3fb0dcfd36e348a7d08e7852a5Form.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -425,10 +425,10 @@ export const show = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-export const update = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -440,12 +440,16 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-update.url = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions) => {
+update.url = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { photosphere: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { photosphere: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -457,7 +461,9 @@ update.url = (args: { photosphere: string | number } | [photosphere: string | nu
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        photosphere: args.photosphere,
+        photosphere: typeof args.photosphere === 'object'
+        ? args.photosphere.id
+        : args.photosphere,
     }
 
     return update.definition.url
@@ -467,30 +473,30 @@ update.url = (args: { photosphere: string | number } | [photosphere: string | nu
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-update.put = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-update.patch = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-const updateForm = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -502,10 +508,10 @@ const updateForm = (args: { photosphere: string | number } | [photosphere: strin
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-updateForm.put = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -517,10 +523,10 @@ updateForm.put = (args: { photosphere: string | number } | [photosphere: string 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::update
-* @see app/Http/Controllers/PhotosphereController.php:84
+* @see app/Http/Controllers/PhotosphereController.php:90
 * @route '/photosphere/{photosphere}'
 */
-updateForm.patch = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -534,10 +540,10 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::destroy
-* @see app/Http/Controllers/PhotosphereController.php:92
+* @see app/Http/Controllers/PhotosphereController.php:136
 * @route '/photosphere/{photosphere}'
 */
-export const destroy = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -549,12 +555,16 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::destroy
-* @see app/Http/Controllers/PhotosphereController.php:92
+* @see app/Http/Controllers/PhotosphereController.php:136
 * @route '/photosphere/{photosphere}'
 */
-destroy.url = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions) => {
+destroy.url = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { photosphere: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { photosphere: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -566,7 +576,9 @@ destroy.url = (args: { photosphere: string | number } | [photosphere: string | n
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        photosphere: args.photosphere,
+        photosphere: typeof args.photosphere === 'object'
+        ? args.photosphere.id
+        : args.photosphere,
     }
 
     return destroy.definition.url
@@ -576,20 +588,20 @@ destroy.url = (args: { photosphere: string | number } | [photosphere: string | n
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::destroy
-* @see app/Http/Controllers/PhotosphereController.php:92
+* @see app/Http/Controllers/PhotosphereController.php:136
 * @route '/photosphere/{photosphere}'
 */
-destroy.delete = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::destroy
-* @see app/Http/Controllers/PhotosphereController.php:92
+* @see app/Http/Controllers/PhotosphereController.php:136
 * @route '/photosphere/{photosphere}'
 */
-const destroyForm = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -601,10 +613,10 @@ const destroyForm = (args: { photosphere: string | number } | [photosphere: stri
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::destroy
-* @see app/Http/Controllers/PhotosphereController.php:92
+* @see app/Http/Controllers/PhotosphereController.php:136
 * @route '/photosphere/{photosphere}'
 */
-destroyForm.delete = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -618,7 +630,7 @@ destroy.form = destroyForm
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -633,7 +645,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -642,7 +654,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -652,7 +664,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -662,7 +674,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -672,7 +684,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -682,7 +694,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::create
-* @see app/Http/Controllers/PhotosphereController.php:34
+* @see app/Http/Controllers/PhotosphereController.php:35
 * @route '/dashboard/photosphere/new'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -699,7 +711,7 @@ create.form = createForm
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 export const edit = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -714,7 +726,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.url = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -741,7 +753,7 @@ edit.url = (args: { photosphere: string | number } | [photosphere: string | numb
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -751,7 +763,7 @@ edit.get = (args: { photosphere: string | number } | [photosphere: string | numb
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -761,7 +773,7 @@ edit.head = (args: { photosphere: string | number } | [photosphere: string | num
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 const editForm = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -771,7 +783,7 @@ const editForm = (args: { photosphere: string | number } | [photosphere: string 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 editForm.get = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -781,7 +793,7 @@ editForm.get = (args: { photosphere: string | number } | [photosphere: string | 
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:76
+* @see app/Http/Controllers/PhotosphereController.php:77
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 editForm.head = (args: { photosphere: string | number } | [photosphere: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
