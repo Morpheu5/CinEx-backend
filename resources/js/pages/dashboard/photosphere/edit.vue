@@ -63,7 +63,7 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
         theatres: Array<{ id: number; name: string }>
     }>()
     
-    const { defineField, handleSubmit, setFieldValue } = useForm<FormValues>({
+    const { handleSubmit, setFieldValue, values } = useForm<FormValues>({
         validationSchema: toTypedSchema(PhotosphereEditSchema),
         initialValues: {
             name: props.photosphere.name ?? '',
@@ -73,17 +73,15 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
             galleries: props.photosphere.galleries ?? [],
         },
     })
+
+    type GalleryItem = z.infer<typeof GallerySchema>;
     
-    const [ name, nameProp ] = defineField('name')
-    const [ path, pathProp ] = defineField('path')
-    const [ theatreID, theatreIDProp ] = defineField('theatre_id')
+    const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<GalleryItem>('galleries')
     
-    const { fields: galleryRows, push: addGallery, remove: removeGallery, replace: setGalleries } = useFieldArray<FormValues>('galleries')
-    
-    const onSubmit = handleSubmit((values) => {
+    const onSubmit = handleSubmit((newValues) => {
         debugger;
         router.post(
-        `/photosphere/${props.photosphere.id}`, { ...values, _method: 'put' },
+        `/photosphere/${props.photosphere.id}`, { ...newValues, _method: 'put' },
         {
             forceFormData: true, // ensures nested arrays + optional file work
             preserveScroll: true,
@@ -113,63 +111,57 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
                 <h1 class="text-xl py-3 inline mr-3">Editing: {{ photosphere.name }} ({{ photosphere.theatre.name }})</h1>
             </div>
             <form @submit.prevent="onSubmit">
-                <FormField name="theatre_id">
+                <FormField name="theatre_id" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="theatre_id">Theatre</FormLabel>
                         <FormControl>
-                            <select
-                            v-bind="theatreIDProp"
-                            v-model="theatreID"
-                            aria-labelledby="theatre_id"
-                            class="mt-1 block w-full border rounded p-2"
-                            >
-                            <option value="-1" disabled>Select a theatre...</option>
-                            <option v-for="t in props.theatres" :key="t.id" :value="t.id">
-                                {{ t.name }}
-                            </option>
-                        </select>
+                            <select v-bind="componentField" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
+                                <option value="-1" disabled>Select a theatre...</option>
+                                <option v-for="t in props.theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
+                            </select>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{{ errorMessage }}</FormMessage>
                 </FormItem>
             </FormField>
             
-            <FormField name="name">
+            <FormField name="name" v-slot="{ componentField, errorMessage }">
                 <FormItem class="flex flex-row py-3">
                     <FormLabel class="w-24" id="name">Name</FormLabel>
                     <FormControl>
-                        <Input type="text" v-bind="nameProp" v-model="name" aria-labelledby="name" />
+                        <Input type="text" v-bind="componentField" aria-labelledby="name" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{{ errorMessage }}</FormMessage>
                 </FormItem>
             </FormField>
             
-            <FormField v-if="!path" key="file" name="file" v-slot="{ handleChange }">
+            <FormField v-if="!values.path" key="file" name="file" v-slot="{ handleChange, errorMessage }">
                 <FormItem class="flex flex-row py-3">
                     <FormLabel class="w-24" id="file">File</FormLabel>
                     <FormControl>
                         <Input
-                        type="file"
-                        @change="(e: Event) => {
-                            const f = (e.target as HTMLInputElement).files?.[0] ?? null
-                            handleChange(f)
-                        }"
-                        aria-labelledby="file"
+                            type="file"
+                            @change="(e: Event) => {
+                                const f = (e.target as HTMLInputElement).files?.[0] ?? null
+                                handleChange(f)
+                            }"
+                            aria-labelledby="file"
                         />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{{ errorMessage }}</FormMessage>
                 </FormItem>
             </FormField>
             
-            <FormField v-else key="path" name="path">
+            <FormField v-else key="path" name="path" v-slot="{ componentField, errorMessage }">
                 <FormItem class="flex flex-row py-3">
                     <FormLabel class="w-24" id="path">Path</FormLabel>
                     <FormControl>
                         <Button type="button" @click="removePath" variant="destructive">
                             <fa icon="fa-solid fa-trash-can" />
                         </Button>
-                        <span class="py-1 break-all">{{ path }}</span>
-                        <input v-bind="pathProp" type="hidden" />
+                        <span class="py-1 break-all">{{ values.path }}</span>
+                        <input v-bind="componentField" type="hidden" />
                     </FormControl>
+                    <FormMessage>{{ errorMessage }}</FormMessage>
                 </FormItem>
             </FormField>
             
@@ -177,7 +169,7 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
             <div class="mt-6 border-t pt-4">
                 <div class="flex items-center justify-between mb-2">
                     <h2 class="text-lg font-semibold">Galleries</h2>
-                    <Button type="button" variant="secondary" @click="addGallery({ name: '', latitude: '', longitude: '' })">
+                    <Button type="button" variant="secondary" @click="addGallery({ name: '', latitude: NaN, longitude: NaN })">
                         + Add gallery
                     </Button>
                 </div>
