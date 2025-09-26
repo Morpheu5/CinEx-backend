@@ -45,10 +45,10 @@ const PhotosphereEditSchema = z.object({
 type FormValues = z.infer<typeof PhotosphereEditSchema>
     
     const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard().url,
-    },
+        {
+            title: 'Dashboard',
+            href: dashboard().url,
+        },
     ]
     
     const props = defineProps<{
@@ -119,108 +119,108 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
                                 <option value="-1" disabled>Select a theatre...</option>
                                 <option v-for="t in props.theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
                             </select>
-                    </FormControl>
-                    <FormMessage>{{ errorMessage }}</FormMessage>
-                </FormItem>
-            </FormField>
+                        </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
+                    </FormItem>
+                </FormField>
             
-            <FormField name="name" v-slot="{ componentField, errorMessage }">
-                <FormItem class="flex flex-row py-3">
-                    <FormLabel class="w-24" id="name">Name</FormLabel>
-                    <FormControl>
-                        <Input type="text" v-bind="componentField" aria-labelledby="name" />
-                    </FormControl>
-                    <FormMessage>{{ errorMessage }}</FormMessage>
-                </FormItem>
-            </FormField>
-            
-            <FormField v-if="!values.path" key="file" name="file" v-slot="{ handleChange, errorMessage }">
-                <FormItem class="flex flex-row py-3">
-                    <FormLabel class="w-24" id="file">File</FormLabel>
-                    <FormControl>
-                        <Input
-                            type="file"
-                            @change="(e: Event) => {
-                                const f = (e.target as HTMLInputElement).files?.[0] ?? null
-                                handleChange(f)
-                            }"
-                            aria-labelledby="file"
-                        />
-                    </FormControl>
-                    <FormMessage>{{ errorMessage }}</FormMessage>
-                </FormItem>
-            </FormField>
-            
-            <FormField v-else key="path" name="path" v-slot="{ componentField, errorMessage }">
-                <FormItem class="flex flex-row py-3">
-                    <FormLabel class="w-24" id="path">Path</FormLabel>
-                    <FormControl>
-                        <Button type="button" @click="removePath" variant="destructive">
-                            <fa icon="fa-solid fa-trash-can" />
+                <FormField name="name" v-slot="{ componentField, errorMessage }">
+                    <FormItem class="flex flex-row py-3">
+                        <FormLabel class="w-24" id="name">Name</FormLabel>
+                        <FormControl>
+                            <Input type="text" v-bind="componentField" aria-labelledby="name" />
+                        </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
+                    </FormItem>
+                </FormField>
+                
+                <FormField v-if="!values.path" key="file" name="file" v-slot="{ handleChange, errorMessage }">
+                    <FormItem class="flex flex-row py-3">
+                        <FormLabel class="w-24" id="file">File</FormLabel>
+                        <FormControl>
+                            <Input
+                                type="file"
+                                @change="(e: Event) => {
+                                    const f = (e.target as HTMLInputElement).files?.[0] ?? null
+                                    handleChange(f)
+                                }"
+                                aria-labelledby="file"
+                            />
+                        </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
+                    </FormItem>
+                </FormField>
+                
+                <FormField v-else key="path" name="path" v-slot="{ componentField, errorMessage }">
+                    <FormItem class="flex flex-row py-3">
+                        <FormLabel class="w-24" id="path">Path</FormLabel>
+                        <FormControl>
+                            <Button type="button" @click="removePath" variant="destructive">
+                                <fa icon="fa-solid fa-trash-can" />
+                            </Button>
+                            <span class="py-1 break-all">{{ values.path }}</span>
+                            <input v-bind="componentField" type="hidden" />
+                        </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
+                    </FormItem>
+                </FormField>
+                
+                <!-- Galleries -->
+                <div class="mt-6 border-t pt-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h2 class="text-lg font-semibold">Galleries</h2>
+                        <Button type="button" variant="secondary" @click="addGallery({ name: '', latitude: NaN, longitude: NaN })">
+                            + Add gallery
                         </Button>
-                        <span class="py-1 break-all">{{ values.path }}</span>
-                        <input v-bind="componentField" type="hidden" />
-                    </FormControl>
-                    <FormMessage>{{ errorMessage }}</FormMessage>
-                </FormItem>
-            </FormField>
-            
-            <!-- Galleries -->
-            <div class="mt-6 border-t pt-4">
-                <div class="flex items-center justify-between mb-2">
-                    <h2 class="text-lg font-semibold">Galleries</h2>
-                    <Button type="button" variant="secondary" @click="addGallery({ name: '', latitude: NaN, longitude: NaN })">
-                        + Add gallery
-                    </Button>
-                </div>
-                
-                <div v-if="galleryRows.length === 0" class="text-sm text-muted-foreground mb-2">
-                    No galleries yet. Add one.
-                </div>
-                
-                <div v-for="(row, i) in galleryRows" :key="row.key" class="rounded-lg border p-3 mb-3">
-                    <!-- name -->
-                    <FormField :name="`galleries.${i}.name`" v-slot="{ componentField, errorMessage }">
-                        <FormItem class="flex flex-row py-2">
-                            <FormLabel class="w-24">Name</FormLabel>
-                            <FormControl class="flex-1">
-                                <Input type="text" :aria-label="`Gallery ${i+1} name`" v-bind="componentField" />
-                            </FormControl>
-                            <FormMessage>{{ errorMessage }}</FormMessage>
-                        </FormItem>
-                    </FormField>
-                    <!-- latitude -->
-                    <FormField :name="`galleries.${i}.latitude`" v-slot="{ componentField, errorMessage }">
-                        <FormItem class="flex flex-row py-2">
-                            <FormLabel class="w-24">Latitude</FormLabel>
-                            <FormControl class="flex-1">
-                                <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} latitude`" v-bind="componentField" />
-                            </FormControl>
-                            <FormMessage>{{ errorMessage }}</FormMessage>
-                        </FormItem>
-                    </FormField>
-                    <!-- longitude -->
-                    <FormField :name="`galleries.${i}.longitude`" v-slot="{ componentField, errorMessage }">
-                        <FormItem class="flex flex-row py-2">
-                            <FormLabel class="w-24">Longitude</FormLabel>
-                            <FormControl class="flex-1">
-                                <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} longitude`" v-bind="componentField" />
-                            </FormControl>
-                            <FormMessage>{{ errorMessage }}</FormMessage>
-                        </FormItem>
-                    </FormField>
+                    </div>
                     
-                    <div class="flex justify-end">
-                        <Button type="button" variant="destructive" @click="removeGallery(i)">Remove</Button>
+                    <div v-if="galleryRows.length === 0" class="text-sm text-muted-foreground mb-2">
+                        No galleries yet. Add one.
+                    </div>
+                    
+                    <div v-for="(row, i) in galleryRows" :key="row.key" class="rounded-lg border p-3 mb-3">
+                        <!-- name -->
+                        <FormField :name="`galleries.${i}.name`" v-slot="{ componentField, errorMessage }">
+                            <FormItem class="flex flex-row py-2">
+                                <FormLabel class="w-24">Name</FormLabel>
+                                <FormControl class="flex-1">
+                                    <Input type="text" :aria-label="`Gallery ${i+1} name`" v-bind="componentField" />
+                                </FormControl>
+                                <FormMessage>{{ errorMessage }}</FormMessage>
+                            </FormItem>
+                        </FormField>
+                        <!-- latitude -->
+                        <FormField :name="`galleries.${i}.latitude`" v-slot="{ componentField, errorMessage }">
+                            <FormItem class="flex flex-row py-2">
+                                <FormLabel class="w-24">Latitude</FormLabel>
+                                <FormControl class="flex-1">
+                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} latitude`" v-bind="componentField" />
+                                </FormControl>
+                                <FormMessage>{{ errorMessage }}</FormMessage>
+                            </FormItem>
+                        </FormField>
+                        <!-- longitude -->
+                        <FormField :name="`galleries.${i}.longitude`" v-slot="{ componentField, errorMessage }">
+                            <FormItem class="flex flex-row py-2">
+                                <FormLabel class="w-24">Longitude</FormLabel>
+                                <FormControl class="flex-1">
+                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} longitude`" v-bind="componentField" />
+                                </FormControl>
+                                <FormMessage>{{ errorMessage }}</FormMessage>
+                            </FormItem>
+                        </FormField>
+                        
+                        <div class="flex justify-end">
+                            <Button type="button" variant="destructive" @click="removeGallery(i)">Remove</Button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="py-3 flex flex-row">
-                <div class="spacer w-30"></div>
-                <Button type="submit" variant="default" class="">Save</Button>
-            </div>
-        </form>
-    </div>
-</AppLayout>
+                
+                <div class="py-3 flex flex-row">
+                    <div class="spacer w-30"></div>
+                    <Button type="submit" variant="default" class="">Save</Button>
+                </div>
+            </form>
+        </div>
+    </AppLayout>
 </template>
