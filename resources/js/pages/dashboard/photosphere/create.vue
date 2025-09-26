@@ -22,6 +22,13 @@ const props = defineProps<{
     theatres: Array<{ id: number; name: string }>
 }>()
 
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: dashboard().url,
+    },
+]
+
 const numRequiredLat = z.preprocess(
   (v) => (v === '' || v === null ? undefined : v),
   z.coerce.number().min(-90).max(90) // adjust ranges per field
@@ -38,6 +45,8 @@ const GallerySchema = z.object({
     longitude: numRequiredLon,
 });
 
+type GalleryItem = z.infer<typeof GallerySchema>;
+
 const PhotosphereCreateSchema = z.object({
     theatre_id: z.preprocess(
         (v) => (v === '' || v === null ? undefined : v),
@@ -49,40 +58,36 @@ const PhotosphereCreateSchema = z.object({
     path: z.string().nullable().optional(),
     galleries: z.array(GallerySchema).default([]),
 })
+
 type FormValues = z.infer<typeof PhotosphereCreateSchema>
 
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Dashboard',
-            href: dashboard().url,
-        },
-    ]
-    
-    const { handleSubmit, values, setFieldValue } = useForm<FormValues>({
-        validationSchema: toTypedSchema(PhotosphereCreateSchema),
-        initialValues: {
-            theatre_id: '' as unknown as number, // placeholder; coerced by Zod
-            name: '',
-            file: null,
-            path: null,
-            galleries: [],
-        },
-    })
-    const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<FormValues>('galleries')
+const { handleSubmit, setFieldValue, values } = useForm<FormValues>({
+    validationSchema: toTypedSchema(PhotosphereCreateSchema),
+    initialValues: {
+        name: '',
+        path: null,
+        file: null,
+        galleries: [],
+        theatre_id: '' as unknown as number, // placeholder; coerced by Zod
+    },
+})
 
-    watch(
-        () => props.theatres,
-        (list) => {
-            if (Array.isArray(list) && list.length === 1) {
-                setFieldValue('theatre_id', String(list[0].id) as unknown as number)
-            }
-        },
-        { immediate: true }
-    )
-    
-    const onSubmit = handleSubmit((formValues) => {
-        router.post(`/photosphere`, { ...formValues }, {
-            forceFormData: true, // needed for file + nested arrays
+const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<GalleryItem>('galleries')
+
+watch( // To pre-select a theatre otherwise things go boom
+    () => props.theatres,
+    (list) => {
+        if (Array.isArray(list) && list.length === 1) {
+            setFieldValue('theatre_id', String(list[0].id) as unknown as number)
+        }
+    },
+    { immediate: true },
+)
+
+const onSubmit = handleSubmit((newValues) => {
+    router.post(`/photosphere`, newValues,
+        {
+            forceFormData: true, // ensures nested arrays + optional file work
             preserveScroll: true,
             preserveState: false,
             onError: (errors) => {
@@ -91,8 +96,9 @@ type FormValues = z.infer<typeof PhotosphereCreateSchema>
             onSuccess: () => {
                 toast.success("Photosphere updated!");
             }
-        })
-    })
+        }
+    )
+})
 </script>
 
 <template>

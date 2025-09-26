@@ -18,6 +18,25 @@ import { nextTick } from 'vue';
 import { toTypedSchema } from '@vee-validate/zod';
 import * as z from 'zod';
 
+const props = defineProps<{
+    photosphere: {
+        id: number
+        name: string
+        path?: string | null
+        theatre_id: number
+        theatre: { name: string }
+        galleries?: Array<{ id?: number; name: string; latitude: number; longitude: number }>
+    },
+    theatres: Array<{ id: number; name: string }>
+}>()
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: dashboard().url,
+    },
+]
+
 const numRequiredLat = z.preprocess(
   (v) => (v === '' || v === null ? undefined : v),
   z.coerce.number().min(-90).max(90) // adjust ranges per field
@@ -34,6 +53,8 @@ const GallerySchema = z.object({
     longitude: numRequiredLon,
 });
 
+type GalleryItem = z.infer<typeof GallerySchema>;
+
 const PhotosphereEditSchema = z.object({
     name: z.string().min(1, 'Name is required'),
     path: z.string().nullable().optional(),
@@ -43,45 +64,22 @@ const PhotosphereEditSchema = z.object({
 })
 
 type FormValues = z.infer<typeof PhotosphereEditSchema>
-    
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Dashboard',
-            href: dashboard().url,
-        },
-    ]
-    
-    const props = defineProps<{
-        photosphere: {
-            id: number
-            name: string
-            path?: string | null
-            theatre_id: number
-            theatre: { name: string }
-            galleries?: Array<{ id?: number; name: string; latitude: number; longitude: number }>
-        },
-        theatres: Array<{ id: number; name: string }>
-    }>()
-    
-    const { handleSubmit, setFieldValue, values } = useForm<FormValues>({
-        validationSchema: toTypedSchema(PhotosphereEditSchema),
-        initialValues: {
-            name: props.photosphere.name ?? '',
-            theatre_id: props.photosphere.theatre_id, // can be number or string; schema coerces
-            path: props.photosphere.path ?? null,
-            file: null,
-            galleries: props.photosphere.galleries ?? [],
-        },
-    })
 
-    type GalleryItem = z.infer<typeof GallerySchema>;
-    
-    const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<GalleryItem>('galleries')
-    
-    const onSubmit = handleSubmit((newValues) => {
-        debugger;
-        router.post(
-        `/photosphere/${props.photosphere.id}`, { ...newValues, _method: 'put' },
+const { handleSubmit, setFieldValue, values } = useForm<FormValues>({
+    validationSchema: toTypedSchema(PhotosphereEditSchema),
+    initialValues: {
+        name: props.photosphere.name ?? '',
+        path: props.photosphere.path ?? null,
+        file: null,
+        galleries: props.photosphere.galleries ?? [],
+        theatre_id: props.photosphere.theatre_id, // can be number or string; schema coerces
+    },
+})
+
+const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<GalleryItem>('galleries')
+
+const onSubmit = handleSubmit((newValues) => {
+    router.post(`/photosphere/${props.photosphere.id}`, { ...newValues, _method: 'put' },
         {
             forceFormData: true, // ensures nested arrays + optional file work
             preserveScroll: true,
@@ -93,13 +91,13 @@ type FormValues = z.infer<typeof PhotosphereEditSchema>
                 toast.success("Photosphere updated!");
             }
         }
-        )
-    })
-    
-    const removePath = async () => {
-        setFieldValue('path', '')
-        await nextTick()
-    }
+    )
+})
+
+const removePath = async () => {
+    setFieldValue('path', '')
+    await nextTick()
+}
 </script>
 
 <template>
