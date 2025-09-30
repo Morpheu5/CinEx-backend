@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -9,8 +10,9 @@ use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use App\Models\Theatre;
 use App\Models\Photosphere;
-use App\Http\Resources\TheatreResource;
 use App\Http\Resources\PhotosphereResource;
+
+use Illuminate\Support\Facades\Log;
 
 class PhotosphereController extends Controller {
     /**
@@ -20,7 +22,7 @@ class PhotosphereController extends Controller {
         $all = Photosphere::all();
 
         if ($request->wantsJson()) {
-            return PhotoshpereResource::collection($all);
+            return PhotosphereResource::collection($all);
         }
 
         return Inertia::render('dashboard/photosphere/index', [
@@ -39,7 +41,7 @@ class PhotosphereController extends Controller {
             ->select('id', 'name')
             ->orderBy('name')
             ->get();
-        
+
         return Inertia::render('dashboard/photosphere/create', [
             'theatres' => $theatres,
         ]);
@@ -47,47 +49,56 @@ class PhotosphereController extends Controller {
 
     /**
      * Store a newly created resource in storage.
+     * @throws \Throwable
      */
     public function store(Request $request) {
         $validated = $request->validate([
-            'theatre_id' => ['required', 'integer', 'exists:theatres,id'],
-            'name'       => ['required', 'string', 'max:255'],
-            'file'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:20480'],
-            'path'       => ['nullable', 'string'], // not used by the UI but harmless
-            'galleries'  => ['sometimes', 'array'],
-            // on create, forbid id to avoid ambiguity
-            'galleries.*.id'        => ['prohibited'],
+            'theatre_id'            => ['required', 'integer', 'exists:theatres,id'],
+            'name'                  => ['required', 'string', 'max:255'],
+            'file'                  => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:20480'],
+            'path'                  => ['nullable', 'string'], // not used by the UI but harmless
+            'galleries'             => ['array'],
+            'galleries.*.id'        => ['prohibited'], // on create, forbid id to avoid ambiguity
             'galleries.*.name'      => ['required', 'string', 'min:1'],
             'galleries.*.latitude'  => ['required', 'numeric', 'between:-90,90'],
             'galleries.*.longitude' => ['required', 'numeric', 'between:-180,180'],
         ]);
 
-        $disk = 'public';
-        $dir  = 'photospheres';
+        $photosphere = null;
 
-        $photosphere = new \App\Models\Photosphere();
-        $photosphere->user_id    = (int) $request->user()->id; // adjust if different policy
-        $photosphere->theatre_id = (int) $validated['theatre_id'];
-        $photosphere->name       = $validated['name'];
+        DB::transaction(function () use ($request, &$photosphere, $validated) {
+            $dir = 'photospheres';
+            $disk = 'public';
+            $path = '';
+            if ($request->hasFile('file')) {
+                $path = $request->file('file')->store($dir, $disk);
+            } elseif ($request->exists('path')) {
+                $path = $request->input('path'); // This should normally empty on create UI though
+            } else {
+                // Neither file nor path are present
+            }
+            $photosphere = Photosphere::create([
+                ...$validated,
+                'user_id' => $request->user()->id,
+                'path' => $path,
+            ]);
 
-        if ($request->hasFile('file')) {
-            $photosphere->path = $request->file('file')->store($dir, $disk);
-        } elseif ($request->exists('path')) {
-            $photosphere->path = $request->input('path'); // usually null/empty on create UI
-        }
+            $incoming_galleries = collect($validated['galleries'] ?? []);
 
-        $incoming = collect($validated['galleries'] ?? []);
-
-        DB::transaction(function () use ($photosphere, $incoming) {
-            $photosphere->save();
-
-            foreach ($incoming as $g) {
-                $photosphere->galleries()->create([
-                    'user_id'   => $photosphere->user_id, // satisfy NOT NULL + ownership
-                    'name'      => $g['name'],
-                    'latitude'  => $g['latitude'],
-                    'longitude' => $g['longitude'],
+            foreach ($incoming_galleries as $gi => $gd) {
+                $gallery = $photosphere->galleries()->create([
+                    ...$gd,
+                    'user_id'   => $photosphere->user_id,
                 ]);
+
+//                $gallery_images = $request->file("galleries.$gi.photos", []);
+//                foreach ($gallery_images as $image) {
+//                    $path = $image->store("photospheres/{$photosphere->id}/galleries/{$gallery->id}", $disk);
+//                    $request->user()->photos()->create([
+//                        'gallery_id' => $gallery->id(),
+//                        'path'       => $path,
+//                    ]);
+//                }
             }
         });
 
@@ -130,89 +141,97 @@ class PhotosphereController extends Controller {
 
     /**
      * Update the specified resource in storage.
+     * @throws \Throwable
      */
     public function update(Request $request, Photosphere $photosphere) {
         // Validate inputs (adjust rules to your needs)
         $validated = $request->validate([
-            'theatre_id' => ['required', 'integer', 'exists:theatres,id'],
-            'name'       => ['required', 'string', 'max:255'],
-            'file'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:20480'], // 20MB example
-            'path'       => ['nullable', 'string'],
-
-            'galleries' => ['sometimes', 'array'],
+            'theatre_id'            => ['required', 'integer', 'exists:theatres,id'],
+            'name'                  => ['required', 'string', 'max:255'],
+            'file'                  => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:20480'],
+            'path'                  => ['nullable', 'string'],
+            'galleries'             => ['sometimes', 'array'],
             'galleries.*.id' => [
                 'nullable', 'integer',
                 // only allow updating galleries that belong to this photosphere
                 Rule::exists('galleries', 'id')->where('photosphere_id', $photosphere->id),
             ],
-            'galleries.*.name' => ['required', 'string', 'min:1'],
-            'galleries.*.latitude' => ['required', 'numeric', 'between:-90,90'],
+            'galleries.*.name'      => ['required', 'string', 'min:1'],
+            'galleries.*.latitude'  => ['required', 'numeric', 'between:-90,90'],
             'galleries.*.longitude' => ['required', 'numeric', 'between:-180,180'],
         ]);
 
-        // Always update non-file fields
-        $photosphere->theatre_id = (int) $validated['theatre_id'];
-        $photosphere->name       = $validated['name'];
-
-        // Disk & directory (change if you use another disk)
         $disk = 'public';
         $dir  = 'photospheres';
 
-        if ($request->hasFile('file')) {
-            // 1) Delete old file if present
-            $oldPath = $photosphere->path;
-            if ($oldPath && Storage::disk($disk)->exists($oldPath)) {
-                Storage::disk($disk)->delete($oldPath);
+        DB::transaction(callback: function () use ($request, $photosphere, $validated, $disk, $dir) {
+            $photosphere->name = $validated['name'];
+            $photosphere->theatre_id = (int) $validated['theatre_id'];
+
+            if ($request->hasFile('file')) {
+                // Delete the old file
+                $oldPath = $photosphere->path;
+                if ($oldPath && Storage::disk($disk)->exists($oldPath)) {
+                    Storage::disk($disk)->delete($oldPath);
+                }
+
+                // Store the new file and replace the path
+                $newPath = $request->file('file')->store($dir, $disk);
+                $photosphere->path = $newPath;
+            } else {
+                if ($request->exists('path')) {
+                    $photosphere->path = $validated['path'];
+                }
             }
 
-            // 2) Store the new file and replace path
-            $newPath = $request->file('file')->store($dir, $disk);
-            $photosphere->path = $newPath;
-
-        } else {
-            // No new file: keep/store the path "as it came in"
-            // If the client sends '', this will persist '' (not null)
-            if ($request->exists('path')) {
-                $photosphere->path = $request->input('path');
-            }
-            // If 'path' isn't in the request at all, we leave the model's path untouched
-        }
-
-        DB::transaction(function () use ($photosphere, $request, $validated) {
             $photosphere->save();
 
-            $incoming  = collect($validated['galleries'] ?? []);
-            $inputIds  = $incoming->pluck('id')->filter()->values()->all(); // only existing rows
-
-            // Destructive sync should run BEFORE we create new rows, so we don't delete them.
+            $incoming_galleries = collect($validated['galleries'] ?? []);
+            $incoming_ids = $incoming_galleries->pluck('id')->filter()->values()->all();
             if ($request->has('galleries')) {
-                if (!empty($inputIds)) {
-                    // Keep only the ones referenced by id; remove anything else
-                    $photosphere->galleries()->whereNotIn('id', $inputIds)->delete();
+                $to_delete = [];
+                if (!empty($incoming_ids)) {
+                    // Pick any galleries with ids not present in the request
+                    $to_delete = $photosphere->galleries()->whereNotIn('id', $incoming_ids)->get();
                 } else {
-                    // All payload items are new (no ids) → replace everything
-                    $photosphere->galleries()->delete();
+                    // No galleries in the request so we pick them all
+                    // This should not happen because if there are no galleries, the 'galleries' key should not be there
+                    // but let's guard against API calls...
+                    $to_delete = $photosphere->galleries()->get();
+                }
+                // and then actually delete them
+                foreach ($to_delete as $g) {
+                    foreach ($g->photos() as $i) {
+                        Storage::disk($disk)->delete($i->path);
+                        $i->delete(); // Should be cascaded but just in case
+                    }
+                    $g->delete();
+                }
+            } else {
+                // Delete all the galleries
+                // This is the case in which there is no 'galleries' key in the request so we nuke them all...
+                $to_delete = $photosphere->galleries()->get();
+                foreach ($to_delete as $g) {
+                    foreach ($g->photos() as $p) {
+                        Storage::disk($disk)->delete($p->path);
+                        $p->delete();
+                    }
+                    $g->delete();
                 }
             }
 
-            // Now update existing and create new
-            foreach ($incoming as $g) {
-                $payload = [
-                    'name'      => $g['name'],
-                    'latitude'  => $g['latitude'],
-                    'longitude' => $g['longitude'],
-                ];
-
-                if (!empty($g['id'])) {
-                    $photosphere->galleries()->whereKey($g['id'])->update($payload);
-                } else {
-                    $payload['user_id'] = $photosphere->user_id; // or auth()->id()
-                    $photosphere->galleries()->create($payload);
-                }
+            // Now create all the remaining galleries
+            $existing_ids = $photosphere->galleries()->pluck('id')->filter()->values()->all();
+            $to_create = $incoming_galleries->whereNotIn('id', $existing_ids)->all();
+            foreach ($to_create as $gi => $gd) {
+                // Create the gallery...
+                $gallery = Gallery::create([
+                    ...$gd,
+                    'photosphere_id' => $photosphere->id,
+                    'user_id' => $photosphere->user_id,
+                ]);
             }
         });
-
-        $photosphere->save();
 
         return redirect()->route('dashboard.photosphere.edit', $photosphere)
             ->setStatusCode(303);
@@ -220,6 +239,7 @@ class PhotosphereController extends Controller {
 
     /**
      * Remove the specified resource from storage.
+     * @throws \Throwable
      */
     public function destroy(Photosphere $photosphere) {
         $disk = 'public';

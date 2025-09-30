@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
 class Photosphere extends Model {
@@ -15,18 +17,18 @@ class Photosphere extends Model {
             }
         });
     }
-    
-    protected $fillable = ['name', 'path', 'theatre_id'];
 
-    public function user() {
+    protected $fillable = ['name', 'path', 'theatre_id', 'user_id'];
+
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 
-    public function theatre() {
+    public function theatre(): BelongsTo {
         return $this->belongsTo(Theatre::class);
     }
 
-    public function galleries() {
+    public function galleries(): HasMany {
         return $this->hasMany(Gallery::class);
     }
 }
