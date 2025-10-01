@@ -34,6 +34,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('photosphere/new', [App\Http\Controllers\PhotosphereController::class, 'create'])->name('dashboard.photosphere.create');
     Route::get('photosphere/{photosphere}', [App\Http\Controllers\PhotosphereController::class, 'show'])->name('dashboard.photosphere.show');
     Route::get('photosphere/{photosphere}/edit', [App\Http\Controllers\PhotosphereController::class, 'edit'])->name('dashboard.photosphere.edit');
+
+    Route::get('gallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboard.gallery.index');
+    Route::get('gallery/new', [App\Http\Controllers\GalleryController::class, 'create'])->name('dashboard.gallery.create');
+    Route::get('gallery/{gallery}', [App\Http\Controllers\GalleryController::class, 'show'])->name('dashboard.gallery.show');
+    Route::get('gallery/{gallery}/edit', [App\Http\Controllers\GalleryController::class, 'edit'])->name('dashboard.gallery.edit');
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';

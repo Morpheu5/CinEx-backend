@@ -12,7 +12,7 @@ use App\Models\Theatre;
 use App\Models\Photosphere;
 use App\Http\Resources\PhotosphereResource;
 
-use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class PhotosphereController extends Controller {
     /**
@@ -21,7 +21,7 @@ class PhotosphereController extends Controller {
     public function index(Request $request) {
         $all = Photosphere::all();
 
-        if ($request->wantsJson()) {
+        if (!$request->routeIs('dashboard.*')) {
             return PhotosphereResource::collection($all);
         }
 
@@ -49,7 +49,7 @@ class PhotosphereController extends Controller {
 
     /**
      * Store a newly created resource in storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store(Request $request) {
         $validated = $request->validate([
@@ -110,9 +110,28 @@ class PhotosphereController extends Controller {
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {
+    public function show(Request $request, string $id) {
         $photosphere = Photosphere::with(['theatre', 'galleries'])->find($id);
-        return $photosphere;
+
+        if (!$request->routeIs('dashboard.*')) {
+            return $photosphere;
+        }
+
+        return Inertia::render('dashboard/photosphere/show', [
+            'photosphere' => [
+                'id' => $photosphere->id,
+                'name' => $photosphere->name,
+                'path' => $photosphere->path,
+                'theatre_id' => $photosphere->theatre_id,
+                'theatre' => ['name' => $photosphere->theatre->name],
+                'galleries' => $photosphere->galleries->map(fn($g) => [
+                    'id' => $g->id,
+                    'name' => $g->name,
+                    'latitude' => $g->latitude,
+                    'longitude' => $g->longitude,
+                ]),
+            ],
+        ]);
     }
 
     /**
@@ -141,7 +160,7 @@ class PhotosphereController extends Controller {
 
     /**
      * Update the specified resource in storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function update(Request $request, Photosphere $photosphere) {
         // Validate inputs (adjust rules to your needs)
@@ -161,10 +180,10 @@ class PhotosphereController extends Controller {
             'galleries.*.longitude' => ['required', 'numeric', 'between:-180,180'],
         ]);
 
-        $disk = 'public';
-        $dir  = 'photospheres';
+        DB::transaction(callback: function () use ($request, &$photosphere, $validated) {
+            $disk = 'public';
+            $dir  = 'photospheres';
 
-        DB::transaction(callback: function () use ($request, $photosphere, $validated, $disk, $dir) {
             $photosphere->name = $validated['name'];
             $photosphere->theatre_id = (int) $validated['theatre_id'];
 
@@ -239,7 +258,7 @@ class PhotosphereController extends Controller {
 
     /**
      * Remove the specified resource from storage.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function destroy(Photosphere $photosphere) {
         $disk = 'public';

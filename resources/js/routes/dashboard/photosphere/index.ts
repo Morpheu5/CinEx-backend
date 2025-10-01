@@ -262,7 +262,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 export const edit = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -277,7 +277,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.url = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -310,7 +310,7 @@ edit.url = (args: { photosphere: number | { id: number } } | [photosphere: numbe
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.get = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -320,7 +320,7 @@ edit.get = (args: { photosphere: number | { id: number } } | [photosphere: numbe
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 edit.head = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -330,7 +330,7 @@ edit.head = (args: { photosphere: number | { id: number } } | [photosphere: numb
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 const editForm = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -340,7 +340,7 @@ const editForm = (args: { photosphere: number | { id: number } } | [photosphere:
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 editForm.get = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -350,7 +350,7 @@ editForm.get = (args: { photosphere: number | { id: number } } | [photosphere: n
 
 /**
 * @see \App\Http\Controllers\PhotosphereController::edit
-* @see app/Http/Controllers/PhotosphereController.php:121
+* @see app/Http/Controllers/PhotosphereController.php:140
 * @route '/dashboard/photosphere/{photosphere}/edit'
 */
 editForm.head = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
