@@ -14,8 +14,8 @@ return new class extends Migration {
 
             $table->foreignIdFor(Gallery::class)->constrained()->cascadeOnDelete();
 
-            if (!Schema::hasColumn('photo', 'caption')) {
-                $table->string('caption', 1024)->nullable();
+            if (!Schema::hasColumn('photos', 'description')) {
+                $table->string('description', 1024)->nullable();
             }
         });
     }
@@ -25,8 +25,8 @@ return new class extends Migration {
             if (Schema::hasColumn('photos', 'gallery_id')) {
                 $table->dropConstrainedForeignId('gallery_id');
             }
-            if (Schema::hasColumn('photos', 'caption')) {
-                $table->dropColumn('caption');
+            if (Schema::hasColumn('photos', 'description')) {
+                $table->dropColumn('description');
             }
         });
     }

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePhotoRequest;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller {
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        $photos = Photo::all();
-        return $photos;
+       abort(404);
     }
 
     /**
@@ -25,23 +26,27 @@ class PhotoController extends Controller {
      * Display the specified resource.
      */
     public function show(string $id) {
-        print_r($id);
         $photo = Photo::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(UpdatePhotoRequest $request, string $galleryId, string $photoId) {
+        $photo = Photo::where('gallery_id', $galleryId)->findOrFail($photoId);
+        $photo->update($request->validated());
+        return back()->with('success', 'Caption updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(string $galleryId, string $photoId) {
+        $photo = Photo::where('gallery_id', $galleryId)->findOrFail($photoId);
+        if ($photo->path) {
+            Storage::disk('public')->delete($photo->path);
+        }
+        $photo->delete();
+        return back()->with('success', 'Photo removed');
     }
 }

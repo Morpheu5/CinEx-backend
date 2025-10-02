@@ -49,7 +49,7 @@ const onDelete = (id: number) => {
                 </Link>
             </Button>
             <table class="w-full my-3 [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
-                <thead class="bg-gray-800 text-left">
+                <thead class="bg-slate-200 dark:bg-slate-800 text-left">
                 <tr>
                     <th class="w-12"></th>
                     <th class="">Gallery</th>

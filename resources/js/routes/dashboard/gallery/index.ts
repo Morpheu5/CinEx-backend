@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
-* @see app/Http/Controllers/GalleryController.php:15
+* @see app/Http/Controllers/GalleryController.php:19
 * @route '/dashboard/gallery'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
-* @see app/Http/Controllers/GalleryController.php:31
+* @see app/Http/Controllers/GalleryController.php:35
 * @route '/dashboard/gallery/new'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ create.form = createForm
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 export const show = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 show.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -205,7 +205,7 @@ show.url = (args: { gallery: string | number } | [gallery: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 show.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -215,7 +215,7 @@ show.get = (args: { gallery: string | number } | [gallery: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 show.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -225,7 +225,7 @@ show.head = (args: { gallery: string | number } | [gallery: string | number ] | 
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 const showForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -235,7 +235,7 @@ const showForm = (args: { gallery: string | number } | [gallery: string | number
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 showForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -245,7 +245,7 @@ showForm.get = (args: { gallery: string | number } | [gallery: string | number ]
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
-* @see app/Http/Controllers/GalleryController.php:47
+* @see app/Http/Controllers/GalleryController.php:75
 * @route '/dashboard/gallery/{gallery}'
 */
 showForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -262,7 +262,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 export const edit = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -277,7 +277,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 edit.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -304,7 +304,7 @@ edit.url = (args: { gallery: string | number } | [gallery: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 edit.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -314,7 +314,7 @@ edit.get = (args: { gallery: string | number } | [gallery: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 edit.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -324,7 +324,7 @@ edit.head = (args: { gallery: string | number } | [gallery: string | number ] | 
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 const editForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -334,7 +334,7 @@ const editForm = (args: { gallery: string | number } | [gallery: string | number
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 editForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ editForm.get = (args: { gallery: string | number } | [gallery: string | number ]
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
-* @see app/Http/Controllers/GalleryController.php:55
+* @see app/Http/Controllers/GalleryController.php:85
 * @route '/dashboard/gallery/{gallery}/edit'
 */
 editForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

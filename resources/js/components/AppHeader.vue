@@ -41,6 +41,18 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Theatres',
+        href: '/dashboard/theatre',
+    },
+    {
+        title: 'Photospheres',
+        href: '/dashboard/photosphere',
+    },
+    {
+        title: 'Galleries',
+        href: '/dashboard/gallery',
+    }
 ];
 
 const rightNavItems: NavItem[] = [
