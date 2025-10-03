@@ -55,7 +55,7 @@ class GalleryController extends Controller
         // Handle file uploads: photos[]
         if ($request->hasFile('photos')) {
             foreach ($request->photos as $upload) {
-                $stored = $upload->store('galleries/' . $gallery->id, 'public');
+                $stored = $upload->store('galleries/' . $gallery->id, 'local');
                 Photo::create([
                     'gallery_id' => $gallery->id,
                     'user_id' => $request->user()->id,
@@ -86,11 +86,6 @@ class GalleryController extends Controller
         $gallery = Gallery::with(['photosphere', 'photos'])->findOrFail($id);
         $photospheres = Photosphere::select(['id', 'name'])->get();
 
-        foreach ($gallery->photos as $photo) {
-            Log::debug($photo->path);
-            $photo->path = asset('storage/' . $photo->path);
-        }
-
         return Inertia::render('dashboard/gallery/edit', [
             'gallery' => $gallery,
             'photospheres' => $photospheres,
@@ -112,7 +107,7 @@ class GalleryController extends Controller
 
         if ($request->hasFile('photos')) {
             foreach ($request->photos as $upload) {
-                $stored = $upload->store('galleries/' . $gallery->id, 'public');
+                $stored = $upload->store('galleries/' . $gallery->id, 'local');
                 Photo::create([
                     'gallery_id' => $gallery->id,
                     'user_id' => $request->user()->id,

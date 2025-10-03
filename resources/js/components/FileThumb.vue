@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, toRef } from 'vue'
 import { useObjectUrl } from '@vueuse/core'
-import { route } from 'ziggy-js'
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { route } from 'ziggy-js';
 
 // Props: either pass `file` (pending) OR `photo` (existing)
 const props = defineProps<{
@@ -23,7 +23,7 @@ const imageUrl = computed(() =>
     props.file
         ? localUrl?.value
         : props.photo
-            ? props.photo.path
+            ? route('photo.image', props.photo.id) // props.photo.path
             : ''
 )
 

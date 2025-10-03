@@ -68,7 +68,7 @@ class PhotosphereController extends Controller {
 
         DB::transaction(function () use ($request, &$photosphere, $validated) {
             $dir = 'photospheres';
-            $disk = 'public';
+            $disk = 'local';
             $path = '';
             if ($request->hasFile('file')) {
                 $path = $request->file('file')->store($dir, $disk);
@@ -90,15 +90,6 @@ class PhotosphereController extends Controller {
                     ...$gd,
                     'user_id'   => $photosphere->user_id,
                 ]);
-
-//                $gallery_images = $request->file("galleries.$gi.photos", []);
-//                foreach ($gallery_images as $image) {
-//                    $path = $image->store("photospheres/{$photosphere->id}/galleries/{$gallery->id}", $disk);
-//                    $request->user()->photos()->create([
-//                        'gallery_id' => $gallery->id(),
-//                        'path'       => $path,
-//                    ]);
-//                }
             }
         });
 
@@ -111,7 +102,7 @@ class PhotosphereController extends Controller {
      * Display the specified resource.
      */
     public function show(Request $request, string $id) {
-        $photosphere = Photosphere::with(['theatre', 'galleries'])->find($id);
+        $photosphere = Photosphere::with(['theatre', 'galleries'])->findOrFail($id);
 
         if (!$request->routeIs('dashboard.*')) {
             return $photosphere;
@@ -132,6 +123,11 @@ class PhotosphereController extends Controller {
                 ]),
             ],
         ]);
+    }
+
+    public function image(Request $request, string $id) {
+        $photosphere = Photosphere::findOrFail($id);
+        return response()->file(Storage::path($photosphere->path));
     }
 
     /**
@@ -181,7 +177,7 @@ class PhotosphereController extends Controller {
         ]);
 
         DB::transaction(callback: function () use ($request, &$photosphere, $validated) {
-            $disk = 'public';
+            $disk = 'local';
             $dir  = 'photospheres';
 
             $photosphere->name = $validated['name'];
@@ -261,7 +257,7 @@ class PhotosphereController extends Controller {
      * @throws Throwable
      */
     public function destroy(Photosphere $photosphere) {
-        $disk = 'public';
+        $disk = 'local';
 
         DB::transaction(function () use ($photosphere, $disk) {
             // Delete file if present

@@ -20,21 +20,20 @@ class PhotoController extends Controller {
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
-        //
+        abort(404);
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id) {
-        $photo = Photo::find($id);
+        abort(404);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePhotoRequest $request, string $galleryId, string $photoId) {
-        $photo = Photo::where('gallery_id', $galleryId)->findOrFail($photoId);
+    public function update(UpdatePhotoRequest $request, Photo $photo) {
         $photo->update($request->validated());
         return back()->with('success', 'Caption updated successfully.');
     }
@@ -46,9 +45,14 @@ class PhotoController extends Controller {
         $photo = Photo::findOrFail($photoId);
         if ($photo->path) {
             Log::info($photo->path);
-            Storage::disk('public')->delete($photo->path);
+            Storage::disk('local')->delete($photo->path);
         }
         $photo->delete();
         return back()->with('success', 'Photo removed');
+    }
+
+    public function image(string $photoId) {
+        $photo = Photo::findOrFail($photoId);
+        return response()->file(Storage::path($photo->path));
     }
 }

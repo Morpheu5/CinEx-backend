@@ -1,66 +1,86 @@
 <script setup lang="ts">
-import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-} from '@/components/ui/form';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
 import { useForm } from 'vee-validate';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-// import { toTypedSchema } from '@vee-validate/zod';
-// import * as z from 'zod';
-import { toast } from 'vue-sonner'
+import { toTypedSchema } from '@vee-validate/zod';
+import * as z from 'zod';
+import { toast } from 'vue-sonner';
+import { route } from 'ziggy-js';
+import Photosphere from '@/routes/photosphere';
+
+const props = defineProps<{
+    theatre: {
+        name: string,
+        city: string,
+        country: string,
+        latitude: number,
+        longitude: number,
+        photospheres: Photosphere[],
+    },
+}>();
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard().url,
+        href: route('dashboard'),
+    },
+    {
+        title: 'Theatres',
+        href: route('dashboard.theatre.index'),
+    },
+    {
+        title: props.theatre.name,
+        href: route('dashboard.theatre.show', props.theatre.id),
     },
 ];
 
-const props = defineProps({
-    theatre: {
-        type: Object,
-        required: true,
-    }
+const numRequiredLat = z.preprocess(
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-90).max(90) // adjust ranges per field
+);
+const numRequiredLon = z.preprocess(
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-180).max(180) // adjust ranges per field
+);
+
+const schema = z.object({
+    name: z.string().nonempty(),
+    city: z.string().nonempty(),
+    country: z.string().nonempty(),
+    latitude: numRequiredLat,
+    longitude: numRequiredLon,
 })
 
-const { defineField, handleSubmit } = useForm({
-    initialValues: { ...props.theatre },
-})
-const [ name, nameProp ] = defineField('name');
-const [ city, cityProp ] = defineField('city');
-const [ country, countryProp ] = defineField('country');
-const [ latitude, latitudeProp ] = defineField('latitude');
-const [ longitude, longitudeProp ] = defineField('longitude');
+type TheatreSchema = z.infer<typeof schema>;
+const { handleSubmit } = useForm<TheatreSchema>({
+    validationSchema: toTypedSchema(schema),
+    initialValues: props.theatre,
+});
 
-const onSubmit = handleSubmit((values) => {
+const submit = handleSubmit((values) => {
     router.put(`/theatre/${props.theatre.id}`, values, {
         preserveScroll: true,
         onError: (errors) => {
-            toast.error(JSON.stringify(errors))
+            toast.error(JSON.stringify(errors));
         },
         onSuccess: () => {
-            toast.success("Theatre edited!")
-        }
-    })
-})
+            toast.success('Theatre edited!');
+        },
+    });
+});
 
 const onDelete = () => {
-    if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
+    if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
         router.delete(`/theatre/${props.theatre.id}`, {
             preserveScroll: true,
-            onSuccess: () => {
-
-            }
-        })
+            onSuccess: () => {},
+        });
     }
-}
+};
 </script>
 
 <template>
@@ -69,55 +89,62 @@ const onDelete = () => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">Editing: <strong>{{ theatre.name }}</strong> (id: {{ theatre.id }})</h1>
+                <h1 class="mr-3 inline py-3 text-xl">
+                    Editing: <strong>{{ theatre.name }}</strong> (id: {{ theatre.id }})
+                </h1>
             </div>
-            <form @submit="onSubmit">
-                <FormField name="name">
+            <form @submit.prevent="submit">
+                <FormField name="name" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="name">Name</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="nameProp" v-model="name" aria-labelledby="name" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="name" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="city">
+                <FormField name="city" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="city">City</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="cityProp" v-model="city" aria-labelledby="city" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="city" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="country">
+                <FormField name="country" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="country">Country</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="countryProp" v-model="country" aria-labelledby="country" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="country" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="latitude">
+                <FormField name="latitude" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="latitude">Latitude</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="latitudeProp" v-model="latitude" aria-labelledby="latitude" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="latitude" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="longitude">
+                <FormField name="longitude" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="longitude">Longitude</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="longitudeProp" v-model="longitude" aria-labelledby="longitude" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="longitude" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <div class="py-3 flex flex-row">
+                <div class="flex flex-row py-3">
                     <div class="spacer w-30"></div>
                     <Button type="submit" variant="default" class="">Save</Button>
                     <div class="spacer w-full"></div>

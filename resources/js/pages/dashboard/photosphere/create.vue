@@ -103,18 +103,18 @@ const onSubmit = handleSubmit((newValues) => {
 
 <template>
     <Head title="Dashboard" />
-    
+
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
                 <h1 class="text-xl py-3 inline mr-3">New photosphere:</h1>
             </div>
             <form @submit.prevent="onSubmit">
-                <FormField name="theatre_id" v-slot="{ componentField, errorMessage }">
+                <FormField name="theatre_id" v-slot="{ field, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="theatre_id">Theatre</FormLabel>
                         <FormControl>
-                            <select v-bind="componentField" :value="values.theatre_id" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
+                            <select v-bind="field" :value="values.theatre_id" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
                                 <option value="" disabled>Select a theatre...</option>
                                 <option v-for="t in props.theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
                             </select>
@@ -122,17 +122,17 @@ const onSubmit = handleSubmit((newValues) => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-            
-                <FormField name="name" v-slot="{ componentField, errorMessage }">
+
+                <FormField name="name" v-slot="{ field, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="name">Name</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="componentField" aria-labelledby="name" />
+                            <Input type="text" v-bind="field" aria-labelledby="name" />
                         </FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                
+
                 <FormField name="file" v-slot="{ handleChange, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="file">File</FormLabel>
@@ -149,7 +149,7 @@ const onSubmit = handleSubmit((newValues) => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                
+
                 <!-- Galleries -->
                 <div class="mt-6 border-t pt-4">
                     <div class="flex items-center justify-between mb-2">
@@ -158,38 +158,38 @@ const onSubmit = handleSubmit((newValues) => {
                             + Add gallery
                         </Button>
                     </div>
-                    
+
                     <div v-if="galleryRows.length === 0" class="text-sm text-muted-foreground mb-2">
                         No galleries yet. Add one.
                     </div>
-                    
+
                     <div v-for="(row, i) in galleryRows" :key="row.key" class="rounded-lg border p-3 mb-3">
                         <!-- name -->
-                        <FormField :name="`galleries.${i}.name`" v-slot="{ componentField, errorMessage }">
+                        <FormField :name="`galleries.${i}.name`" v-slot="{ field, errorMessage }">
                             <FormItem class="flex flex-row py-2">
                                 <FormLabel class="w-24">Name</FormLabel>
                                 <FormControl class="flex-1">
-                                    <Input type="text" :aria-label="`Gallery ${i+1} name`" v-bind="componentField" />
+                                    <Input type="text" :aria-label="`Gallery ${i+1} name`" v-bind="field" />
                                 </FormControl>
                                 <FormMessage>{{ errorMessage }}</FormMessage>
                             </FormItem>
                         </FormField>
                         <!-- latitude -->
-                        <FormField :name="`galleries.${i}.latitude`" v-slot="{ componentField, errorMessage }">
+                        <FormField :name="`galleries.${i}.latitude`" v-slot="{ field, errorMessage }">
                             <FormItem class="flex flex-row py-2">
                                 <FormLabel class="w-24">Latitude</FormLabel>
                                 <FormControl class="flex-1">
-                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} latitude`" v-bind="componentField" />
+                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} latitude`" v-bind="field" />
                                 </FormControl>
                                 <FormMessage>{{ errorMessage }}</FormMessage>
                             </FormItem>
                         </FormField>
                         <!-- longitude -->
-                        <FormField :name="`galleries.${i}.longitude`" v-slot="{ componentField, errorMessage }">
+                        <FormField :name="`galleries.${i}.longitude`" v-slot="{ field, errorMessage }">
                             <FormItem class="flex flex-row py-2">
                                 <FormLabel class="w-24">Longitude</FormLabel>
                                 <FormControl class="flex-1">
-                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} longitude`" v-bind="componentField" />
+                                    <Input type="number" step="any" inputmode="decimal" :aria-label="`Gallery ${i+1} longitude`" v-bind="field" />
                                 </FormControl>
                                 <FormMessage>{{ errorMessage }}</FormMessage>
                             </FormItem>
@@ -200,7 +200,7 @@ const onSubmit = handleSubmit((newValues) => {
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="py-3 flex flex-row">
                     <div class="spacer w-30"></div>
                     <Button type="submit" variant="default" class="">Save</Button>

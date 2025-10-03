@@ -22,7 +22,7 @@ class Gallery extends Model {
         static::deleting(function(Gallery $gallery) {
             foreach ($gallery->photos as $photo) {
                 if ($photo->path) {
-                    Storage::disk('public')->delete($photo->path);
+                    Storage::disk('local')->delete($photo->path);
                 }
                 $photo->delete();
             }

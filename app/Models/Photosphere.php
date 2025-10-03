@@ -13,7 +13,7 @@ class Photosphere extends Model {
         static::deleting(function ($p) {
             $p->galleries()->delete();
             if ($p->path) {
-                Storage::disk('public')->delete($p->path);
+                Storage::disk('local')->delete($p->path);
             }
         });
     }

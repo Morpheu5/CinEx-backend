@@ -12,18 +12,34 @@ import * as z from 'zod';
 import { reactive } from 'vue';
 import { route } from 'ziggy-js';
 import FileThumb from '@/components/FileThumb.vue';
+import type { BreadcrumbItem } from '@/types';
 
 const props = defineProps<{
     gallery: {
         id: number;
         name: string;
-        latitude: number | null;
-        longitude: number | null;
-        photosphere: { id: number; name: string } | null;
+        latitude: number;
+        longitude: number;
+        photosphere: { id: number; name: string };
         photos: Array<{ id: number; path: string; description: string }>;
     };
     photospheres: Array<{ id: number; name: string }>;
 }>();
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: route('dashboard'),
+    },
+    {
+        title: 'Galleries',
+        href: route('dashboard.gallery.index'),
+    },
+    {
+        title: `${props.gallery.name} (photosphere: ${props.gallery.photosphere.name})`,
+        href: route('dashboard.gallery.show', props.gallery.id),
+    },
+];
 
 const schema = z.object({
     name: z.string().min(1).max(255),
@@ -32,7 +48,7 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-const { handleSubmit, defineField } = useForm<FormValues>({
+const { handleSubmit } = useForm<FormValues>({
     validationSchema: toTypedSchema(schema),
     initialValues: {
         name: props.gallery.name,
@@ -40,10 +56,6 @@ const { handleSubmit, defineField } = useForm<FormValues>({
         longitude: props.gallery.longitude ?? undefined,
     },
 });
-
-const [name, nameProps] = defineField('name');
-const [latitude, latitudeProps] = defineField('latitude');
-const [longitude, longitudeProps] = defineField('longitude');
 
 // buffer for new uploads
 const pendingFiles = reactive<File[]>([]);
@@ -74,9 +86,9 @@ const submit = handleSubmit((vals) => {
     });
 });
 
-function updateDescription(photoId: number, description: string) {
+function updateDescription(photo: object, description: string) {
     router.put(
-        `/gallery/${props.gallery.id}/${photoId}`,
+        route('photo.update', { photo, description: description }),
         { description },
         {
             onSuccess: () => toast.success('Description saved'),
@@ -98,31 +110,33 @@ function removePhoto(photoId: number) {
 </script>
 
 <template>
-    <AppLayout>
+    <AppLayout :breadcrumbs="breadcrumbs">
         <Head :title="`Edit Gallery — ${props.gallery.name}`" />
 
-        <h1>Editing Gallery "{{ gallery.name }}" from photosphere "{{ gallery.photosphere?.name || '' }}"</h1>
+        <div class="p-4">
+            <h1 class="mr-3 inline py-3 text-xl">Gallery editor</h1>
+        </div>
 
-        <form class="max-w-4xl space-y-6" @submit.prevent="submit">
+        <form class="ml-4 max-w-4xl space-y-6" @submit.prevent="submit">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <FormField name="name" v-slot="{ errorMessage }">
+                <FormField name="name" v-slot="{ componentField, errorMessage }">
                     <FormItem>
                         <FormLabel>Name</FormLabel>
-                        <FormControl><Input v-bind="nameProps" v-model="name" /></FormControl>
+                        <FormControl><Input v-bind="componentField" /></FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                <FormField name="latitude" v-slot="{ errorMessage }">
+                <FormField name="latitude" v-slot="{ componentField, errorMessage }">
                     <FormItem>
                         <FormLabel>Latitude</FormLabel>
-                        <FormControl><Input v-bind="latitudeProps" v-model="latitude" type="number" step="any" /></FormControl>
+                        <FormControl><Input v-bind="componentField" type="number" step="any" /></FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                <FormField name="longitude" v-slot="{ errorMessage }">
+                <FormField name="longitude" v-slot="{ componentField, errorMessage }">
                     <FormItem>
                         <FormLabel>Longitude</FormLabel>
-                        <FormControl><Input v-bind="longitudeProps" v-model="longitude" type="number" step="any" /></FormControl>
+                        <FormControl><Input v-bind="componentField" type="number" step="any" /></FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
@@ -141,15 +155,15 @@ function removePhoto(photoId: number) {
             </div>
         </form>
 
-        <div class="mt-10">
+        <div class="mt-10 px-4">
             <h2 class="mb-3 text-lg font-semibold">Existing Photos</h2>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5">
                 <FileThumb
                     v-for="photo in props.gallery.photos"
                     :key="photo.id"
                     :photo="photo"
                     show-description
-                    @description-change="(val) => updateDescription(photo.id, val)"
+                    @description-change="(val) => updateDescription(photo, val)"
                     @remove="removePhoto(photo.id)"
                 />
             </div>

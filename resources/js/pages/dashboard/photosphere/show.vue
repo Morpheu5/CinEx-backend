@@ -2,8 +2,9 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
+import { route } from 'ziggy-js';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -16,8 +17,8 @@ defineProps({
     photosphere: {
         type: Object,
         required: true,
-    }
-})
+    },
+});
 </script>
 
 <template>
@@ -26,21 +27,22 @@ defineProps({
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="">
-                <h1 class="text-xl py-3 inline mr-3">{{ photosphere.name }}</h1>
+                <h1 class="mr-3 inline py-3 text-xl">{{ photosphere.name }}</h1>
                 <Button variant="outline" asChild>
-                    <Link :href="`/dashboard/photosphere/${photosphere.id}/edit`">edit</Link>
+                    <a :href="route('dashboard.photosphere.edit', photosphere.id)">edit</a>
                 </Button>
             </div>
+            <div class="p-4">
+                <img :src="route('photosphere.image', photosphere.id)" :alt="`Photosphere: ${photosphere.name}`" />
+            </div>
             <div>
-                <h2 class="text-xl py-3 inline mr-3">Galleries</h2>
-                <table class="w-full my-3 [&>*>tr>*]:px-4 [&>*>tr>*]:py-3 [&>*>tr>td:nth-child(1)]:w-12">
+                <h2 class="mr-3 inline py-3 text-xl">Galleries</h2>
+                <table class="my-3 w-full [&>*>tr>*]:px-4 [&>*>tr>*]:py-3 [&>*>tr>td:nth-child(1)]:w-12">
                     <tbody>
                         <tr v-for="gallery in photosphere.galleries" :key="gallery.id">
                             <td>
                                 <Button variant="outline" asChild>
-                                    <Link :href="`/dashboard/gallery/${gallery.id}/edit`">
-                                        <fa icon="fa-solid fa-pen-to-square" />
-                                    </Link>
+                                    <a :href="route('dashboard.gallery.edit', gallery.id)"><fa icon="fa-solid fa-pen-to-square" /></a>
                                 </Button>
                             </td>
                             <td>

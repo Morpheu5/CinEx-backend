@@ -38,12 +38,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 const numRequiredLat = z.preprocess(
-  (v) => (v === '' || v === null ? undefined : v),
-  z.coerce.number().min(-90).max(90) // adjust ranges per field
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-90).max(90) // adjust ranges per field
 );
 const numRequiredLon = z.preprocess(
-  (v) => (v === '' || v === null ? undefined : v),
-  z.coerce.number().min(-180).max(180) // adjust ranges per field
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-180).max(180) // adjust ranges per field
 );
 
 const GallerySchema = z.object({
@@ -102,18 +102,18 @@ const removePath = async () => {
 
 <template>
     <Head title="Dashboard" />
-    
+
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
                 <h1 class="text-xl py-3 inline mr-3">Editing: {{ photosphere.name }} ({{ photosphere.theatre.name }})</h1>
             </div>
             <form @submit.prevent="onSubmit">
-                <FormField name="theatre_id" v-slot="{ componentField, errorMessage }">
+                <FormField name="theatre_id" v-slot="{ field, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="theatre_id">Theatre</FormLabel>
                         <FormControl>
-                            <select v-bind="componentField" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
+                            <select v-bind="field" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
                                 <option value="-1" disabled>Select a theatre...</option>
                                 <option v-for="t in props.theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
                             </select>
@@ -121,7 +121,7 @@ const removePath = async () => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-            
+
                 <FormField name="name" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="name">Name</FormLabel>
@@ -131,7 +131,7 @@ const removePath = async () => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                
+
                 <FormField v-if="!values.path" key="file" name="file" v-slot="{ handleChange, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="file">File</FormLabel>
@@ -148,8 +148,8 @@ const removePath = async () => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                
-                <FormField v-else key="path" name="path" v-slot="{ componentField, errorMessage }">
+
+                <FormField v-else key="path" name="path" v-slot="{ field, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="path">Path</FormLabel>
                         <FormControl>
@@ -157,12 +157,12 @@ const removePath = async () => {
                                 <fa icon="fa-solid fa-trash-can" />
                             </Button>
                             <span class="py-1 break-all">{{ values.path }}</span>
-                            <input v-bind="componentField" type="hidden" />
+                            <input v-bind="field" type="hidden" />
                         </FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
-                
+
                 <!-- Galleries -->
                 <div class="mt-6 border-t pt-4">
                     <div class="flex items-center justify-between mb-2">
@@ -171,11 +171,11 @@ const removePath = async () => {
                             + Add gallery
                         </Button>
                     </div>
-                    
+
                     <div v-if="galleryRows.length === 0" class="text-sm text-muted-foreground mb-2">
                         No galleries yet. Add one.
                     </div>
-                    
+
                     <div v-for="(row, i) in galleryRows" :key="row.key" class="rounded-lg border p-3 mb-3">
                         <!-- name -->
                         <FormField :name="`galleries.${i}.name`" v-slot="{ componentField, errorMessage }">
@@ -207,13 +207,13 @@ const removePath = async () => {
                                 <FormMessage>{{ errorMessage }}</FormMessage>
                             </FormItem>
                         </FormField>
-                        
+
                         <div class="flex justify-end">
                             <Button type="button" variant="destructive" @click="removeGallery(i)">Remove</Button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="py-3 flex flex-row">
                     <div class="spacer w-30"></div>
                     <Button type="submit" variant="default" class="">Save</Button>

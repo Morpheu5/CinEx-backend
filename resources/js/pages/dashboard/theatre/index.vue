@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
-import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { show, create, edit } from '@/routes/dashboard/theatre';
 import { Button } from '@/components/ui/button';
+import { route } from 'ziggy-js'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard().url,
+        href: route('dashboard'),
     },
 ];
 

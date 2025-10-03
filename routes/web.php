@@ -22,7 +22,10 @@ Route::apiResource('user', UserController::class);
 Route::apiResource('theatre', TheatreController::class);
 Route::apiResource('photosphere', PhotosphereController::class);
 Route::apiResource('gallery', GalleryController::class);
-Route::apiResource('photo', PhotoController::class);
+Route::apiResource('photo', PhotoController::class)->only(['update', 'destroy']);
+
+Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'image'])->name('photosphere.image');
+Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
 
 Route::prefix('dashboard')->group(function () {
     Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('dashboard.theatre.index');

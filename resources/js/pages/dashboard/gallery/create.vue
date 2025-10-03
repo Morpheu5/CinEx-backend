@@ -74,11 +74,11 @@ const submit = handleSubmit(vals => {
             </FormField>
 
             <!-- Name -->
-            <FormField name="name" v-slot="{ field, errorMessage }">
+            <FormField name="name" v-slot="{ componentField, errorMessage }">
                 <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                        <Input v-bind="field" />
+                        <Input v-bind="componentField" />
                     </FormControl>
                     <FormMessage>{{ errorMessage }}</FormMessage>
                 </FormItem>
@@ -86,21 +86,21 @@ const submit = handleSubmit(vals => {
 
             <!-- Lat / Lon -->
             <div class="grid grid-cols-2 gap-4">
-                <FormField name="latitude" v-slot="{ field, errorMessage }">
+                <FormField name="latitude" v-slot="{ componentField, errorMessage }">
                     <FormItem>
                         <FormLabel>Latitude</FormLabel>
                         <FormControl>
-                            <Input v-bind="field" type="number" step="any" />
+                            <Input v-bind="componentField" type="number" step="any" />
                         </FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="longitude" v-slot="{ field, errorMessage }">
+                <FormField name="longitude" v-slot="{ componentField, errorMessage }">
                     <FormItem>
                         <FormLabel>Longitude</FormLabel>
                         <FormControl>
-                            <Input v-bind="field" type="number" step="any" />
+                            <Input v-bind="componentField" type="number" step="any" />
                         </FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>

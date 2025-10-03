@@ -425,7 +425,7 @@ export const show = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 export const update = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -440,7 +440,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 update.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -467,7 +467,7 @@ update.url = (args: { gallery: string | number } | [gallery: string | number ] |
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 update.put = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -477,7 +477,7 @@ update.put = (args: { gallery: string | number } | [gallery: string | number ] |
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 update.patch = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -487,7 +487,7 @@ update.patch = (args: { gallery: string | number } | [gallery: string | number ]
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 const updateForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -502,7 +502,7 @@ const updateForm = (args: { gallery: string | number } | [gallery: string | numb
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 updateForm.put = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -517,7 +517,7 @@ updateForm.put = (args: { gallery: string | number } | [gallery: string | number
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
-* @see app/Http/Controllers/GalleryController.php:103
+* @see app/Http/Controllers/GalleryController.php:98
 * @route '/gallery/{gallery}'
 */
 updateForm.patch = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -534,7 +534,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
-* @see app/Http/Controllers/GalleryController.php:132
+* @see app/Http/Controllers/GalleryController.php:127
 * @route '/gallery/{gallery}'
 */
 export const destroy = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -549,7 +549,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
-* @see app/Http/Controllers/GalleryController.php:132
+* @see app/Http/Controllers/GalleryController.php:127
 * @route '/gallery/{gallery}'
 */
 destroy.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -576,7 +576,7 @@ destroy.url = (args: { gallery: string | number } | [gallery: string | number ] 
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
-* @see app/Http/Controllers/GalleryController.php:132
+* @see app/Http/Controllers/GalleryController.php:127
 * @route '/gallery/{gallery}'
 */
 destroy.delete = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -586,7 +586,7 @@ destroy.delete = (args: { gallery: string | number } | [gallery: string | number
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
-* @see app/Http/Controllers/GalleryController.php:132
+* @see app/Http/Controllers/GalleryController.php:127
 * @route '/gallery/{gallery}'
 */
 const destroyForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -601,7 +601,7 @@ const destroyForm = (args: { gallery: string | number } | [gallery: string | num
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
-* @see app/Http/Controllers/GalleryController.php:132
+* @see app/Http/Controllers/GalleryController.php:127
 * @route '/gallery/{gallery}'
 */
 destroyForm.delete = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
