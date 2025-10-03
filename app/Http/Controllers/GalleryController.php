@@ -86,6 +86,11 @@ class GalleryController extends Controller
         $gallery = Gallery::with(['photosphere', 'photos'])->findOrFail($id);
         $photospheres = Photosphere::select(['id', 'name'])->get();
 
+        foreach ($gallery->photos as $photo) {
+            Log::debug($photo->path);
+            $photo->path = asset('storage/' . $photo->path);
+        }
+
         return Inertia::render('dashboard/gallery/edit', [
             'gallery' => $gallery,
             'photospheres' => $photospheres,

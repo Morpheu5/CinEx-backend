@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 // Props: either pass `file` (pending) OR `photo` (existing)
 const props = defineProps<{
     file?: File
-    photo?: { id: number; path: string; description?: string }
+    photo?: { id: number; path: string; description: string }
     showDescription?: boolean
 }>()
 
@@ -23,7 +23,7 @@ const imageUrl = computed(() =>
     props.file
         ? localUrl?.value
         : props.photo
-            ? route('photo.show', { photo: props.photo }) // FIXME
+            ? props.photo.path
             : ''
 )
 

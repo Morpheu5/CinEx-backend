@@ -6,6 +6,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { show, create, edit } from '@/routes/dashboard/photosphere';
 import { Button } from '@/components/ui/button';
 import { toast } from 'vue-sonner';
+import { route } from 'ziggy-js';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -27,7 +28,7 @@ defineProps({
 
 const onDelete = (id: number) => {
     if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
-        router.delete(`/photosphere/${id}`, {
+        router.delete(route('photo.destroy', { photo: id }), {
             preserveScroll: true,
             onSuccess: () => {
                 toast("Photosphere deleted!");
@@ -60,7 +61,7 @@ const onDelete = (id: number) => {
                     <tr v-for="photosphere in photospheres.data" :key="photosphere.id" class="border-1">
                         <td class="w-12">
                             <Button variant="link">
-                                <Link :href="edit(photosphere.id).url" :alt="`Edit photosphere ${photosphere.name}`"><fa icon="fa-solid fa-pen-to-square" /></Link>
+                                <a :href="route('dashboard.photosphere.edit', photosphere.id)" :title="`Edit photosphere ${photosphere.name}`"><fa icon="fa-solid fa-pen-to-square" /></a>
                             </Button>
                         </td>
                         <td class="">

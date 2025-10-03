@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdatePhotoRequest;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller {
@@ -41,9 +42,10 @@ class PhotoController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $galleryId, string $photoId) {
-        $photo = Photo::where('gallery_id', $galleryId)->findOrFail($photoId);
+    public function destroy(string $photoId) {
+        $photo = Photo::findOrFail($photoId);
         if ($photo->path) {
+            Log::info($photo->path);
             Storage::disk('public')->delete($photo->path);
         }
         $photo->delete();

@@ -20,7 +20,7 @@ const props = defineProps<{
         latitude: number | null;
         longitude: number | null;
         photosphere: { id: number; name: string } | null;
-        photos: Array<{ id: number; path: string; description: string | null }>;
+        photos: Array<{ id: number; path: string; description: string }>;
     };
     photospheres: Array<{ id: number; name: string }>;
 }>();
@@ -76,7 +76,6 @@ const submit = handleSubmit((vals) => {
 
 function updateDescription(photoId: number, description: string) {
     router.put(
-
         `/gallery/${props.gallery.id}/${photoId}`,
         { description },
         {
@@ -89,16 +88,21 @@ function updateDescription(photoId: number, description: string) {
 }
 
 function removePhoto(photoId: number) {
-    router.delete(route('dashboard.galleries.photos.destroy', { gallery: props.gallery.id, photo: photoId }), {
-        onSuccess: () => toast.success('Photo removed'),
-        onError: () => toast.error('Delete failed'),
-    });
+    if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
+        router.delete(route('photo.destroy', { photo: photoId }), {
+            onSuccess: () => toast.success('Photo removed'),
+            onError: () => toast.error('Delete failed'),
+        });
+    }
 }
 </script>
 
 <template>
     <AppLayout>
         <Head :title="`Edit Gallery — ${props.gallery.name}`" />
+
+        <h1>Editing Gallery "{{ gallery.name }}" from photosphere "{{ gallery.photosphere?.name || '' }}"</h1>
+
         <form class="max-w-4xl space-y-6" @submit.prevent="submit">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <FormField name="name" v-slot="{ errorMessage }">
@@ -128,12 +132,7 @@ function removePhoto(photoId: number) {
                 <label>Add Photos</label>
                 <Dropzone multiple accept="image/*" @files="addFiles" />
                 <div v-if="pendingFiles.length" class="grid grid-cols-2 gap-3 md:grid-cols-5">
-                    <FileThumb
-                        v-for="(f, idx) in pendingFiles"
-                        :key="idx"
-                        :file="f"
-                        @remove="removePending(idx)"
-                    />
+                    <FileThumb v-for="(f, idx) in pendingFiles" :key="idx" :file="f" @remove="removePending(idx)" />
                 </div>
             </div>
 
@@ -150,7 +149,7 @@ function removePhoto(photoId: number) {
                     :key="photo.id"
                     :photo="photo"
                     show-description
-                    @description-change="val => updateDescription(photo.id, val)"
+                    @description-change="(val) => updateDescription(photo.id, val)"
                     @remove="removePhoto(photo.id)"
                 />
             </div>
