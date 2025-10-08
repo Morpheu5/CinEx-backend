@@ -5,6 +5,7 @@ namespace App\Data;
 use App\Models\Gallery;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Lazy;
 use Spatie\LaravelData\Optional;
 
 class GalleryData extends Data {
@@ -15,7 +16,7 @@ class GalleryData extends Data {
      * @param float  $longitude
      * @param float  $latitude
      * @param DataCollection<PhotoData>|Optional $photos
-     * @param int    $photosphere_id
+     * @param Lazy|PhotosphereData $photosphere
      */
     public function __construct(
         public int    $id,
@@ -23,7 +24,7 @@ class GalleryData extends Data {
         public float  $longitude,
         public float  $latitude,
         public DataCollection|Optional $photos,
-        public int    $photosphere_id,
+        public Lazy|PhotosphereData $photosphere,
     ) {}
 
     public static function fromModel(Gallery $gallery): self {
@@ -33,7 +34,9 @@ class GalleryData extends Data {
             longitude:      $gallery->longitude,
             latitude:       $gallery->latitude,
             photos:         PhotoData::collect($gallery->photos ?? collect(), DataCollection::class),
-            photosphere_id: $gallery->photosphere_id,
+            photosphere:    Lazy::whenLoaded('photosphere', $gallery,
+                fn () => PhotosphereData::from($gallery->photosphere)
+            ),
         );
     }
 }

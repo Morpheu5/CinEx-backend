@@ -15,15 +15,8 @@ import FileThumb from '@/components/FileThumb.vue';
 import type { BreadcrumbItem } from '@/types';
 
 const props = defineProps<{
-    gallery: {
-        id: number;
-        name: string;
-        latitude: number;
-        longitude: number;
-        photosphere: { id: number; name: string };
-        photos: Array<{ id: number; path: string; description: string }>;
-    };
-    photospheres: Array<{ id: number; name: string }>;
+    gallery: App.Data.GalleryData;
+    photospheres: Array<App.Data.PhotosphereData>;
 }>();
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -36,7 +29,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: route('dashboard.gallery.index'),
     },
     {
-        title: `${props.gallery.name} (photosphere: ${props.gallery.photosphere.name})`,
+        title: `${props.gallery.name} (photosphere: ${props.gallery.photosphere?.name})`,
         href: route('dashboard.gallery.show', props.gallery.id),
     },
 ];

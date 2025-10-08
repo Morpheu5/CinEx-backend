@@ -5,7 +5,7 @@ name: string;
 longitude: number;
 latitude: number;
 photos?: Array<App.Data.PhotoData>;
-photosphere_id: number;
+photosphere?: App.Data.PhotosphereData;
 };
 export type PhotoData = {
 id: number;
@@ -18,7 +18,7 @@ id: number;
 name: string;
 path: string;
 theatre_id: number;
-theatre: App.Data.TheatreData;
+theatre?: App.Data.TheatreData;
 galleries?: Array<App.Data.GalleryData>;
 };
 export type TheatreData = {

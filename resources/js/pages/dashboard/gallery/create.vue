@@ -14,7 +14,7 @@ import { route } from 'ziggy-js';
 import { useObjectUrl } from '@vueuse/core';
 
 const props = defineProps<{
-    photospheres: Array<{ id: number; name: string }>
+    photospheres: Array<App.Data.PhotosphereData>;
 }>()
 
 const schema = z.object({

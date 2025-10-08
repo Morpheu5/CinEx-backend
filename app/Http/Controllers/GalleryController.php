@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\GalleryData;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 use App\Models\Gallery;
 use App\Models\Photo;
 use App\Models\Photosphere;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class GalleryController extends Controller
@@ -17,15 +17,14 @@ class GalleryController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request) {
-        $all = Gallery::with('photosphere')->latest()->get();
+        $all = Gallery::with('photosphere')->get();
 
         if (!$request->routeIs('dashboard.*')) {
-            return collect($all);
+            return GalleryData::collect($all);
         }
 
         return Inertia::render('dashboard/gallery/index', [
-            'galleries' => collect($all),
-            'filters' => [],
+            'galleries' => GalleryData::collect($all),
         ]);
     }
 

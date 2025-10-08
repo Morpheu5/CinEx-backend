@@ -3,9 +3,9 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { show, create, edit } from '@/routes/dashboard/gallery';
 import { Button } from '@/components/ui/button';
 import { toast } from 'vue-sonner';
+import { route } from 'ziggy-js'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -15,14 +15,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 defineProps({
-    galleries: {
-        type: Object,
-        required: true,
-    },
-    filters: {
-        type: Object,
-        default: () => ({}),
-    }
+    galleries: Array<App.Data.GalleryData>,
 })
 
 const onDelete = (id: number) => {
@@ -44,9 +37,9 @@ const onDelete = (id: number) => {
         <div class="p-4">
             <h1 class="text-xl py-3">Galleries</h1>
             <Button variant="default">
-                <Link :href="create().url" alt="Create new gallery">
+                <a :href="route('dashboard.gallery.create')" alt="Create new gallery">
                     <fa icon="fa-solid fa-square-plus" /> New
-                </Link>
+                </a>
             </Button>
             <table class="w-full my-3 [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
                 <thead class="bg-slate-200 dark:bg-slate-800 text-left">
@@ -61,14 +54,14 @@ const onDelete = (id: number) => {
                 <tr v-for="gallery in galleries" :key="gallery.id" class="border-1">
                     <td class="w-12">
                         <Button variant="link">
-                            <Link :href="`/dashboard/gallery/${gallery.id}/edit`" :alt="`Edit gallery ${gallery.name}`"><fa icon="fa-solid fa-pen-to-square" /></Link>
+                            <a :href="route('dashboard.gallery.edit', gallery.id)" :alt="`Edit gallery ${gallery.name}`"><fa icon="fa-solid fa-pen-to-square" /></a>
                         </Button>
                     </td>
                     <td class="">
-                        <Link :href="`/dashboard/gallery/${gallery.id}`">{{ gallery.name }}</Link>
+                        <a :href="route('dashboard.gallery.show', gallery.id)">{{ gallery.name }}</a>
                     </td>
                     <td class="">
-                        <Link :href="`/dashboard/photosphere/${gallery.photosphere.id}`">{{ gallery.photosphere.name }}</Link>
+                        <a :href="route('dashboard.photosphere.show', gallery.photosphere?.id)">{{ gallery.photosphere?.name }}</a>
                     </td>
                     <td class="w-12">
                         <Button type="button" @click="() => onDelete(gallery.id)" variant="destructive" :alt="`Delete gallery ${gallery.name}`">
