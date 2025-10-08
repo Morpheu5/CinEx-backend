@@ -10,17 +10,9 @@ import { toTypedSchema } from '@vee-validate/zod';
 import * as z from 'zod';
 import { toast } from 'vue-sonner';
 import { route } from 'ziggy-js';
-import Photosphere from '@/routes/photosphere';
 
 const props = defineProps<{
-    theatre: {
-        name: string,
-        city: string,
-        country: string,
-        latitude: number,
-        longitude: number,
-        photospheres: Photosphere[],
-    },
+    theatre: App.Data.TheatreData,
 }>();
 
 const breadcrumbs: BreadcrumbItem[] = [

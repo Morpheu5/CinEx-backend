@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\PhotosphereData;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,6 @@ use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use App\Models\Theatre;
 use App\Models\Photosphere;
-use App\Http\Resources\PhotosphereResource;
 
 use Throwable;
 
@@ -19,17 +19,14 @@ class PhotosphereController extends Controller {
      * Display a listing of the resource.
      */
     public function index(Request $request) {
-        $all = Photosphere::all();
+        $all = Photosphere::with(['theatre'])->get();
 
         if (!$request->routeIs('dashboard.*')) {
-            return PhotosphereResource::collection($all);
+            return PhotosphereData::collect($all);
         }
 
         return Inertia::render('dashboard/photosphere/index', [
-            'photospheres' => PhotosphereResource::collection($all),
-            'filters' => [
-
-            ],
+            'photospheres' => PhotosphereData::collect($all),
         ]);
     }
 
@@ -94,7 +91,7 @@ class PhotosphereController extends Controller {
         });
 
         return redirect()
-            ->route('dashboard.photosphere.edit', $photosphere) // or your index
+            ->route('dashboard.photosphere.edit', $photosphere->id) // or your index
             ->setStatusCode(303);
     }
 
@@ -109,19 +106,7 @@ class PhotosphereController extends Controller {
         }
 
         return Inertia::render('dashboard/photosphere/show', [
-            'photosphere' => [
-                'id' => $photosphere->id,
-                'name' => $photosphere->name,
-                'path' => $photosphere->path,
-                'theatre_id' => $photosphere->theatre_id,
-                'theatre' => ['name' => $photosphere->theatre->name],
-                'galleries' => $photosphere->galleries->map(fn($g) => [
-                    'id' => $g->id,
-                    'name' => $g->name,
-                    'latitude' => $g->latitude,
-                    'longitude' => $g->longitude,
-                ]),
-            ],
+            'photosphere' => PhotosphereData::from($photosphere),
         ]);
     }
 
@@ -137,19 +122,7 @@ class PhotosphereController extends Controller {
         $photosphere->load(['theatre', 'galleries']);
 
         return Inertia::render('dashboard/photosphere/edit', [
-            'photosphere' => [
-                'id' => $photosphere->id,
-                'name' => $photosphere->name,
-                'path' => $photosphere->path,
-                'theatre_id' => $photosphere->theatre_id,
-                'theatre' => ['name' => $photosphere->theatre->name],
-                'galleries' => $photosphere->galleries->map(fn($g) => [
-                    'id' => $g->id,
-                    'name' => $g->name,
-                    'latitude' => $g->latitude,
-                    'longitude' => $g->longitude,
-                ]),
-            ],
+            'photosphere' => PhotosphereData::from($photosphere),
             'theatres' => Theatre::select('id','name')->orderBy('name')->get(),
         ]);
     }

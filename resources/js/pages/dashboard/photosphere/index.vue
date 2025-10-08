@@ -16,19 +16,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 defineProps({
-    photospheres: {
-        type: Object,
-        required: true,
-    },
-    filters: {
-        type: Object,
-        default: () => ({}),
-    }
+    photospheres: Array<App.Data.PhotosphereData>,
 })
 
 const onDelete = (id: number) => {
     if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
-        router.delete(route('photo.destroy', { photo: id }), {
+        router.delete(route('photosphere.destroy', { photosphere: id }), {
             preserveScroll: true,
             onSuccess: () => {
                 toast("Photosphere deleted!");
@@ -43,11 +36,11 @@ const onDelete = (id: number) => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
-            <h1 class="text-xl py-3">Photopsheres</h1>
+            <h1 class="text-xl py-3">Photospheres</h1>
             <Button variant="default">
-                <Link :href="create().url" alt="Create new photosphere">
+                <a :href="route('dashboard.photosphere.create')" title="Create new photosphere">
                     <fa icon="fa-solid fa-square-plus" /> New
-                </Link>
+                </a>
             </Button>
             <table class="w-full my-3 [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
                 <thead class="bg-slate-200 dark:bg-slate-800 text-left">
@@ -58,14 +51,14 @@ const onDelete = (id: number) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="photosphere in photospheres.data" :key="photosphere.id" class="border-1">
+                    <tr v-for="photosphere in photospheres" :key="photosphere.id" class="border-1">
                         <td class="w-12">
                             <Button variant="link">
                                 <a :href="route('dashboard.photosphere.edit', photosphere.id)" :title="`Edit photosphere ${photosphere.name}`"><fa icon="fa-solid fa-pen-to-square" /></a>
                             </Button>
                         </td>
                         <td class="">
-                            <Link :href="show.url(photosphere.id)">{{ photosphere.name }}</Link>
+                            <a :href="route('dashboard.photosphere.show', photosphere.id)">{{ photosphere.name }}</a>
                         </td>
                         <td class="w-12">
                             <Button type="button" @click="() => onDelete(photosphere.id)" variant="destructive" :alt="`Delete photosphere ${photosphere.name}`">

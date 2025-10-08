@@ -19,14 +19,7 @@ import { toTypedSchema } from '@vee-validate/zod';
 import * as z from 'zod';
 
 const props = defineProps<{
-    photosphere: {
-        id: number
-        name: string
-        path?: string | null
-        theatre_id: number
-        theatre: { name: string }
-        galleries?: Array<{ id?: number; name: string; latitude: number; longitude: number }>
-    },
+    photosphere: App.Data.PhotosphereData,
     theatres: Array<{ id: number; name: string }>
 }>()
 

@@ -13,12 +13,9 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-defineProps({
-    photosphere: {
-        type: Object,
-        required: true,
-    },
-});
+defineProps<{
+    photosphere: App.Data.PhotosphereData,
+}>()
 </script>
 
 <template>
@@ -47,11 +44,11 @@ defineProps({
                             </td>
                             <td>
                                 <div>{{ gallery.name }}</div>
-                                <div class="flex flex-row">
-                                    <div v-for="photo in gallery.photos" :key="photo.id">
-                                        {{ photo.path }}
-                                    </div>
-                                </div>
+<!--                                <div class="flex flex-row">-->
+<!--                                    <div v-for="photo in gallery.photos" :key="photo.id">-->
+<!--                                        {{ photo.path }}-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </td>
                         </tr>
                     </tbody>

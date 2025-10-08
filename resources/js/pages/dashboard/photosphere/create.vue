@@ -116,7 +116,7 @@ const onSubmit = handleSubmit((newValues) => {
                         <FormControl>
                             <select v-bind="field" :value="values.theatre_id" aria-labelledby="theatre_id" class="mt-1 block w-full border rounded p-2">
                                 <option value="" disabled>Select a theatre...</option>
-                                <option v-for="t in props.theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
+                                <option v-for="t in theatres" :key="t.id" :value="t.id">{{ t.name }}</option>
                             </select>
                         </FormControl>
                         <FormMessage>{{ errorMessage }}</FormMessage>

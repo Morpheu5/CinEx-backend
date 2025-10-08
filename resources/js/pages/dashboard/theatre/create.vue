@@ -3,7 +3,7 @@ import {
     FormControl,
     FormField,
     FormItem,
-    FormLabel,
+    FormLabel, FormMessage,
 } from '@/components/ui/form';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
@@ -21,13 +21,6 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: dashboard().url,
     },
 ];
-
-defineProps({
-    theatre: {
-        type: Object,
-        required: true,
-    }
-})
 
 const { handleSubmit } = useForm()
 
@@ -53,48 +46,53 @@ const onSubmit = handleSubmit((values) => {
                 <h1 class="text-xl py-3 inline mr-3">New theatre:</h1>
             </div>
             <form @submit="onSubmit">
-                <FormField name="name" v-slot="{ field, errorMessage }">
+                <FormField name="name" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="name">Name</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="field" aria-labelledby="name" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="name" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="city" v-slot="{ field, errorMessage }">
+                <FormField name="city" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="city">City</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="field" aria-labelledby="city" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="city" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="country" v-slot="{ field, errorMessage }">
+                <FormField name="country" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="country">Country</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="field" aria-labelledby="country" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="country" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="latitude" v-slot="{ field, errorMessage }">
+                <FormField name="latitude" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="latitude">Latitude</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="field" aria-labelledby="latitude" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="latitude" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
-                <FormField name="longitude" v-slot="{ field, errorMessage }">
+                <FormField name="longitude" v-slot="{ componentField, errorMessage }">
                     <FormItem class="flex flex-row py-3">
                         <FormLabel class="w-24" id="longitude">Longitude</FormLabel>
                         <FormControl>
-                            <Input type="text" v-bind="field" aria-labelledby="longitude" />
+                            <Input type="text" v-bind="componentField" aria-labelledby="longitude" />
                         </FormControl>
+                        <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
 
