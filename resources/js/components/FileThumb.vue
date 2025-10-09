@@ -9,7 +9,8 @@ import { route } from 'ziggy-js';
 const props = defineProps<{
     file?: File
     photo?: { id: number; path: string; description: string }
-    showDescription?: boolean
+    showDescription?: boolean,
+    editable?: boolean,
 }>()
 
 const emit = defineEmits<{
@@ -42,13 +43,15 @@ const onDescriptionInput = (e: Event) => {
         />
 
         <Input
-            v-if="showDescription && photo"
+            v-if="showDescription && photo && editable"
             :model-value="photo.description ?? ''"
             @change="onDescriptionInput"
             placeholder="Description…"
         />
 
-        <Button type="button" variant="destructive" class="w-full" @click="$emit('remove')">
+        <p v-if="showDescription && photo && !editable">{{ photo.description }}</p>
+
+        <Button v-if="editable" type="button" variant="destructive" class="w-full" @click="$emit('remove')">
             Remove
         </Button>
     </div>

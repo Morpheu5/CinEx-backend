@@ -17,6 +17,7 @@ import { toast } from 'vue-sonner';
 import { toTypedSchema } from '@vee-validate/zod';
 import * as z from 'zod';
 import { watch } from 'vue';
+import { route } from 'ziggy-js'
 
 const props = defineProps<{
     theatres: Array<{ id: number; name: string }>
@@ -27,6 +28,10 @@ const breadcrumbs: BreadcrumbItem[] = [
         title: 'Dashboard',
         href: dashboard().url,
     },
+    {
+        title: 'Photospheres',
+        href: route('dashboard.photosphere.index'),
+    }
 ]
 
 const numRequiredLat = z.preprocess(
@@ -50,7 +55,9 @@ type GalleryItem = z.infer<typeof GallerySchema>;
 const PhotosphereCreateSchema = z.object({
     theatre_id: z.preprocess(
         (v) => (v === '' || v === null ? undefined : v),
-        z.coerce.number().int().positive('Select a theatre...')
+        z.coerce.number({
+            invalid_type_error: "Please select a theatre"
+        }).int().positive('Please select a theatre'),
     ),
     name: z.string().min(1, 'Name is required'),
     file: z.instanceof(File).nullable().optional(),
@@ -107,7 +114,7 @@ const onSubmit = handleSubmit((newValues) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">New photosphere:</h1>
+                <h1 class="text-xl py-3 inline mr-3">New photosphere</h1>
             </div>
             <form @submit.prevent="onSubmit">
                 <FormField name="theatre_id" v-slot="{ field, errorMessage }">

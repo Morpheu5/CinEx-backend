@@ -17,6 +17,7 @@ import { toast } from 'vue-sonner';
 import { nextTick } from 'vue';
 import { toTypedSchema } from '@vee-validate/zod';
 import * as z from 'zod';
+import { route } from 'ziggy-js'
 
 const props = defineProps<{
     photosphere: App.Data.PhotosphereData,
@@ -28,6 +29,13 @@ const breadcrumbs: BreadcrumbItem[] = [
         title: 'Dashboard',
         href: dashboard().url,
     },
+    {
+        title: 'Photospheres',
+        href: route('dashboard.photosphere.index'),
+    },
+    {
+        title: props.photosphere.name,
+    }
 ]
 
 const numRequiredLat = z.preprocess(
@@ -99,7 +107,7 @@ const removePath = async () => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">Editing: {{ photosphere.name }} ({{ photosphere.theatre.name }})</h1>
+                <h1 class="text-xl py-3 inline mr-3">Editing photosphere: <strong>{{ photosphere.name }}</strong> ({{ photosphere.theatre?.name }})</h1>
             </div>
             <form @submit.prevent="onSubmit">
                 <FormField name="theatre_id" v-slot="{ field, errorMessage }">

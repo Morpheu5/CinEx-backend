@@ -12,20 +12,45 @@ import { Head, router } from '@inertiajs/vue3';
 import { useForm } from 'vee-validate';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-// import { toTypedSchema } from '@vee-validate/zod';
-// import * as z from 'zod';
+import { route } from 'ziggy-js'
+import * as z from 'zod';
+import { toTypedSchema } from '@vee-validate/zod';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
         href: dashboard().url,
     },
+    {
+        title: 'Theatres',
+        href: route('dashboard.theatre.index'),
+    },
 ];
 
-const { handleSubmit } = useForm()
+const numRequiredLat = z.preprocess(
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-90).max(90) // adjust ranges per field
+);
+const numRequiredLon = z.preprocess(
+    (v) => (v === '' || v === null ? undefined : v),
+    z.coerce.number().min(-180).max(180) // adjust ranges per field
+);
+
+const schema = z.object({
+    name: z.string().nonempty(),
+    city: z.string().nonempty(),
+    country: z.string().nonempty(),
+    latitude: numRequiredLat,
+    longitude: numRequiredLon,
+})
+
+type TheatreSchema = z.infer<typeof schema>;
+const { handleSubmit } = useForm<TheatreSchema>({
+    validationSchema: toTypedSchema(schema),
+});
 
 const onSubmit = handleSubmit((values) => {
-    router.post(`/theatre`, values, {
+    router.post(route('theatre.store'), values, {
         preserveScroll: true,
         onError: (errors) => {
             console.log(errors)
@@ -43,7 +68,7 @@ const onSubmit = handleSubmit((values) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">New theatre:</h1>
+                <h1 class="text-xl py-3 inline mr-3">New theatre</h1>
             </div>
             <form @submit="onSubmit">
                 <FormField name="name" v-slot="{ componentField, errorMessage }">

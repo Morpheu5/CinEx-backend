@@ -158,6 +158,7 @@ function removePhoto(photoId: number) {
                     show-description
                     @description-change="(val) => updateDescription(photo, val)"
                     @remove="removePhoto(photo.id)"
+                    editable
                 />
             </div>
         </div>

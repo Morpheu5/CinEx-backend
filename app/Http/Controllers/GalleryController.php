@@ -74,7 +74,7 @@ class GalleryController extends Controller
     public function show(string $id) {
         $gallery = Gallery::with(['photosphere', 'photos'])->findOrFail($id);
         return Inertia::render('dashboard/gallery/show', [
-            'gallery' => $gallery,
+            'gallery' => GalleryData::from($gallery),
         ]);
     }
 

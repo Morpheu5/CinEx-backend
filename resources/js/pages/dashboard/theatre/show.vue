@@ -6,6 +6,10 @@ import { Head } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { route } from 'ziggy-js';
 
+const props = defineProps<{
+    theatre: App.Data.TheatreData
+}>();
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -14,12 +18,13 @@ const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Theatres',
         href: route('dashboard.theatre.index'),
-    }
+    },
+    {
+        title: props.theatre.name,
+        href: route('dashboard.theatre.show', props.theatre.id),
+    },
 ];
 
-defineProps<{
-    theatre: App.Data.TheatreData
-}>();
 </script>
 
 <template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link, router } from '@inertiajs/vue3';
-import { show, edit } from '@/routes/dashboard/theatre';
+import { Head, router } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { route } from 'ziggy-js'
 
@@ -10,6 +9,10 @@ const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
         href: route('dashboard'),
+    },
+    {
+        title: 'Theatres',
+        href: route('dashboard.theatre.index'),
     },
 ];
 

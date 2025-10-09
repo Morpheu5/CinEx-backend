@@ -82,7 +82,7 @@ const onDelete = () => {
         <div class="p-4">
             <div class="py-3">
                 <h1 class="mr-3 inline py-3 text-xl">
-                    Editing: <strong>{{ theatre.name }}</strong> (id: {{ theatre.id }})
+                    Editing theatre: <strong>{{ theatre.name }}</strong> (id: {{ theatre.id }})
                 </h1>
             </div>
             <form @submit.prevent="submit">

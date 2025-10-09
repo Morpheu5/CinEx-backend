@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link, router } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { toast } from 'vue-sonner';
 import { route } from 'ziggy-js'
@@ -12,6 +12,9 @@ const breadcrumbs: BreadcrumbItem[] = [
         title: 'Dashboard',
         href: dashboard().url,
     },
+    {
+        title: 'Galleries',
+    }
 ];
 
 defineProps({
