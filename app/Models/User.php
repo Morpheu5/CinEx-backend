@@ -59,4 +59,8 @@ class User extends Authenticatable {
     public function photos() {
         return $this->hasMany(Photos::class);
     }
+
+    public function navigationAnchors() {
+        return $this->hasMany(NavigationAnchor::class);
+    }
 }

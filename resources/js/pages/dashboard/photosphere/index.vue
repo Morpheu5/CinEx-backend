@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, router } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { toast } from 'vue-sonner';
 import { route } from 'ziggy-js';
@@ -15,23 +15,23 @@ const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Photospheres',
         href: route('dashboard.photosphere.index'),
-    }
+    },
 ];
 
 defineProps({
     photospheres: Array<App.Data.PhotosphereData>,
-})
+});
 
 const onDelete = (id: number) => {
-    if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
+    if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
         router.delete(route('photosphere.destroy', { photosphere: id }), {
             preserveScroll: true,
             onSuccess: () => {
-                toast("Photosphere deleted!");
-            }
-        })
+                toast('Photosphere deleted!');
+            },
+        });
     }
-}
+};
 </script>
 
 <template>
@@ -39,14 +39,12 @@ const onDelete = (id: number) => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
-            <h1 class="text-xl py-3">Photospheres</h1>
+            <h1 class="py-3 text-xl">Photospheres</h1>
             <Button variant="default">
-                <a :href="route('dashboard.photosphere.create')" title="Create new photosphere">
-                    <fa icon="fa-solid fa-square-plus" /> New
-                </a>
+                <Link :href="route('dashboard.photosphere.create')" title="Create new photosphere"> <fa icon="fa-solid fa-square-plus" /> New </Link>
             </Button>
-            <table class="w-full my-3 [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
-                <thead class="bg-slate-200 dark:bg-slate-800 text-left">
+            <table class="my-3 w-full [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
+                <thead class="bg-slate-200 text-left dark:bg-slate-800">
                     <tr>
                         <th class="w-12"></th>
                         <th class="">Photosphere</th>
@@ -57,14 +55,21 @@ const onDelete = (id: number) => {
                     <tr v-for="photosphere in photospheres" :key="photosphere.id" class="border-1">
                         <td class="w-12">
                             <Button variant="link">
-                                <a :href="route('dashboard.photosphere.edit', photosphere.id)" :title="`Edit photosphere ${photosphere.name}`"><fa icon="fa-solid fa-pen-to-square" /></a>
+                                <a :href="route('dashboard.photosphere.edit', photosphere.id)" :title="`Edit photosphere ${photosphere.name}`"
+                                    ><fa icon="fa-solid fa-pen-to-square"
+                                /></a>
                             </Button>
                         </td>
                         <td class="">
                             <a :href="route('dashboard.photosphere.show', photosphere.id)">{{ photosphere.name }}</a>
                         </td>
                         <td class="w-12">
-                            <Button type="button" @click="() => onDelete(photosphere.id)" variant="destructive" :alt="`Delete photosphere ${photosphere.name}`">
+                            <Button
+                                type="button"
+                                @click="() => onDelete(photosphere.id)"
+                                variant="destructive"
+                                :alt="`Delete photosphere ${photosphere.name}`"
+                            >
                                 <fa icon="fa-solid fa-trash-can" />
                             </Button>
                         </td>

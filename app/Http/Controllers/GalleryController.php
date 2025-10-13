@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Data\GalleryData;
-use App\Http\Requests\StoreGalleryRequest;
-use App\Http\Requests\UpdateGalleryRequest;
+use App\Http\Requests\Gallery\StoreGalleryRequest;
+use App\Http\Requests\Gallery\UpdateGalleryRequest;
 use App\Models\Gallery;
 use App\Models\Photo;
 use App\Models\Photosphere;

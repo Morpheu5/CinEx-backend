@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NavigationAnchorController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +24,7 @@ Route::apiResource('theatre', TheatreController::class);
 Route::apiResource('photosphere', PhotosphereController::class);
 Route::apiResource('gallery', GalleryController::class);
 Route::apiResource('photo', PhotoController::class)->only(['update', 'destroy']);
+Route::apiResource('navigation-anchor', NavigationAnchorController::class);
 
 Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'image'])->name('photosphere.image');
 Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
@@ -42,6 +44,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('gallery/new', [App\Http\Controllers\GalleryController::class, 'create'])->name('dashboard.gallery.create');
     Route::get('gallery/{gallery}', [App\Http\Controllers\GalleryController::class, 'show'])->name('dashboard.gallery.show');
     Route::get('gallery/{gallery}/edit', [App\Http\Controllers\GalleryController::class, 'edit'])->name('dashboard.gallery.edit');
+
+    Route::resource('navigation-anchor', NavigationAnchorController::class, ['as' => 'dashboard']);
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';

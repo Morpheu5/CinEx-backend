@@ -16,6 +16,7 @@ class PhotosphereData extends Data {
      * @param int                                  $theatre_id
      * @param Lazy|TheatreData                          $theatre
      * @param Lazy|DataCollection<GalleryData>|Optional $galleries
+     * @param Lazy|DataCollection<NavigationAnchorData>|Optional $navigation_anchors
      */
     public function __construct(
         public int                     $id,
@@ -24,6 +25,7 @@ class PhotosphereData extends Data {
         public int                     $theatre_id,
         public Lazy|TheatreData             $theatre,
         public Lazy|DataCollection|Optional $galleries,
+        public Lazy|DataCollection|Optional $navigation_anchors,
     ) {}
 
     public static function fromModel(Photosphere $photosphere): self {
@@ -38,6 +40,9 @@ class PhotosphereData extends Data {
             galleries:  Lazy::whenLoaded('galleries', $photosphere,
                 fn () => GalleryData::collect($photosphere->galleries ?? collect(), DataCollection::class),
             ),
+            navigation_anchors: Lazy::whenLoaded('navigation_anchors', $photosphere,
+                fn () => NavigationAnchorData::collect($photosphere->navigationAnchors ?? collect(), DataCollection::class),
+            )
         );
     }
 }

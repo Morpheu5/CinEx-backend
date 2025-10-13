@@ -52,6 +52,10 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Galleries',
         href: '/dashboard/gallery',
+    },
+    {
+        title: 'Navigation Anchors',
+        href: '/dashboard/navigation-anchor',
     }
 ];
 

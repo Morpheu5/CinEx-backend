@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Storage;
 class Photosphere extends Model {
 
     protected static function booted() {
-        static::deleting(function ($p) {
+        static::deleting(function (Photosphere $p) {
             $p->galleries()->delete();
             if ($p->path) {
                 Storage::disk('local')->delete($p->path);
             }
+            $p->navigationAnchors()->delete();
         });
     }
 
@@ -30,5 +31,9 @@ class Photosphere extends Model {
 
     public function galleries(): HasMany {
         return $this->hasMany(Gallery::class);
+    }
+
+    public function navigationAnchors(): HasMany {
+        return $this->hasMany(NavigationAnchor::class);
     }
 }

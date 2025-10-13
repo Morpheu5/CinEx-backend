@@ -99,7 +99,7 @@ class PhotosphereController extends Controller {
      * Display the specified resource.
      */
     public function show(Request $request, string $id) {
-        $photosphere = Photosphere::with(['theatre', 'galleries'])->findOrFail($id);
+        $photosphere = Photosphere::with(['theatre', 'galleries', 'navigationAnchors.target'])->findOrFail($id);
 
         if (!$request->routeIs('dashboard.*')) {
             return $photosphere;

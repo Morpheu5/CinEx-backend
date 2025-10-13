@@ -109,7 +109,7 @@ const onSubmit = handleSubmit((newValues) => {
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Photospheres" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
