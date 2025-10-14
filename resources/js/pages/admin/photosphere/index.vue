@@ -39,8 +39,8 @@ const onDelete = (id: number) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <h1 class="py-3 text-xl">Photospheres</h1>
-            <Button variant="default">
-                <Link :href="route('admin.photosphere.create')" title="Create new photosphere"> <fa icon="fa-solid fa-square-plus" /> New </Link>
+            <Button asChild>
+                <Link :href="route('admin.photosphere.create')" title="Create new photosphere"><fa icon="fa-solid fa-square-plus" /> New</Link>
             </Button>
             <table class="my-3 w-full [&>*>tr>*]:px-4 [&>*>tr>*]:py-3">
                 <thead class="bg-slate-200 text-left dark:bg-slate-800">

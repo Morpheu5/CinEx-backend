@@ -42,7 +42,7 @@ const onDelete = (id: number) => {
             <div class="">
                 <h1 class="py-3 text-xl">Navigation Anchors</h1>
                 <Button asChild>
-                    <Link class="" :href="route('admin.navigation-anchor.create')"> <fa icon="fa-solid fa-pen-to-square" /> New </Link>
+                    <Link class="" :href="route('admin.navigation-anchor.create')"> <fa icon="fa-solid fa-square-plus" /> New </Link>
                 </Button>
             </div>
 
@@ -60,7 +60,7 @@ const onDelete = (id: number) => {
                 <tbody>
                     <tr v-for="a in props.anchors" :key="a.id" class="border-t">
                         <td>
-                            <Button asChild>
+                            <Button variant="link" asChild>
                                 <Link :href="route('admin.navigation-anchor.edit', a.id)" class="underline">
                                     <fa icon="fa-solid fa-pen-to-square" />
                                 </Link>

@@ -39,7 +39,7 @@ Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'im
 Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
 
 Route::get('admin', function () {
-    return Inertia::render('Admin');
+    return redirect('/admin/theatre');
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::prefix('admin')
