@@ -91,7 +91,7 @@ watch( // To pre-select a theatre otherwise things go boom
 )
 
 const onSubmit = handleSubmit((newValues) => {
-    router.post(`/photosphere`, newValues,
+    router.post(route('api.v1.photo.store'), newValues,
         {
             forceFormData: true, // ensures nested arrays + optional file work
             preserveScroll: true,

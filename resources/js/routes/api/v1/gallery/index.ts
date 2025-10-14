@@ -1,8 +1,8 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/gallery',
+    url: '/api/v1/gallery',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/gallery'
+* @route '/api/v1/gallery'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -81,65 +81,9 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 index.form = indexForm
 
 /**
-* @see \App\Http\Controllers\GalleryController::store
-* @see app/Http/Controllers/GalleryController.php:44
-* @route '/gallery'
-*/
-export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-store.definition = {
-    methods: ["post"],
-    url: '/gallery',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\GalleryController::store
-* @see app/Http/Controllers/GalleryController.php:44
-* @route '/gallery'
-*/
-store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\GalleryController::store
-* @see app/Http/Controllers/GalleryController.php:44
-* @route '/gallery'
-*/
-store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\GalleryController::store
-* @see app/Http/Controllers/GalleryController.php:44
-* @route '/gallery'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\GalleryController::store
-* @see app/Http/Controllers/GalleryController.php:44
-* @route '/gallery'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
-
-/**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 export const show = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -148,13 +92,13 @@ export const show = (args: { gallery: string | number } | [gallery: string | num
 
 show.definition = {
     methods: ["get","head"],
-    url: '/gallery/{gallery}',
+    url: '/api/v1/gallery/{gallery}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 show.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -181,7 +125,7 @@ show.url = (args: { gallery: string | number } | [gallery: string | number ] | s
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 show.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -191,7 +135,7 @@ show.get = (args: { gallery: string | number } | [gallery: string | number ] | s
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 show.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
@@ -201,7 +145,7 @@ show.head = (args: { gallery: string | number } | [gallery: string | number ] | 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 const showForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -211,7 +155,7 @@ const showForm = (args: { gallery: string | number } | [gallery: string | number
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 showForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -221,7 +165,7 @@ showForm.get = (args: { gallery: string | number } | [gallery: string | number ]
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 showForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
@@ -236,9 +180,65 @@ showForm.head = (args: { gallery: string | number } | [gallery: string | number 
 show.form = showForm
 
 /**
+* @see \App\Http\Controllers\GalleryController::store
+* @see app/Http/Controllers/GalleryController.php:44
+* @route '/api/v1/gallery'
+*/
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/api/v1/gallery',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\GalleryController::store
+* @see app/Http/Controllers/GalleryController.php:44
+* @route '/api/v1/gallery'
+*/
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\GalleryController::store
+* @see app/Http/Controllers/GalleryController.php:44
+* @route '/api/v1/gallery'
+*/
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\GalleryController::store
+* @see app/Http/Controllers/GalleryController.php:44
+* @route '/api/v1/gallery'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\GalleryController::store
+* @see app/Http/Controllers/GalleryController.php:44
+* @route '/api/v1/gallery'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
+
+/**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 export const update = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -247,13 +247,13 @@ export const update = (args: { gallery: string | number } | [gallery: string | n
 
 update.definition = {
     methods: ["put","patch"],
-    url: '/gallery/{gallery}',
+    url: '/api/v1/gallery/{gallery}',
 } satisfies RouteDefinition<["put","patch"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 update.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -280,7 +280,7 @@ update.url = (args: { gallery: string | number } | [gallery: string | number ] |
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 update.put = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -290,7 +290,7 @@ update.put = (args: { gallery: string | number } | [gallery: string | number ] |
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 update.patch = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
@@ -300,7 +300,7 @@ update.patch = (args: { gallery: string | number } | [gallery: string | number ]
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 const updateForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -315,7 +315,7 @@ const updateForm = (args: { gallery: string | number } | [gallery: string | numb
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 updateForm.put = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -330,7 +330,7 @@ updateForm.put = (args: { gallery: string | number } | [gallery: string | number
 /**
 * @see \App\Http\Controllers\GalleryController::update
 * @see app/Http/Controllers/GalleryController.php:97
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 updateForm.patch = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -347,7 +347,7 @@ update.form = updateForm
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
 * @see app/Http/Controllers/GalleryController.php:126
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 export const destroy = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -356,13 +356,13 @@ export const destroy = (args: { gallery: string | number } | [gallery: string | 
 
 destroy.definition = {
     methods: ["delete"],
-    url: '/gallery/{gallery}',
+    url: '/api/v1/gallery/{gallery}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
 * @see app/Http/Controllers/GalleryController.php:126
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 destroy.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -389,7 +389,7 @@ destroy.url = (args: { gallery: string | number } | [gallery: string | number ] 
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
 * @see app/Http/Controllers/GalleryController.php:126
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 destroy.delete = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -399,7 +399,7 @@ destroy.delete = (args: { gallery: string | number } | [gallery: string | number
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
 * @see app/Http/Controllers/GalleryController.php:126
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 const destroyForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -414,7 +414,7 @@ const destroyForm = (args: { gallery: string | number } | [gallery: string | num
 /**
 * @see \App\Http\Controllers\GalleryController::destroy
 * @see app/Http/Controllers/GalleryController.php:126
-* @route '/gallery/{gallery}'
+* @route '/api/v1/gallery/{gallery}'
 */
 destroyForm.delete = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -430,8 +430,8 @@ destroy.form = destroyForm
 
 const gallery = {
     index: Object.assign(index, index),
-    store: Object.assign(store, store),
     show: Object.assign(show, show),
+    store: Object.assign(store, store),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
 }

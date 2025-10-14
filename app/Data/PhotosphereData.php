@@ -40,7 +40,7 @@ class PhotosphereData extends Data {
             galleries:  Lazy::whenLoaded('galleries', $photosphere,
                 fn () => GalleryData::collect($photosphere->galleries ?? collect(), DataCollection::class),
             ),
-            navigation_anchors: Lazy::whenLoaded('navigation_anchors', $photosphere,
+            navigation_anchors: Lazy::whenLoaded('navigationAnchors', $photosphere,
                 fn () => NavigationAnchorData::collect($photosphere->navigationAnchors ?? collect(), DataCollection::class),
             )
         );

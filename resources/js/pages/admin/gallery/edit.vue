@@ -67,7 +67,7 @@ const submit = handleSubmit((vals) => {
     pendingFiles.forEach((f, i) => fd.append(`photos[${i}]`, f));
 
     fd.append('_method', 'PUT');
-    router.post(`/gallery/${props.gallery.id}`, fd, {
+    router.post(route('api.v1.gallery.store', props.gallery.id), fd, {
         forceFormData: true,
         preserveState: false,
         preserveScroll: true,
@@ -81,7 +81,7 @@ const submit = handleSubmit((vals) => {
 
 function updateDescription(photo: object, description: string) {
     router.put(
-        route('photo.update', { photo, description: description }),
+        route('api.v1.photo.update', { photo, description: description }),
         { description },
         {
             onSuccess: () => toast.success('Description saved'),
@@ -94,7 +94,7 @@ function updateDescription(photo: object, description: string) {
 
 function removePhoto(photoId: number) {
     if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
-        router.delete(route('photo.destroy', { photo: photoId }), {
+        router.delete(route('api.v1.photo.destroy', { photo: photoId }), {
             onSuccess: () => toast.success('Photo removed'),
             onError: () => toast.error('Delete failed'),
         });

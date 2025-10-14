@@ -79,7 +79,7 @@ const { handleSubmit, setFieldValue, values } = useForm<FormValues>({
 const { fields: galleryRows, push: addGallery, remove: removeGallery } = useFieldArray<GalleryItem>('galleries')
 
 const onSubmit = handleSubmit((newValues) => {
-    router.post(`/photosphere/${props.photosphere.id}`, { ...newValues, _method: 'put' },
+    router.post(route('api.v1.photosphere.store', props.photosphere.id), { ...newValues, _method: 'put' },
         {
             forceFormData: true, // ensures nested arrays + optional file work
             preserveScroll: true,

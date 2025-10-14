@@ -23,7 +23,7 @@ defineProps({
 
 const onDelete = (id: number) => {
     if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
-        router.delete(route('photosphere.destroy', { photosphere: id }), {
+        router.delete(route('api.v1.photosphere.destroy', { photosphere: id }), {
             preserveScroll: true,
             onSuccess: () => {
                 toast('Photosphere deleted!');

@@ -65,13 +65,13 @@ const { handleSubmit, setFieldValue } = useForm<FormInput>({
 /** Submit */
 const onSubmit = handleSubmit((values) => {
     if (props.mode === 'create') {
-        router.post(route('navigation-anchor.store'), values, {
+        router.post(route('api.v1.navigation-anchor.store'), values, {
             preserveScroll: true,
             onSuccess: () => toast.success('Navigation anchor created'),
             onError: () => toast.error('Failed to create navigation anchor'),
         })
     } else if (props.initial?.id) {
-        router.put(route('navigation-anchor.update', props.initial.id), values, {
+        router.put(route('api.v1.navigation-anchor.update', props.initial.id), values, {
             preserveScroll: true,
             onSuccess: () => toast.success('Navigation anchor updated'),
             onError: () => toast.error('Failed to update navigation anchor'),
@@ -82,8 +82,8 @@ const onSubmit = handleSubmit((values) => {
 /** Optional: quick JSON ingest helper */
 function ingestJson(raw: string) {
     try {
-        const j = JSON.parse(raw)
-        ;(['photosphere_id','target_photosphere_id','name','longitude','latitude'] as const).forEach((k) => {
+        const j = JSON.parse(raw);
+        (['photosphere_id','target_photosphere_id','name','longitude','latitude'] as const).forEach((k) => {
             if (j[k] !== undefined) setFieldValue(k, j[k])
         })
         toast.success('Fields populated from JSON')

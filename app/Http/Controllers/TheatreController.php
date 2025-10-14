@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\TheatreData;
+use App\Models\Photosphere;
 use Illuminate\Http\Request;
 
 use Inertia\Inertia;
@@ -14,7 +15,9 @@ class TheatreController extends Controller {
      * Display a listing of the resource.
      */
     public function index(Request $request) {
-        $theatres = Theatre::all();
+        $theatres = Theatre::with([
+            'photospheres',
+        ])->get();
 
         if (!$request->routeIs('admin.*')) {
             return TheatreData::collect($theatres);
@@ -54,7 +57,11 @@ class TheatreController extends Controller {
      * Display the specified resource.
      */
     public function show(Request $request, string $id) {
-        $theatre = Theatre::with('photospheres')->findOrFail($id);
+        $theatre = Theatre::with([
+            'photospheres',
+            'photospheres.galleries',
+            'photospheres.navigationAnchors',
+        ])->findOrFail($id);
 
         if (!$request->routeIs('admin.*')) {
             return TheatreData::from($theatre);

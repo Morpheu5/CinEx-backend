@@ -22,7 +22,7 @@ defineProps<{
 
 const onDelete = (id: number) => {
     if(confirm("This action cannot be undone. Are you sure you want to proceed?")) {
-        router.delete(`/theatre/${id}`, {
+        router.delete(route('api.v1.theatre.destroy', id), {
             preserveScroll: true,
             onSuccess: () => {
 

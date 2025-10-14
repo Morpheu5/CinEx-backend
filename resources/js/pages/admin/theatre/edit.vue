@@ -54,7 +54,7 @@ const { handleSubmit } = useForm<TheatreSchema>({
 });
 
 const submit = handleSubmit((values) => {
-    router.put(`/theatre/${props.theatre.id}`, values, {
+    router.put(route('api.v1.theatre.update', props.theatre.id), values, {
         preserveScroll: true,
         onError: (errors) => {
             toast.error(JSON.stringify(errors));
@@ -67,7 +67,7 @@ const submit = handleSubmit((values) => {
 
 const onDelete = () => {
     if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
-        router.delete(`/theatre/${props.theatre.id}`, {
+        router.delete(route('api.v1.theatre.destroy', props.theatre.id), {
             preserveScroll: true,
             onSuccess: () => {},
         });

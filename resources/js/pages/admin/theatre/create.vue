@@ -49,7 +49,7 @@ const { handleSubmit } = useForm<TheatreSchema>({
 });
 
 const onSubmit = handleSubmit((values) => {
-    router.post(route('theatre.store'), values, {
+    router.post(route('api.v1.theatre.store'), values, {
         preserveScroll: true,
         onError: (errors) => {
             console.log(errors)

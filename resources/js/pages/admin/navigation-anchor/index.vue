@@ -24,7 +24,7 @@ const props = defineProps<{
 
 const onDelete = (id: number) => {
     if (confirm('This action cannot be undone. Are you sure you want to proceed?')) {
-        router.delete(route('navigation-anchor.destroy', { navigation_anchor: id }), {
+        router.delete(route('api.v1.navigation-anchor.destroy', { navigation_anchor: id }), {
             preserveScroll: true,
             onSuccess: () => {
                 toast('Navigation anchor deleted!');

@@ -60,7 +60,7 @@ const submit = handleSubmit(vals => {
     if (vals.longitude !== undefined) fd.append('longitude', String(vals.longitude))
     pendingFiles.forEach((f, i) => fd.append(`photos[${i}]`, f))
 
-    router.post(route('gallery.store'), fd, {
+    router.post(route('api.v1.gallery.store'), fd, {
         forceFormData: true,
         onSuccess: () => toast.success('Gallery created'),
         onError: () => toast.error('Validation failed'),

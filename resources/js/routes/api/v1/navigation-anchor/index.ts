@@ -1,8 +1,8 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/navigation-anchor',
+    url: '/api/v1/navigation-anchor',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::index
 * @see app/Http/Controllers/NavigationAnchorController.php:15
-* @route '/navigation-anchor'
+* @route '/api/v1/navigation-anchor'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -81,65 +81,9 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 index.form = indexForm
 
 /**
-* @see \App\Http\Controllers\NavigationAnchorController::store
-* @see app/Http/Controllers/NavigationAnchorController.php:38
-* @route '/navigation-anchor'
-*/
-export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-store.definition = {
-    methods: ["post"],
-    url: '/navigation-anchor',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\NavigationAnchorController::store
-* @see app/Http/Controllers/NavigationAnchorController.php:38
-* @route '/navigation-anchor'
-*/
-store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\NavigationAnchorController::store
-* @see app/Http/Controllers/NavigationAnchorController.php:38
-* @route '/navigation-anchor'
-*/
-store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\NavigationAnchorController::store
-* @see app/Http/Controllers/NavigationAnchorController.php:38
-* @route '/navigation-anchor'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \App\Http\Controllers\NavigationAnchorController::store
-* @see app/Http/Controllers/NavigationAnchorController.php:38
-* @route '/navigation-anchor'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
-
-/**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 export const show = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -148,13 +92,13 @@ export const show = (args: { navigation_anchor: string | number } | [navigation_
 
 show.definition = {
     methods: ["get","head"],
-    url: '/navigation-anchor/{navigation_anchor}',
+    url: '/api/v1/navigation-anchor/{navigation_anchor}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 show.url = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -181,7 +125,7 @@ show.url = (args: { navigation_anchor: string | number } | [navigation_anchor: s
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 show.get = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -191,7 +135,7 @@ show.get = (args: { navigation_anchor: string | number } | [navigation_anchor: s
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 show.head = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
@@ -201,7 +145,7 @@ show.head = (args: { navigation_anchor: string | number } | [navigation_anchor: 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 const showForm = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -211,7 +155,7 @@ const showForm = (args: { navigation_anchor: string | number } | [navigation_anc
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 showForm.get = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -221,7 +165,7 @@ showForm.get = (args: { navigation_anchor: string | number } | [navigation_ancho
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 showForm.head = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
@@ -236,9 +180,65 @@ showForm.head = (args: { navigation_anchor: string | number } | [navigation_anch
 show.form = showForm
 
 /**
+* @see \App\Http\Controllers\NavigationAnchorController::store
+* @see app/Http/Controllers/NavigationAnchorController.php:38
+* @route '/api/v1/navigation-anchor'
+*/
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/api/v1/navigation-anchor',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\NavigationAnchorController::store
+* @see app/Http/Controllers/NavigationAnchorController.php:38
+* @route '/api/v1/navigation-anchor'
+*/
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\NavigationAnchorController::store
+* @see app/Http/Controllers/NavigationAnchorController.php:38
+* @route '/api/v1/navigation-anchor'
+*/
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\NavigationAnchorController::store
+* @see app/Http/Controllers/NavigationAnchorController.php:38
+* @route '/api/v1/navigation-anchor'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\NavigationAnchorController::store
+* @see app/Http/Controllers/NavigationAnchorController.php:38
+* @route '/api/v1/navigation-anchor'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
+
+/**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 export const update = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -247,13 +247,13 @@ export const update = (args: { navigation_anchor: string | number } | [navigatio
 
 update.definition = {
     methods: ["put","patch"],
-    url: '/navigation-anchor/{navigation_anchor}',
+    url: '/api/v1/navigation-anchor/{navigation_anchor}',
 } satisfies RouteDefinition<["put","patch"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 update.url = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -280,7 +280,7 @@ update.url = (args: { navigation_anchor: string | number } | [navigation_anchor:
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 update.put = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -290,7 +290,7 @@ update.put = (args: { navigation_anchor: string | number } | [navigation_anchor:
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 update.patch = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
@@ -300,7 +300,7 @@ update.patch = (args: { navigation_anchor: string | number } | [navigation_ancho
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 const updateForm = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -315,7 +315,7 @@ const updateForm = (args: { navigation_anchor: string | number } | [navigation_a
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 updateForm.put = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -330,7 +330,7 @@ updateForm.put = (args: { navigation_anchor: string | number } | [navigation_anc
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
 * @see app/Http/Controllers/NavigationAnchorController.php:62
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 updateForm.patch = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -347,7 +347,7 @@ update.form = updateForm
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
 * @see app/Http/Controllers/NavigationAnchorController.php:68
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 export const destroy = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -356,13 +356,13 @@ export const destroy = (args: { navigation_anchor: string | number } | [navigati
 
 destroy.definition = {
     methods: ["delete"],
-    url: '/navigation-anchor/{navigation_anchor}',
+    url: '/api/v1/navigation-anchor/{navigation_anchor}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
 * @see app/Http/Controllers/NavigationAnchorController.php:68
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 destroy.url = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -389,7 +389,7 @@ destroy.url = (args: { navigation_anchor: string | number } | [navigation_anchor
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
 * @see app/Http/Controllers/NavigationAnchorController.php:68
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 destroy.delete = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -399,7 +399,7 @@ destroy.delete = (args: { navigation_anchor: string | number } | [navigation_anc
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
 * @see app/Http/Controllers/NavigationAnchorController.php:68
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 const destroyForm = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -414,7 +414,7 @@ const destroyForm = (args: { navigation_anchor: string | number } | [navigation_
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
 * @see app/Http/Controllers/NavigationAnchorController.php:68
-* @route '/navigation-anchor/{navigation_anchor}'
+* @route '/api/v1/navigation-anchor/{navigation_anchor}'
 */
 destroyForm.delete = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -430,8 +430,8 @@ destroy.form = destroyForm
 
 const navigationAnchor = {
     index: Object.assign(index, index),
-    store: Object.assign(store, store),
     show: Object.assign(show, show),
+    store: Object.assign(store, store),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
 }
