@@ -16,11 +16,11 @@ class TheatreController extends Controller {
     public function index(Request $request) {
         $theatres = Theatre::all();
 
-        if (!$request->routeIs('dashboard.*')) {
+        if (!$request->routeIs('admin.*')) {
             return TheatreData::collect($theatres);
         }
 
-        return Inertia::render('dashboard/theatre/index', [
+        return Inertia::render('admin/theatre/index', [
             'theatres' => TheatreData::collect($theatres),
         ]);
     }
@@ -29,7 +29,7 @@ class TheatreController extends Controller {
      * Show the form for creating a new resource.
      */
     public function create() {
-        return Inertia::render('dashboard/theatre/create');
+        return Inertia::render('admin/theatre/create');
     }
 
     /**
@@ -46,7 +46,7 @@ class TheatreController extends Controller {
 
         $theatre = $request->user()->theatres()->create($data);
 
-        return redirect()->route('dashboard.theatre.edit', $theatre->id)
+        return redirect()->route('admin.theatre.edit', $theatre->id)
             ->with('success', 'Theatre created.');
     }
 
@@ -56,11 +56,11 @@ class TheatreController extends Controller {
     public function show(Request $request, string $id) {
         $theatre = Theatre::with('photospheres')->findOrFail($id);
 
-        if (!$request->routeIs('dashboard.*')) {
+        if (!$request->routeIs('admin.*')) {
             return TheatreData::from($theatre);
         }
 
-        return Inertia::render('dashboard/theatre/show', [
+        return Inertia::render('admin/theatre/show', [
             'theatre' => TheatreData::from($theatre),
         ]);
     }
@@ -71,7 +71,7 @@ class TheatreController extends Controller {
     public function edit(Request $request, string $id) {
         $theatre = Theatre::with('photospheres')->findOrFail($id);
 
-        return Inertia::render('dashboard/theatre/edit', [
+        return Inertia::render('admin/theatre/edit', [
             'theatre' => TheatreData::from($theatre),
         ]);
     }
@@ -91,7 +91,7 @@ class TheatreController extends Controller {
         $theatre->update($data);
 
         return redirect()
-            ->route('dashboard.theatre.edit', $theatre)
+            ->route('admin.theatre.edit', $theatre)
             ->with('success', 'Theatre updated!');
     }
 

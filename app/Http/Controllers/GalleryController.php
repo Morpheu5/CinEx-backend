@@ -19,11 +19,11 @@ class GalleryController extends Controller
     public function index(Request $request) {
         $all = Gallery::with('photosphere')->get();
 
-        if (!$request->routeIs('dashboard.*')) {
+        if (!$request->routeIs('admin.*')) {
             return GalleryData::collect($all);
         }
 
-        return Inertia::render('dashboard/gallery/index', [
+        return Inertia::render('admin/gallery/index', [
             'galleries' => GalleryData::collect($all),
         ]);
     }
@@ -33,7 +33,7 @@ class GalleryController extends Controller
      */
     public function create() {
         $photospheres = Photosphere::all();
-        return Inertia::render('dashboard/gallery/create', [
+        return Inertia::render('admin/gallery/create', [
             'photospheres' => $photospheres,
         ]);
     }
@@ -64,7 +64,7 @@ class GalleryController extends Controller
             }
         }
 
-        return redirect()->route('dashboard.gallery.edit', $gallery)
+        return redirect()->route('admin.gallery.edit', $gallery)
             ->with('success', 'Gallery created successfully.');
     }
 
@@ -73,7 +73,7 @@ class GalleryController extends Controller
      */
     public function show(string $id) {
         $gallery = Gallery::with(['photosphere', 'photos'])->findOrFail($id);
-        return Inertia::render('dashboard/gallery/show', [
+        return Inertia::render('admin/gallery/show', [
             'gallery' => GalleryData::from($gallery),
         ]);
     }
@@ -85,7 +85,7 @@ class GalleryController extends Controller
         $gallery = Gallery::with(['photosphere', 'photos'])->findOrFail($id);
         $photospheres = Photosphere::select(['id', 'name'])->get();
 
-        return Inertia::render('dashboard/gallery/edit', [
+        return Inertia::render('admin/gallery/edit', [
             'gallery' => $gallery,
             'photospheres' => $photospheres,
         ]);
@@ -116,7 +116,7 @@ class GalleryController extends Controller
             }
         }
 
-        return redirect()->route('dashboard.gallery.edit', $gallery)
+        return redirect()->route('admin.gallery.edit', $gallery)
             ->setStatusCode(303);
     }
 
@@ -126,7 +126,7 @@ class GalleryController extends Controller
     public function destroy(string $id) {
         $gallery = Gallery::with('photos')->findOrFail($id);
         $gallery->delete();
-        return redirect()->route('dashboard.gallery.index')
+        return redirect()->route('admin.gallery.index')
             ->with('success', 'Gallery deleted successfully.');
     }
 }

@@ -75,68 +75,68 @@ home.form = homeForm
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: dashboard.url(options),
+export const admin = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: admin.url(options),
     method: 'get',
 })
 
-dashboard.definition = {
+admin.definition = {
     methods: ["get","head"],
-    url: '/dashboard',
+    url: '/admin',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-dashboard.url = (options?: RouteQueryOptions) => {
-    return dashboard.definition.url + queryParams(options)
+admin.url = (options?: RouteQueryOptions) => {
+    return admin.definition.url + queryParams(options)
 }
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: dashboard.url(options),
+admin.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: admin.url(options),
     method: 'get',
 })
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: dashboard.url(options),
+admin.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: admin.url(options),
     method: 'head',
 })
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
+const adminForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: admin.url(options),
     method: 'get',
 })
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url(options),
+adminForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: admin.url(options),
     method: 'get',
 })
 
 /**
 * @see routes/web.php:17
-* @route '/dashboard'
+* @route '/admin'
 */
-dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: dashboard.url({
+adminForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: admin.url({
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -145,7 +145,7 @@ dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
     method: 'get',
 })
 
-dashboard.form = dashboardForm
+admin.form = adminForm
 
 /**
 * @see routes/settings.php:21

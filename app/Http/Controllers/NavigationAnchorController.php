@@ -21,7 +21,7 @@ class NavigationAnchorController extends Controller
 
         $photospheres = Photosphere::orderBy('name')->get();
 
-        return Inertia::render('dashboard/navigation-anchor/index', [
+        return Inertia::render('admin/navigation-anchor/index', [
             'anchors' => NavigationAnchorData::collect($anchors),
             'photospheres' => PhotosphereData::collect($photospheres),
         ]);
@@ -30,7 +30,7 @@ class NavigationAnchorController extends Controller
     public function create()
     {
         $photospheres = Photosphere::query()->select('id','name')->orderBy('name')->get();
-        return Inertia::render('dashboard/navigation-anchor/create', [
+        return Inertia::render('admin/navigation-anchor/create', [
             'photospheres' => $photospheres,
         ]);
     }
@@ -38,38 +38,37 @@ class NavigationAnchorController extends Controller
     public function store(StoreNavigationAnchorRequest $request)
     {
         $a = $request->user()->navigationAnchors()->create($request->validated());
-        return to_route('dashboard.navigation-anchor.edit', $a)
+        return to_route('admin.navigation-anchor.edit', $a)
             ->with('success', 'Navigation anchor created.');
     }
 
-    public function show(NavigationAnchor $navigationAnchor)
+    public function show(string $id)
     {
-        $navigationAnchor->with(['photosphere','target'])->get();
-        return Inertia::render('dashboard/navigation-anchor/show', [
+        $navigationAnchor = NavigationAnchor::with(['photosphere','target'])->findOrFail($id);
+        return Inertia::render('admin/navigation-anchor/show', [
             'anchor' => NavigationAnchorData::from($navigationAnchor),
         ]);
     }
 
-    public function edit(NavigationAnchor $navigationAnchor)
-    {
-        $navigationAnchor->with(['photosphere','target'])->get();
+    public function edit(string $id) {
+        $navigationAnchor = NavigationAnchor::with(['photosphere','target'])->findOrFail($id);
         $photospheres = Photosphere::orderBy('name')->get();
-        return Inertia::render('dashboard/navigation-anchor/edit', [
+        return Inertia::render('admin/navigation-anchor/edit', [
             'anchor' => NavigationAnchorData::from($navigationAnchor),
             'photospheres' => PhotosphereData::collect($photospheres),
         ]);
     }
 
-    public function update(UpdateNavigationAnchorRequest $request, NavigationAnchor $navigationAnchor)
-    {
+    public function update(UpdateNavigationAnchorRequest $request, string $id) {
+        $navigationAnchor = NavigationAnchor::findOrFail($id);
         $navigationAnchor->update($request->validated());
         return back()->with('success', 'Navigation anchor updated.');
     }
 
-    public function destroy(NavigationAnchor $navigationAnchor)
-    {
+    public function destroy(string $id) {
+        $navigationAnchor = NavigationAnchor::findOrFail($id);
         $navigationAnchor->delete();
-        return to_route('dashboard.navigation-anchor.index')
+        return to_route('admin.navigation-anchor.index')
             ->with('success', 'Navigation anchor deleted.');
     }
 }

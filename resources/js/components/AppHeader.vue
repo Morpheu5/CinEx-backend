@@ -11,7 +11,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import UserMenuContent from '@/components/UserMenuContent.vue';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl, urlIsActive } from '@/lib/utils';
-import { dashboard } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-vue-next';
@@ -37,25 +36,25 @@ const activeItemStyles = computed(
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard(),
+        title: 'Admin',
+        href: route('admin'),
         icon: LayoutGrid,
     },
     {
         title: 'Theatres',
-        href: '/dashboard/theatre',
+        href: '/admin/theatre',
     },
     {
         title: 'Photospheres',
-        href: '/dashboard/photosphere',
+        href: '/admin/photosphere',
     },
     {
         title: 'Galleries',
-        href: '/dashboard/gallery',
+        href: '/admin/gallery',
     },
     {
         title: 'Navigation Anchors',
-        href: '/dashboard/navigation-anchor',
+        href: '/admin/navigation-anchor',
     }
 ];
 
@@ -121,7 +120,7 @@ const rightNavItems: NavItem[] = [
                     </Sheet>
                 </div>
 
-                <Link :href="dashboard()" class="flex items-center gap-x-2">
+                <Link :href="route('admin')" class="flex items-center gap-x-2">
                     <AppLogo />
                 </Link>
 

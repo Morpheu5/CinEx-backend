@@ -14,38 +14,46 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('admin', function () {
+    return Inertia::render('Admin');
+})->middleware(['auth', 'verified'])->name('admin');
 
 
 Route::apiResource('user', UserController::class);
-Route::apiResource('theatre', TheatreController::class);
-Route::apiResource('photosphere', PhotosphereController::class);
-Route::apiResource('gallery', GalleryController::class);
-Route::apiResource('photo', PhotoController::class)->only(['update', 'destroy']);
-Route::apiResource('navigation-anchor', NavigationAnchorController::class);
 
+Route::apiResource('theatre', TheatreController::class);
+
+Route::apiResource('photosphere', PhotosphereController::class);
 Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'image'])->name('photosphere.image');
+
+Route::apiResource('gallery', GalleryController::class);
+
+Route::apiResource('photo', PhotoController::class);
 Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('dashboard.theatre.index');
-    Route::get('theatre/new', [App\Http\Controllers\TheatreController::class, 'create'])->name('dashboard.theatre.create');
-    Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('dashboard.theatre.show');
-    Route::get('theatre/{theatre}/edit', [App\Http\Controllers\TheatreController::class, 'edit'])->name('dashboard.theatre.edit');
+Route::apiResource('navigation-anchor', NavigationAnchorController::class);
 
-    Route::get('photosphere', [App\Http\Controllers\PhotosphereController::class, 'index'])->name('dashboard.photosphere.index');
-    Route::get('photosphere/new', [App\Http\Controllers\PhotosphereController::class, 'create'])->name('dashboard.photosphere.create');
-    Route::get('photosphere/{photosphere}', [App\Http\Controllers\PhotosphereController::class, 'show'])->name('dashboard.photosphere.show');
-    Route::get('photosphere/{photosphere}/edit', [App\Http\Controllers\PhotosphereController::class, 'edit'])->name('dashboard.photosphere.edit');
 
-    Route::get('gallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('dashboard.gallery.index');
-    Route::get('gallery/new', [App\Http\Controllers\GalleryController::class, 'create'])->name('dashboard.gallery.create');
-    Route::get('gallery/{gallery}', [App\Http\Controllers\GalleryController::class, 'show'])->name('dashboard.gallery.show');
-    Route::get('gallery/{gallery}/edit', [App\Http\Controllers\GalleryController::class, 'edit'])->name('dashboard.gallery.edit');
+Route::prefix('admin')->group(function () {
+    Route::get('theatre', [App\Http\Controllers\TheatreController::class, 'index'])->name('admin.theatre.index');
+    Route::get('theatre/create', [App\Http\Controllers\TheatreController::class, 'create'])->name('admin.theatre.create');
+    Route::get('theatre/{theatre}', [App\Http\Controllers\TheatreController::class, 'show'])->name('admin.theatre.show');
+    Route::get('theatre/{theatre}/edit', [App\Http\Controllers\TheatreController::class, 'edit'])->name('admin.theatre.edit');
 
-    Route::resource('navigation-anchor', NavigationAnchorController::class, ['as' => 'dashboard']);
+    Route::get('photosphere', [App\Http\Controllers\PhotosphereController::class, 'index'])->name('admin.photosphere.index');
+    Route::get('photosphere/create', [App\Http\Controllers\PhotosphereController::class, 'create'])->name('admin.photosphere.create');
+    Route::get('photosphere/{photosphere}', [App\Http\Controllers\PhotosphereController::class, 'show'])->name('admin.photosphere.show');
+    Route::get('photosphere/{photosphere}/edit', [App\Http\Controllers\PhotosphereController::class, 'edit'])->name('admin.photosphere.edit');
+
+    Route::get('gallery', [App\Http\Controllers\GalleryController::class, 'index'])->name('admin.gallery.index');
+    Route::get('gallery/create', [App\Http\Controllers\GalleryController::class, 'create'])->name('admin.gallery.create');
+    Route::get('gallery/{gallery}', [App\Http\Controllers\GalleryController::class, 'show'])->name('admin.gallery.show');
+    Route::get('gallery/{gallery}/edit', [App\Http\Controllers\GalleryController::class, 'edit'])->name('admin.gallery.edit');
+
+    Route::get('navigation-anchor', [App\Http\Controllers\NavigationAnchorController::class, 'index'])->name('admin.navigation-anchor.index');
+    Route::get('navigation-anchor/create', [App\Http\Controllers\NavigationAnchorController::class, 'create'])->name('admin.navigation-anchor.create');
+    Route::get('navigation-anchor/{gallery}', [App\Http\Controllers\NavigationAnchorController::class, 'show'])->name('admin.navigation-anchor.show');
+    Route::get('navigation-anchor/{gallery}/edit', [App\Http\Controllers\NavigationAnchorController::class, 'edit'])->name('admin.navigation-anchor.edit');
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';

@@ -21,11 +21,11 @@ class PhotosphereController extends Controller {
     public function index(Request $request) {
         $all = Photosphere::with(['theatre'])->get();
 
-        if (!$request->routeIs('dashboard.*')) {
+        if (!$request->routeIs('admin.*')) {
             return PhotosphereData::collect($all);
         }
 
-        return Inertia::render('dashboard/photosphere/index', [
+        return Inertia::render('admin/photosphere/index', [
             'photospheres' => PhotosphereData::collect($all),
         ]);
     }
@@ -39,7 +39,7 @@ class PhotosphereController extends Controller {
             ->orderBy('name')
             ->get();
 
-        return Inertia::render('dashboard/photosphere/create', [
+        return Inertia::render('admin/photosphere/create', [
             'theatres' => $theatres,
         ]);
     }
@@ -91,7 +91,7 @@ class PhotosphereController extends Controller {
         });
 
         return redirect()
-            ->route('dashboard.photosphere.edit', $photosphere->id) // or your index
+            ->route('admin.photosphere.edit', $photosphere->id) // or your index
             ->setStatusCode(303);
     }
 
@@ -101,11 +101,11 @@ class PhotosphereController extends Controller {
     public function show(Request $request, string $id) {
         $photosphere = Photosphere::with(['theatre', 'galleries', 'navigationAnchors.target'])->findOrFail($id);
 
-        if (!$request->routeIs('dashboard.*')) {
+        if (!$request->routeIs('admin.*')) {
             return $photosphere;
         }
 
-        return Inertia::render('dashboard/photosphere/show', [
+        return Inertia::render('admin/photosphere/show', [
             'photosphere' => PhotosphereData::from($photosphere),
         ]);
     }
@@ -121,7 +121,7 @@ class PhotosphereController extends Controller {
     public function edit(Photosphere $photosphere) {
         $photosphere->load(['theatre', 'galleries']);
 
-        return Inertia::render('dashboard/photosphere/edit', [
+        return Inertia::render('admin/photosphere/edit', [
             'photosphere' => PhotosphereData::from($photosphere),
             'theatres' => Theatre::select('id','name')->orderBy('name')->get(),
         ]);
@@ -221,7 +221,7 @@ class PhotosphereController extends Controller {
             }
         });
 
-        return redirect()->route('dashboard.photosphere.edit', $photosphere)
+        return redirect()->route('admin.photosphere.edit', $photosphere)
             ->setStatusCode(303);
     }
 
@@ -243,7 +243,7 @@ class PhotosphereController extends Controller {
         });
 
         return redirect()
-            ->route('dashboard.photosphere.index')
+            ->route('admin.photosphere.index')
             ->with('success', 'Photosphere deleted');
     }
 }

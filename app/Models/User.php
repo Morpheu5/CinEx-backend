@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,23 +45,23 @@ class User extends Authenticatable {
         ];
     }
 
-    public function theatres() {
+    public function theatres(): HasMany {
         return $this->hasMany(Theatre::class);
     }
 
-    public function photospheres() {
+    public function photospheres(): HasMany {
         return $this->hasMany(Photosphere::class);
     }
 
-    public function galleries() {
+    public function galleries(): HasMany {
         return $this->hasMany(Gallery::class);
     }
 
-    public function photos() {
-        return $this->hasMany(Photos::class);
+    public function photos(): HasMany {
+        return $this->hasMany(Photo::class);
     }
 
-    public function navigationAnchors() {
+    public function navigationAnchors(): HasMany {
         return $this->hasMany(NavigationAnchor::class);
     }
 }

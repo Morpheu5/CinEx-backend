@@ -237,7 +237,7 @@ show.form = showForm
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 export const update = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -252,7 +252,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 update.url = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -279,7 +279,7 @@ update.url = (args: { navigation_anchor: string | number } | [navigation_anchor:
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 update.put = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -289,7 +289,7 @@ update.put = (args: { navigation_anchor: string | number } | [navigation_anchor:
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 update.patch = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -299,7 +299,7 @@ update.patch = (args: { navigation_anchor: string | number } | [navigation_ancho
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 const updateForm = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -314,7 +314,7 @@ const updateForm = (args: { navigation_anchor: string | number } | [navigation_a
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 updateForm.put = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -329,7 +329,7 @@ updateForm.put = (args: { navigation_anchor: string | number } | [navigation_anc
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::update
-* @see app/Http/Controllers/NavigationAnchorController.php:63
+* @see app/Http/Controllers/NavigationAnchorController.php:62
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 updateForm.patch = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -346,7 +346,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
-* @see app/Http/Controllers/NavigationAnchorController.php:69
+* @see app/Http/Controllers/NavigationAnchorController.php:68
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 export const destroy = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -361,7 +361,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
-* @see app/Http/Controllers/NavigationAnchorController.php:69
+* @see app/Http/Controllers/NavigationAnchorController.php:68
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 destroy.url = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -388,7 +388,7 @@ destroy.url = (args: { navigation_anchor: string | number } | [navigation_anchor
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
-* @see app/Http/Controllers/NavigationAnchorController.php:69
+* @see app/Http/Controllers/NavigationAnchorController.php:68
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 destroy.delete = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -398,7 +398,7 @@ destroy.delete = (args: { navigation_anchor: string | number } | [navigation_anc
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
-* @see app/Http/Controllers/NavigationAnchorController.php:69
+* @see app/Http/Controllers/NavigationAnchorController.php:68
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 const destroyForm = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -413,7 +413,7 @@ const destroyForm = (args: { navigation_anchor: string | number } | [navigation_
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::destroy
-* @see app/Http/Controllers/NavigationAnchorController.php:69
+* @see app/Http/Controllers/NavigationAnchorController.php:68
 * @route '/navigation-anchor/{navigation_anchor}'
 */
 destroyForm.delete = (args: { navigation_anchor: string | number } | [navigation_anchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

@@ -82,74 +82,74 @@ indexc463a1f00bb7b652c89003948f522a19.form = indexc463a1f00bb7b652c89003948f522a
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-const index1e1a85cc2536811aeb2b4f71d3e56ed8 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index1e1a85cc2536811aeb2b4f71d3e56ed8.url(options),
+const index0ba2453b5db1828b00ed7dab28bfb223 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index0ba2453b5db1828b00ed7dab28bfb223.url(options),
     method: 'get',
 })
 
-index1e1a85cc2536811aeb2b4f71d3e56ed8.definition = {
+index0ba2453b5db1828b00ed7dab28bfb223.definition = {
     methods: ["get","head"],
-    url: '/dashboard/gallery',
+    url: '/admin/gallery',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-index1e1a85cc2536811aeb2b4f71d3e56ed8.url = (options?: RouteQueryOptions) => {
-    return index1e1a85cc2536811aeb2b4f71d3e56ed8.definition.url + queryParams(options)
+index0ba2453b5db1828b00ed7dab28bfb223.url = (options?: RouteQueryOptions) => {
+    return index0ba2453b5db1828b00ed7dab28bfb223.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-index1e1a85cc2536811aeb2b4f71d3e56ed8.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: index1e1a85cc2536811aeb2b4f71d3e56ed8.url(options),
+index0ba2453b5db1828b00ed7dab28bfb223.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index0ba2453b5db1828b00ed7dab28bfb223.url(options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-index1e1a85cc2536811aeb2b4f71d3e56ed8.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: index1e1a85cc2536811aeb2b4f71d3e56ed8.url(options),
+index0ba2453b5db1828b00ed7dab28bfb223.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index0ba2453b5db1828b00ed7dab28bfb223.url(options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-const index1e1a85cc2536811aeb2b4f71d3e56ed8Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1e1a85cc2536811aeb2b4f71d3e56ed8.url(options),
+const index0ba2453b5db1828b00ed7dab28bfb223Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index0ba2453b5db1828b00ed7dab28bfb223.url(options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-index1e1a85cc2536811aeb2b4f71d3e56ed8Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1e1a85cc2536811aeb2b4f71d3e56ed8.url(options),
+index0ba2453b5db1828b00ed7dab28bfb223Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index0ba2453b5db1828b00ed7dab28bfb223.url(options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::index
 * @see app/Http/Controllers/GalleryController.php:19
-* @route '/dashboard/gallery'
+* @route '/admin/gallery'
 */
-index1e1a85cc2536811aeb2b4f71d3e56ed8Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1e1a85cc2536811aeb2b4f71d3e56ed8.url({
+index0ba2453b5db1828b00ed7dab28bfb223Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index0ba2453b5db1828b00ed7dab28bfb223.url({
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -158,11 +158,11 @@ index1e1a85cc2536811aeb2b4f71d3e56ed8Form.head = (options?: RouteQueryOptions): 
     method: 'get',
 })
 
-index1e1a85cc2536811aeb2b4f71d3e56ed8.form = index1e1a85cc2536811aeb2b4f71d3e56ed8Form
+index0ba2453b5db1828b00ed7dab28bfb223.form = index0ba2453b5db1828b00ed7dab28bfb223Form
 
 export const index = {
     '/gallery': indexc463a1f00bb7b652c89003948f522a19,
-    '/dashboard/gallery': index1e1a85cc2536811aeb2b4f71d3e56ed8,
+    '/admin/gallery': index0ba2453b5db1828b00ed7dab28bfb223,
 }
 
 /**
@@ -322,24 +322,24 @@ show3586bb447a0ac3279147fedafe82425f.form = show3586bb447a0ac3279147fedafe82425f
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-const show57e5663ca9c571a34511d058595402ce = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show57e5663ca9c571a34511d058595402ce.url(args, options),
+const show551bd38aeba70af4b9824406b531b7a4 = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show551bd38aeba70af4b9824406b531b7a4.url(args, options),
     method: 'get',
 })
 
-show57e5663ca9c571a34511d058595402ce.definition = {
+show551bd38aeba70af4b9824406b531b7a4.definition = {
     methods: ["get","head"],
-    url: '/dashboard/gallery/{gallery}',
+    url: '/admin/gallery/{gallery}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-show57e5663ca9c571a34511d058595402ce.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
+show551bd38aeba70af4b9824406b531b7a4.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { gallery: args }
     }
@@ -356,7 +356,7 @@ show57e5663ca9c571a34511d058595402ce.url = (args: { gallery: string | number } |
         gallery: args.gallery,
     }
 
-    return show57e5663ca9c571a34511d058595402ce.definition.url
+    return show551bd38aeba70af4b9824406b531b7a4.definition.url
             .replace('{gallery}', parsedArgs.gallery.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
@@ -364,50 +364,50 @@ show57e5663ca9c571a34511d058595402ce.url = (args: { gallery: string | number } |
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-show57e5663ca9c571a34511d058595402ce.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show57e5663ca9c571a34511d058595402ce.url(args, options),
+show551bd38aeba70af4b9824406b531b7a4.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show551bd38aeba70af4b9824406b531b7a4.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-show57e5663ca9c571a34511d058595402ce.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: show57e5663ca9c571a34511d058595402ce.url(args, options),
+show551bd38aeba70af4b9824406b531b7a4.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show551bd38aeba70af4b9824406b531b7a4.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-const show57e5663ca9c571a34511d058595402ceForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show57e5663ca9c571a34511d058595402ce.url(args, options),
+const show551bd38aeba70af4b9824406b531b7a4Form = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show551bd38aeba70af4b9824406b531b7a4.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-show57e5663ca9c571a34511d058595402ceForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show57e5663ca9c571a34511d058595402ce.url(args, options),
+show551bd38aeba70af4b9824406b531b7a4Form.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show551bd38aeba70af4b9824406b531b7a4.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\GalleryController::show
 * @see app/Http/Controllers/GalleryController.php:74
-* @route '/dashboard/gallery/{gallery}'
+* @route '/admin/gallery/{gallery}'
 */
-show57e5663ca9c571a34511d058595402ceForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show57e5663ca9c571a34511d058595402ce.url(args, {
+show551bd38aeba70af4b9824406b531b7a4Form.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show551bd38aeba70af4b9824406b531b7a4.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -416,11 +416,11 @@ show57e5663ca9c571a34511d058595402ceForm.head = (args: { gallery: string | numbe
     method: 'get',
 })
 
-show57e5663ca9c571a34511d058595402ce.form = show57e5663ca9c571a34511d058595402ceForm
+show551bd38aeba70af4b9824406b531b7a4.form = show551bd38aeba70af4b9824406b531b7a4Form
 
 export const show = {
     '/gallery/{gallery}': show3586bb447a0ac3279147fedafe82425f,
-    '/dashboard/gallery/{gallery}': show57e5663ca9c571a34511d058595402ce,
+    '/admin/gallery/{gallery}': show551bd38aeba70af4b9824406b531b7a4,
 }
 
 /**
@@ -619,7 +619,7 @@ destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
@@ -628,13 +628,13 @@ export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 create.definition = {
     methods: ["get","head"],
-    url: '/dashboard/gallery/new',
+    url: '/admin/gallery/create',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 create.url = (options?: RouteQueryOptions) => {
     return create.definition.url + queryParams(options)
@@ -643,7 +643,7 @@ create.url = (options?: RouteQueryOptions) => {
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
@@ -653,7 +653,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
@@ -663,7 +663,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: create.url(options),
@@ -673,7 +673,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: create.url(options),
@@ -683,7 +683,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \App\Http\Controllers\GalleryController::create
 * @see app/Http/Controllers/GalleryController.php:34
-* @route '/dashboard/gallery/new'
+* @route '/admin/gallery/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: create.url({
@@ -700,7 +700,7 @@ create.form = createForm
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 export const edit = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
@@ -709,13 +709,13 @@ export const edit = (args: { gallery: string | number } | [gallery: string | num
 
 edit.definition = {
     methods: ["get","head"],
-    url: '/dashboard/gallery/{gallery}/edit',
+    url: '/admin/gallery/{gallery}/edit',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 edit.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -742,7 +742,7 @@ edit.url = (args: { gallery: string | number } | [gallery: string | number ] | s
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 edit.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
@@ -752,7 +752,7 @@ edit.get = (args: { gallery: string | number } | [gallery: string | number ] | s
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 edit.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
@@ -762,7 +762,7 @@ edit.head = (args: { gallery: string | number } | [gallery: string | number ] | 
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 const editForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
@@ -772,7 +772,7 @@ const editForm = (args: { gallery: string | number } | [gallery: string | number
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 editForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
@@ -782,7 +782,7 @@ editForm.get = (args: { gallery: string | number } | [gallery: string | number ]
 /**
 * @see \App\Http\Controllers\GalleryController::edit
 * @see app/Http/Controllers/GalleryController.php:84
-* @route '/dashboard/gallery/{gallery}/edit'
+* @route '/admin/gallery/{gallery}/edit'
 */
 editForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
