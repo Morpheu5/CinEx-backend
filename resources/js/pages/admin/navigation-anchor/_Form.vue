@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3'
-import { useForm } from 'vee-validate'
+import { useForm, useField } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
+import { computed } from 'vue'
+import { route } from 'ziggy-js'
 
 import {
     FormField,
@@ -14,6 +16,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import EquirectangularPicker from '@/components/EquirectangularPicker.vue'
 
 /** Props */
 const props = defineProps<{
@@ -61,6 +64,24 @@ const { handleSubmit, setFieldValue } = useForm<FormInput>({
         latitude: props.initial?.latitude ?? '',
     } as any,
 })
+
+// We want access to current form values to drive the picker preview + marker.
+const photosphereIdField = useField<string | number>('photosphere_id')
+const longitudeField = useField<string | number>('longitude')
+const latitudeField = useField<string | number>('latitude')
+
+const photosphereImageUrl = computed(() => {
+    const raw = photosphereIdField.value.value
+    const id = Number(raw)
+    if (!Number.isFinite(id) || id <= 0) return null
+    return route('photosphere.image', id)
+})
+
+function toNumberOrNull(v: unknown): number | null {
+    if (v === '' || v === null || v === undefined) return null
+    const n = Number(v)
+    return Number.isFinite(n) ? n : null
+}
 
 /** Submit */
 const onSubmit = handleSubmit((values) => {
@@ -155,6 +176,15 @@ function ingestJson(raw: string) {
                 <FormMessage />
             </FormItem>
         </FormField>
+
+        <!-- Coordinate picker (uses SOURCE photosphere preview) -->
+        <EquirectangularPicker
+            :src="photosphereImageUrl"
+            :lat="toNumberOrNull(latitudeField.value.value)"
+            :lon="toNumberOrNull(longitudeField.value.value)"
+            @update:lat="(v) => setFieldValue('latitude', v)"
+            @update:lon="(v) => setFieldValue('longitude', v)"
+        />
 
         <!-- Coordinates -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

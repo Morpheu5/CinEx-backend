@@ -47,8 +47,8 @@ class GalleryController extends Controller
             'photosphere_id' => $data['photosphere_id'],
             'user_id' => $request->user()->id,
             'name' => $data['name'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude'],
+            'latitude' => $data['latitude'] ?? null,
+            'longitude' => $data['longitude'] ?? null,
         ]);
 
         // Handle file uploads: photos[]

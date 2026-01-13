@@ -13,8 +13,8 @@ class StoreGalleryRequest extends FormRequest {
         return [
             'photosphere_id' => ['required', 'integer', 'exists:photospheres,id'],
             'name' => ['required', 'string', 'max:255'],
-            'latitude' => ['required', 'numeric', 'between:-90,90'],
-            'longitude' => ['required', 'numeric', 'between:-180,180'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'photos' => ['nullable', 'array'],
             'photos.*' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:20480'],
         ];

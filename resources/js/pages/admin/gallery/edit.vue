@@ -6,13 +6,14 @@ import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head, router } from '@inertiajs/vue3';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useForm } from 'vee-validate';
+import { useForm, useField } from 'vee-validate';
 import { toast } from 'vue-sonner';
 import * as z from 'zod';
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { route } from 'ziggy-js';
 import FileThumb from '@/components/FileThumb.vue';
 import type { BreadcrumbItem } from '@/types';
+import EquirectangularPicker from '@/components/EquirectangularPicker.vue';
 
 const props = defineProps<{
     gallery: App.Data.GalleryData;
@@ -50,6 +51,17 @@ const { handleSubmit } = useForm<FormValues>({
     },
 });
 
+const latitudeField = useField<number | undefined>('latitude')
+const longitudeField = useField<number | undefined>('longitude')
+
+const photosphereImageUrl = computed(() => {
+    // GalleryData includes photosphere (lazy) in some responses; the edit controller currently
+    // passes the model with loaded photosphere, so this should work.
+    const id = (props.gallery as any)?.photosphere?.id ?? (props.gallery as any)?.photosphere_id
+    if (!id) return null
+    return route('photosphere.image', id)
+})
+
 // buffer for new uploads
 const pendingFiles = reactive<File[]>([]);
 function addFiles(files: File[]) {
@@ -67,7 +79,7 @@ const submit = handleSubmit((vals) => {
     pendingFiles.forEach((f, i) => fd.append(`photos[${i}]`, f));
 
     fd.append('_method', 'PUT');
-    router.post(route('api.v1.gallery.store', props.gallery.id), fd, {
+    router.post(route('api.v1.gallery.update', props.gallery.id), fd, {
         forceFormData: true,
         preserveState: false,
         preserveScroll: true,
@@ -134,6 +146,14 @@ function removePhoto(photoId: number) {
                     </FormItem>
                 </FormField>
             </div>
+
+            <EquirectangularPicker
+                :src="photosphereImageUrl"
+                :lat="latitudeField.value.value ?? null"
+                :lon="longitudeField.value.value ?? null"
+                @update:lat="(v) => latitudeField.setValue(v)"
+                @update:lon="(v) => longitudeField.setValue(v)"
+            />
 
             <div class="space-y-3">
                 <label>Add Photos</label>

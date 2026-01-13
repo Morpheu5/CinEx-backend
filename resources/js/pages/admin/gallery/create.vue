@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue'
 import { Head, router } from '@inertiajs/vue3'
-import { useForm } from 'vee-validate'
+import { useForm, useField } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
 import Dropzone from '@/components/Dropzone.vue'
@@ -9,10 +9,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
 import { toast } from 'vue-sonner'
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import { route } from 'ziggy-js';
 import { useObjectUrl } from '@vueuse/core';
 import type { BreadcrumbItem } from '@/types';
+import EquirectangularPicker from '@/components/EquirectangularPicker.vue';
 
 const props = defineProps<{
     photospheres: Array<App.Data.PhotosphereData>;
@@ -43,7 +44,22 @@ const { handleSubmit } = useForm({
     validationSchema: toTypedSchema(schema),
 })
 
+const photosphereId = useField<number | undefined>('photosphere_id')
+const latitudeField = useField<number | undefined>('latitude')
+const longitudeField = useField<number | undefined>('longitude')
+
 const pendingFiles = reactive<File[]>([])
+
+const photosphereImageUrl = computed(() => {
+    const id = photosphereId.value.value
+    if (!id) return null
+    return route('photosphere.image', id)
+})
+
+function setLatLon(lat: number, lon: number) {
+    latitudeField.setValue(lat)
+    longitudeField.setValue(lon)
+}
 
 function addFiles(files: File[]) {
     for (const f of files) if (f.type.startsWith('image/')) pendingFiles.push(f)
@@ -104,6 +120,15 @@ const submit = handleSubmit(vals => {
                         <FormMessage>{{ errorMessage }}</FormMessage>
                     </FormItem>
                 </FormField>
+
+                <!-- Coordinate picker -->
+                <EquirectangularPicker
+                    :src="photosphereImageUrl"
+                    :lat="latitudeField.value.value ?? null"
+                    :lon="longitudeField.value.value ?? null"
+                    @update:lat="(v) => latitudeField.setValue(v)"
+                    @update:lon="(v) => longitudeField.setValue(v)"
+                />
 
                 <!-- Lat / Lon -->
                 <div class="grid grid-cols-2 gap-4">

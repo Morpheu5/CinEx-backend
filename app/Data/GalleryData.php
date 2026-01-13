@@ -13,16 +13,16 @@ class GalleryData extends Data {
     /**
      * @param int    $id
      * @param string $name
-     * @param float  $longitude
-     * @param float  $latitude
+     * @param float|null $longitude
+     * @param float|null $latitude
      * @param DataCollection<PhotoData>|Optional $photos
      * @param Lazy|PhotosphereData $photosphere
      */
     public function __construct(
         public int    $id,
         public string $name,
-        public float  $longitude,
-        public float  $latitude,
+        public ?float $longitude,
+        public ?float $latitude,
         public DataCollection|Optional $photos,
         public Lazy|PhotosphereData $photosphere,
     ) {}
