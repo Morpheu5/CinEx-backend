@@ -22,6 +22,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <li>
                         <Link :href="route('admin.photosphere.index')">Photospheres</Link>
                     </li>
+                    <li class="mt-2 text-xs text-muted-foreground">
+                        Tip: from a Photosphere edit page, we can add a “View” button that opens the viewer for that photosphere.
+                        (If you paste that edit page file, I’ll patch it in.)
+                    </li>
                     <li>
                         <Link :href="route('admin.gallery.index')">Galleries</Link>
                     </li>

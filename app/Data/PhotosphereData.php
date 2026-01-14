@@ -13,6 +13,7 @@ class PhotosphereData extends Data {
      * @param int                                  $id
      * @param string                               $name
      * @param string                               $path
+     * @param string                               $image_url
      * @param int                                  $theatre_id
      * @param Lazy|TheatreData                          $theatre
      * @param Lazy|DataCollection<GalleryData>|Optional $galleries
@@ -22,6 +23,7 @@ class PhotosphereData extends Data {
         public int                     $id,
         public string                  $name,
         public string                  $path,
+        public string                  $image_url,
         public int                     $theatre_id,
         public Lazy|TheatreData             $theatre,
         public Lazy|DataCollection|Optional $galleries,
@@ -33,6 +35,7 @@ class PhotosphereData extends Data {
             id:         $photosphere->id,
             name:       $photosphere->name,
             path:       $photosphere->path,
+            image_url:  route('photosphere.image', $photosphere),
             theatre_id: $photosphere->theatre_id,
             theatre:    Lazy::whenLoaded('theatre', $photosphere,
                 fn () => TheatreData::from($photosphere->theatre)

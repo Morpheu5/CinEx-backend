@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NavigationAnchorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ViewerController;
 use Inertia\Inertia;
 
 use App\Http\Controllers\UserController;
@@ -38,6 +39,11 @@ Route::prefix('api/v1')
 Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'image'])->name('photosphere.image');
 Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
 
+// Three.js viewer (Laravel/Inertia)
+Route::get('viewer/photospheres/{photosphere}', [ViewerController::class, 'show'])
+    ->middleware(['auth', 'verified'])
+    ->name('viewer.photosphere.show');
+
 Route::get('admin', function () {
     return redirect('/admin/theatre');
 })->middleware(['auth', 'verified'])->name('admin');
@@ -62,8 +68,8 @@ Route::prefix('admin')
 
     Route::get('navigation-anchor', [App\Http\Controllers\NavigationAnchorController::class, 'index'])->name('navigation-anchor.index');
     Route::get('navigation-anchor/create', [App\Http\Controllers\NavigationAnchorController::class, 'create'])->name('navigation-anchor.create');
-    Route::get('navigation-anchor/{gallery}', [App\Http\Controllers\NavigationAnchorController::class, 'show'])->name('navigation-anchor.show');
-    Route::get('navigation-anchor/{gallery}/edit', [App\Http\Controllers\NavigationAnchorController::class, 'edit'])->name('navigation-anchor.edit');
+    Route::get('navigation-anchor/{navigationAnchor}', [App\Http\Controllers\NavigationAnchorController::class, 'show'])->name('navigation-anchor.show');
+    Route::get('navigation-anchor/{navigationAnchor}/edit', [App\Http\Controllers\NavigationAnchorController::class, 'edit'])->name('navigation-anchor.edit');
 })->middleware(['auth', 'verified']);
 
 require __DIR__.'/settings.php';

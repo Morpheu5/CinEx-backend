@@ -266,92 +266,92 @@ show2457a290feaf236bba5b145dc444e84d.form = show2457a290feaf236bba5b145dc444e84d
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-const show7e5bb466676a646a823d1032d57e6168 = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show7e5bb466676a646a823d1032d57e6168.url(args, options),
+const showde16451c9643a41d41eaea96a15a9880 = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showde16451c9643a41d41eaea96a15a9880.url(args, options),
     method: 'get',
 })
 
-show7e5bb466676a646a823d1032d57e6168.definition = {
+showde16451c9643a41d41eaea96a15a9880.definition = {
     methods: ["get","head"],
-    url: '/admin/navigation-anchor/{gallery}',
+    url: '/admin/navigation-anchor/{navigationAnchor}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-show7e5bb466676a646a823d1032d57e6168.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
+showde16451c9643a41d41eaea96a15a9880.url = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
-        args = { gallery: args }
+        args = { navigationAnchor: args }
     }
 
     if (Array.isArray(args)) {
         args = {
-            gallery: args[0],
+            navigationAnchor: args[0],
         }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        gallery: args.gallery,
+        navigationAnchor: args.navigationAnchor,
     }
 
-    return show7e5bb466676a646a823d1032d57e6168.definition.url
-            .replace('{gallery}', parsedArgs.gallery.toString())
+    return showde16451c9643a41d41eaea96a15a9880.definition.url
+            .replace('{navigationAnchor}', parsedArgs.navigationAnchor.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-show7e5bb466676a646a823d1032d57e6168.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: show7e5bb466676a646a823d1032d57e6168.url(args, options),
+showde16451c9643a41d41eaea96a15a9880.get = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: showde16451c9643a41d41eaea96a15a9880.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-show7e5bb466676a646a823d1032d57e6168.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: show7e5bb466676a646a823d1032d57e6168.url(args, options),
+showde16451c9643a41d41eaea96a15a9880.head = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: showde16451c9643a41d41eaea96a15a9880.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-const show7e5bb466676a646a823d1032d57e6168Form = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show7e5bb466676a646a823d1032d57e6168.url(args, options),
+const showde16451c9643a41d41eaea96a15a9880Form = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showde16451c9643a41d41eaea96a15a9880.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-show7e5bb466676a646a823d1032d57e6168Form.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show7e5bb466676a646a823d1032d57e6168.url(args, options),
+showde16451c9643a41d41eaea96a15a9880Form.get = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showde16451c9643a41d41eaea96a15a9880.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::show
 * @see app/Http/Controllers/NavigationAnchorController.php:45
-* @route '/admin/navigation-anchor/{gallery}'
+* @route '/admin/navigation-anchor/{navigationAnchor}'
 */
-show7e5bb466676a646a823d1032d57e6168Form.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show7e5bb466676a646a823d1032d57e6168.url(args, {
+showde16451c9643a41d41eaea96a15a9880Form.head = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showde16451c9643a41d41eaea96a15a9880.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
             ...(options?.query ?? options?.mergeQuery ?? {}),
@@ -360,11 +360,11 @@ show7e5bb466676a646a823d1032d57e6168Form.head = (args: { gallery: string | numbe
     method: 'get',
 })
 
-show7e5bb466676a646a823d1032d57e6168.form = show7e5bb466676a646a823d1032d57e6168Form
+showde16451c9643a41d41eaea96a15a9880.form = showde16451c9643a41d41eaea96a15a9880Form
 
 export const show = {
     '/api/v1/navigation-anchor/{navigation_anchor}': show2457a290feaf236bba5b145dc444e84d,
-    '/admin/navigation-anchor/{gallery}': show7e5bb466676a646a823d1032d57e6168,
+    '/admin/navigation-anchor/{navigationAnchor}': showde16451c9643a41d41eaea96a15a9880,
 }
 
 /**
@@ -700,51 +700,51 @@ create.form = createForm
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-export const edit = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
 
 edit.definition = {
     methods: ["get","head"],
-    url: '/admin/navigation-anchor/{gallery}/edit',
+    url: '/admin/navigation-anchor/{navigationAnchor}/edit',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-edit.url = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions) => {
+edit.url = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
-        args = { gallery: args }
+        args = { navigationAnchor: args }
     }
 
     if (Array.isArray(args)) {
         args = {
-            gallery: args[0],
+            navigationAnchor: args[0],
         }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        gallery: args.gallery,
+        navigationAnchor: args.navigationAnchor,
     }
 
     return edit.definition.url
-            .replace('{gallery}', parsedArgs.gallery.toString())
+            .replace('{navigationAnchor}', parsedArgs.navigationAnchor.toString())
             .replace(/\/+$/, '') + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-edit.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -752,9 +752,9 @@ edit.get = (args: { gallery: string | number } | [gallery: string | number ] | s
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-edit.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -762,9 +762,9 @@ edit.head = (args: { gallery: string | number } | [gallery: string | number ] | 
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-const editForm = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -772,9 +772,9 @@ const editForm = (args: { gallery: string | number } | [gallery: string | number
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-editForm.get = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -782,9 +782,9 @@ editForm.get = (args: { gallery: string | number } | [gallery: string | number ]
 /**
 * @see \App\Http\Controllers\NavigationAnchorController::edit
 * @see app/Http/Controllers/NavigationAnchorController.php:53
-* @route '/admin/navigation-anchor/{gallery}/edit'
+* @route '/admin/navigation-anchor/{navigationAnchor}/edit'
 */
-editForm.head = (args: { gallery: string | number } | [gallery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { navigationAnchor: string | number } | [navigationAnchor: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
