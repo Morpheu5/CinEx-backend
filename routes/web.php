@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NavigationAnchorController;
+use App\Models\Theatre;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewerController;
 use Inertia\Inertia;
@@ -40,8 +41,13 @@ Route::get('photosphere/{photosphere}/image', [PhotosphereController::class, 'im
 Route::get('photo/{photo}/image', [PhotoController::class, 'image'])->name('photo.image');
 
 // Three.js viewer (Laravel/Inertia)
+Route::get('viewer', [ViewerController::class, 'index'])
+    ->name('viewer.index');
+
+Route::get('viewer/theatres/{theatre}', [ViewerController::class, 'theatre'])
+    ->name('viewer.theatre.show');
+
 Route::get('viewer/photospheres/{photosphere}', [ViewerController::class, 'show'])
-    ->middleware(['auth', 'verified'])
     ->name('viewer.photosphere.show');
 
 Route::get('admin', function () {

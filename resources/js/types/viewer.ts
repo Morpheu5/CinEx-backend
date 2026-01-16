@@ -1,5 +1,15 @@
 export type Id = number;
 
+export interface TheatreListItemDto {
+    id: Id;
+    name: string;
+}
+
+export interface PhotosphereListItemDto {
+    id: Id;
+    name: string;
+}
+
 export interface PhotoViewerDto {
     id: Id;
     path: string;

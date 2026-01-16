@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 export const show = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 show.url = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ show.url = (args: { photosphere: number | { id: number } } | [photosphere: numbe
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 show.get = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ show.get = (args: { photosphere: number | { id: number } } | [photosphere: numbe
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 show.head = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -69,7 +69,7 @@ show.head = (args: { photosphere: number | { id: number } } | [photosphere: numb
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 const showForm = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ const showForm = (args: { photosphere: number | { id: number } } | [photosphere:
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 showForm.get = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -89,7 +89,7 @@ showForm.get = (args: { photosphere: number | { id: number } } | [photosphere: n
 
 /**
 * @see \App\Http\Controllers\ViewerController::show
-* @see app/Http/Controllers/ViewerController.php:11
+* @see app/Http/Controllers/ViewerController.php:47
 * @route '/viewer/photospheres/{photosphere}'
 */
 showForm.head = (args: { photosphere: number | { id: number } } | [photosphere: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
