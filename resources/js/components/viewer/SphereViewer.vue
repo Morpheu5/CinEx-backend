@@ -77,7 +77,7 @@ const anchors = computed(() => normalizeCollection<NavigationAnchorViewerDto>(pr
 const latLonToXYZ = (lat: number, lon: number): { x: number; y: number; z: number; phi: number; theta: number } => {
     const _lat = Math.max(-45, Math.min(45, lat));
     const phi = MathUtils.degToRad(90 - _lat);
-    const theta = MathUtils.degToRad(lon);
+    const theta = MathUtils.degToRad(lon + 180);
 
     return {
         x: Math.sin(phi) * Math.cos(theta),
