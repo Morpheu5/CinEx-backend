@@ -267,9 +267,9 @@ const handleClick = () => {
     if (currentIntersection.kind === 'link') {
         // Minimal integration: for now we just navigate by reloading the Inertia page to the target photosphere.
         // If you want seamless transitions without page reload, we can do an Inertia.visit here.
-        const targetId = currentIntersection.anchor.target_id;
-        if (!targetId) return;
-        window.location.href = `/viewer/photospheres/${targetId}`;
+        const target = currentIntersection.anchor.target;
+        if (!target) return;
+        window.location.href = `/viewer/photospheres/${target.id}`;
     }
 };
 
