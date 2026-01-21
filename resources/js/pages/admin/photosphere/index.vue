@@ -47,20 +47,24 @@ const onDelete = (id: number) => {
                     <tr>
                         <th class="w-12"></th>
                         <th class="">Photosphere</th>
+                        <th class="">Theatre</th>
                         <th class="w-12"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="photosphere in photospheres" :key="photosphere.id" class="border-1">
                         <td class="w-12">
-                            <Button variant="link">
+                            <Button>
                                 <a :href="route('admin.photosphere.edit', photosphere.id)" :title="`Edit photosphere ${photosphere.name}`"
-                                    ><fa icon="fa-solid fa-pen-to-square"
+                                ><fa icon="fa-solid fa-pen-to-square"
                                 /></a>
                             </Button>
                         </td>
                         <td class="">
                             <a :href="route('admin.photosphere.show', photosphere.id)">{{ photosphere.name }}</a>
+                        </td>
+                        <td class="">
+                            <a :href="route('admin.theatre.show', photosphere.theatre_id)">{{ photosphere.theatre?.name }}</a>
                         </td>
                         <td class="w-12">
                             <Button

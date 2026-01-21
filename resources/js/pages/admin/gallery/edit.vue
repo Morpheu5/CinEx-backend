@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import Dropzone from '@/components/Dropzone.vue';
 import { Button } from '@/components/ui/button';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head, router } from '@inertiajs/vue3';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useForm, useField } from 'vee-validate';
 import { toast } from 'vue-sonner';
-import * as z from 'zod';
 import { computed, reactive } from 'vue';
 import { route } from 'ziggy-js';
 import FileThumb from '@/components/FileThumb.vue';
 import type { BreadcrumbItem } from '@/types';
-import EquirectangularPicker from '@/components/EquirectangularPicker.vue';
+import GalleryForm from './_Form.vue';
+import { galleryBaseSchema, GalleryBaseSchema } from '@/pages/admin/gallery/_schema';
 
 const props = defineProps<{
     gallery: App.Data.GalleryData;
@@ -35,15 +33,8 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-const schema = z.object({
-    name: z.string().min(1).max(255),
-    latitude: z.preprocess((v) => (v === '' ? undefined : v), z.number().min(-90).max(90).optional()),
-    longitude: z.preprocess((v) => (v === '' ? undefined : v), z.number().min(-180).max(180).optional()),
-});
-
-type FormValues = z.infer<typeof schema>;
-const { handleSubmit } = useForm<FormValues>({
-    validationSchema: toTypedSchema(schema),
+const { handleSubmit } = useForm<GalleryBaseSchema>({
+    validationSchema: toTypedSchema(galleryBaseSchema),
     initialValues: {
         name: props.gallery.name,
         latitude: props.gallery.latitude ?? undefined,
@@ -51,16 +42,16 @@ const { handleSubmit } = useForm<FormValues>({
     },
 });
 
-const latitudeField = useField<number | undefined>('latitude')
-const longitudeField = useField<number | undefined>('longitude')
+const latitudeField = useField<number | undefined>('latitude');
+const longitudeField = useField<number | undefined>('longitude');
 
 const photosphereImageUrl = computed(() => {
     // GalleryData includes photosphere (lazy) in some responses; the edit controller currently
     // passes the model with loaded photosphere, so this should work.
-    const id = (props.gallery as any)?.photosphere?.id ?? (props.gallery as any)?.photosphere_id
-    if (!id) return null
-    return route('photosphere.image', id)
-})
+    const id = (props.gallery as any)?.photosphere?.id ?? (props.gallery as any)?.photosphere_id;
+    if (!id) return null;
+    return route('photosphere.image', id);
+});
 
 // buffer for new uploads
 const pendingFiles = reactive<File[]>([]);
@@ -122,33 +113,9 @@ function removePhoto(photoId: number) {
             <h1 class="mr-3 inline py-3 text-xl">Gallery editor</h1>
         </div>
 
-        <form class="ml-4 max-w-4xl space-y-6" @submit.prevent="submit">
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <FormField name="name" v-slot="{ componentField, errorMessage }">
-                    <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl><Input v-bind="componentField" /></FormControl>
-                        <FormMessage>{{ errorMessage }}</FormMessage>
-                    </FormItem>
-                </FormField>
-                <FormField name="latitude" v-slot="{ componentField, errorMessage }">
-                    <FormItem>
-                        <FormLabel>Latitude</FormLabel>
-                        <FormControl><Input v-bind="componentField" type="number" step="any" /></FormControl>
-                        <FormMessage>{{ errorMessage }}</FormMessage>
-                    </FormItem>
-                </FormField>
-                <FormField name="longitude" v-slot="{ componentField, errorMessage }">
-                    <FormItem>
-                        <FormLabel>Longitude</FormLabel>
-                        <FormControl><Input v-bind="componentField" type="number" step="any" /></FormControl>
-                        <FormMessage>{{ errorMessage }}</FormMessage>
-                    </FormItem>
-                </FormField>
-            </div>
-
-            <EquirectangularPicker
-                :src="photosphereImageUrl"
+        <form id="gallery-edit-form" class="ml-4 max-w-4xl space-y-6" @submit.prevent="submit">
+            <GalleryForm
+                :picker-src="photosphereImageUrl"
                 :lat="latitudeField.value.value ?? null"
                 :lon="longitudeField.value.value ?? null"
                 @update:lat="(v) => latitudeField.setValue(v)"
@@ -161,10 +128,6 @@ function removePhoto(photoId: number) {
                 <div v-if="pendingFiles.length" class="grid grid-cols-2 gap-3 md:grid-cols-5">
                     <FileThumb v-for="(f, idx) in pendingFiles" :key="idx" :file="f" @remove="removePending(idx)" />
                 </div>
-            </div>
-
-            <div class="pt-2">
-                <Button type="submit">Save</Button>
             </div>
         </form>
 
@@ -181,6 +144,10 @@ function removePhoto(photoId: number) {
                     editable
                 />
             </div>
+        </div>
+
+        <div class="px-4 pb-8 pt-6">
+            <Button type="submit" form="gallery-edit-form">Save</Button>
         </div>
     </AppLayout>
 </template>

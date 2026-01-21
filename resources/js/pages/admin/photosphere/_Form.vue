@@ -274,7 +274,7 @@ const removePath = async () => {
         </div>
 
         <div class="flex flex-row py-3">
-            <div class="spacer w-30"></div>
+            <div class="spacer"></div>
             <Button type="submit" variant="default">Save</Button>
         </div>
     </form>

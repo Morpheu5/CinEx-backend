@@ -47,13 +47,14 @@ const onDelete = (id: number) => {
                         <th class="w-12"></th>
                         <th class="">Gallery</th>
                         <th class="">Photosphere</th>
+                        <th class="">Theatre</th>
                         <th class="w-12"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="gallery in galleries" :key="gallery.id" class="border-1">
                         <td class="w-12">
-                            <Button variant="link">
+                            <Button>
                                 <a :href="route('admin.gallery.edit', gallery.id)" :alt="`Edit gallery ${gallery.name}`"
                                     ><fa icon="fa-solid fa-pen-to-square"
                                 /></a>
@@ -63,7 +64,10 @@ const onDelete = (id: number) => {
                             <a :href="route('admin.gallery.show', gallery.id)">{{ gallery.name }}</a>
                         </td>
                         <td class="">
-                            <a :href="route('admin.photosphere.show', gallery.photosphere?.id)">{{ gallery.photosphere?.name }}</a>
+                            <a :href="route('admin.photosphere.show', gallery.photosphere?.id)">{{ gallery.photosphere?.name }} ({{ gallery.photosphere?.theatre?.name }})</a>
+                        </td>
+                        <td class="">
+                            <a :href="route('admin.theatre.show', gallery.photosphere?.theatre_id)">{{ gallery.photosphere?.theatre?.name}}</a>
                         </td>
                         <td class="w-12">
                             <Button type="button" @click="() => onDelete(gallery.id)" variant="destructive" :alt="`Delete gallery ${gallery.name}`">

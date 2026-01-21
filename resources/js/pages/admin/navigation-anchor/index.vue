@@ -53,14 +53,13 @@ const onDelete = (id: number) => {
                         <th class="text-left">Name</th>
                         <th class="text-left">Source</th>
                         <th class="text-left">Target</th>
-                        <th class="text-left">Lon, Lat</th>
                         <th class="text-left"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="a in props.anchors" :key="a.id" class="border-t">
                         <td>
-                            <Button variant="link" asChild>
+                            <Button asChild>
                                 <Link :href="route('admin.navigation-anchor.edit', a.id)" class="underline">
                                     <fa icon="fa-solid fa-pen-to-square" />
                                 </Link>
@@ -79,7 +78,6 @@ const onDelete = (id: number) => {
                             >
                             <span v-else>#{{ a.target_photosphere_id }}</span>
                         </td>
-                        <td class="">{{ a.longitude }}, {{ a.latitude }}</td>
                         <td class="w-12">
                             <Button
                                 type="button"

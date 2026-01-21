@@ -116,6 +116,17 @@ function ingestJson(raw: string) {
 
 <template>
     <form class="space-y-6" @submit.prevent="onSubmit">
+        <!-- Name -->
+        <FormField name="name" v-slot="{ componentField }">
+            <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                    <Input placeholder="Anchor label (e.g., North exit)" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
         <!-- Source Photosphere (native select) -->
         <FormField name="photosphere_id" v-slot="{ value, handleChange, handleBlur }">
             <FormItem>
@@ -161,17 +172,6 @@ function ingestJson(raw: string) {
                             {{ p.name ?? `#${p.id}` }}
                         </option>
                     </select>
-                </FormControl>
-                <FormMessage />
-            </FormItem>
-        </FormField>
-
-        <!-- Name -->
-        <FormField name="name" v-slot="{ componentField }">
-            <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                    <Input placeholder="Anchor label (e.g., North exit)" v-bind="componentField" />
                 </FormControl>
                 <FormMessage />
             </FormItem>
@@ -225,8 +225,8 @@ function ingestJson(raw: string) {
             </div>
         </details>
 
-        <div class="flex justify-end gap-2">
-            <Button type="submit" variant="default">
+        <div class="flex gap-2">
+            <Button type="submit">
                 {{ mode === 'create' ? 'Create' : 'Save' }}
             </Button>
         </div>

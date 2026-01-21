@@ -31,7 +31,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl">Edit Navigation Anchor "{{ props.anchor.name }}" (id: {{ props.anchor.id }})</h1>
+                <h1 class="text-xl">Navigation Anchor: <strong>{{ props.anchor.name }}</strong></h1>
             </div>
 
             <Form :photospheres="photospheres" :initial="{

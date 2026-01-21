@@ -52,7 +52,7 @@ const onDelete = (id: number) => {
                 <tbody>
                     <tr v-for="theatre in theatres" :key="theatre.id" class="border-1">
                         <td class="w-12">
-                            <Button variant="link">
+                            <Button variant="">
                                 <a :href="route('admin.theatre.edit', theatre.id)" :alt="`Edit theatre ${theatre.name}`"
                                     ><fa icon="fa-solid fa-pen-to-square"
                                 /></a>

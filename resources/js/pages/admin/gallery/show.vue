@@ -28,16 +28,15 @@ defineProps<{
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div>
-                <h1 class="mr-3 inline py-3 text-xl">{{ gallery.name }}</h1>
+                <h1 class="mr-3 py-3 text-xl">Gallery: <strong>{{ gallery.name }}</strong></h1>
                 <Button asChild>
-                    <a :href="route('admin.gallery.edit', gallery.id)"><fa icon="fa-solid fa-pen-to-square" /> Edit</a>
+                    <a :href="route('admin.gallery.edit', gallery.id)"><fa icon="fa-solid fa-pen-to-square" /> Edit gallery</a>
                 </Button>
-                <h2 class="mr-3 py-3 text-lg"><span class="">Photosphere:</span> <a :href="route('admin.photosphere.show', gallery.photosphere?.id)">{{ gallery.name }}</a></h2>
             </div>
             <table class="p-4 my-3 w-full [&>*>tr>*]:px-4 [&>*>tr>*]:py-3 [&>*>tr>td:nth-child(1)]:w-12">
                 <tbody>
                     <tr>
-                        <td><strong>name</strong></td><td>{{ gallery.name }}</td>
+                        <td><strong>photosphere</strong></td><td>{{ gallery.photosphere?.name }}</td>
                     </tr>
                     <tr>
                         <td><strong>longitude</strong></td><td>{{ gallery.longitude }}</td>

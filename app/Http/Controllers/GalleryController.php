@@ -17,7 +17,7 @@ class GalleryController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request) {
-        $all = Gallery::with('photosphere')->get();
+        $all = Gallery::with('photosphere', 'photosphere.theatre')->get();
 
         if (!$request->routeIs('admin.*')) {
             return GalleryData::collect($all);

@@ -32,10 +32,10 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div>
-                <h1 class="mr-3 inline py-3 text-xl">{{ photosphere.name }}</h1>
+                <h1 class="mr-3 py-3 text-xl">Photosphere: <strong>{{ photosphere.name }}</strong></h1>
                 <Button asChild>
                     <a :href="route('admin.photosphere.edit', photosphere.id)">
-                        <fa icon="fa-solid fa-pen-to-square" /> Edit
+                        <fa icon="fa-solid fa-pen-to-square" /> Edit photosphere
                     </a>
                 </Button>
             </div>
@@ -48,7 +48,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <tbody>
                         <tr v-for="gallery in photosphere.galleries" :key="gallery.id">
                             <td>
-                                <Button variant="outline" asChild>
+                                <Button variant="" asChild>
                                     <a :href="route('admin.gallery.edit', gallery.id)"><fa icon="fa-solid fa-pen-to-square" /></a>
                                 </Button>
                             </td>

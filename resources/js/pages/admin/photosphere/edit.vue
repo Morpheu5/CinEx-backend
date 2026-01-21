@@ -31,7 +31,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="p-4">
             <div class="py-3">
-                <h1 class="text-xl py-3 inline mr-3">Editing photosphere: <strong>{{ photosphere.name }}</strong> ({{ photosphere.theatre?.name }})</h1>
+                <h1 class="text-xl py-3 inline mr-3">Photosphere: <strong>{{ photosphere.name }}</strong></h1>
             </div>
 
             <Form mode="edit" :theatres="theatres" :photosphere="photosphere" />
