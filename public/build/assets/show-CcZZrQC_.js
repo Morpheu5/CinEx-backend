@@ -1,0 +1,2 @@
+import{d as n,c as r,o as s,b as t,t as o}from"./app-MbwmxENq.js";const c={class:"space-y-2"},h={class:"text-2xl font-semibold"},i=n({__name:"show",props:{anchor:{}},setup(a){const e=a;return(l,p)=>(s(),r("div",c,[t("h1",h,o(e.anchor.name),1),t("p",null,"Source: #"+o(e.anchor.photosphereId),1),t("p",null,"Target: #"+o(e.anchor.target?.id??e.anchor.targetPhotosphereId)+" — "+o(e.anchor.target?.name),1),t("p",null,"Lon/Lat: "+o(e.anchor.longitude)+", "+o(e.anchor.latitude),1)]))}});export{i as default};
+//# sourceMappingURL=show-CcZZrQC_.js.map
