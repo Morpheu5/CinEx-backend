@@ -148,6 +148,10 @@ const addIconAt = (mesh: Mesh, latDeg: number, lonDeg: number) => {
 const buildObjects = async () => {
     const texLoader = new TextureLoader();
 
+    // Icon scale: higher value = smaller on-screen icon
+    const GALLERY_ICON_SCALE = 4;
+    const LINK_ICON_SCALE = 4;
+
     // Gallery markers
     for (const g of galleries.value) {
         if (g.latitude == null || g.longitude == null) continue;
@@ -161,7 +165,7 @@ const buildObjects = async () => {
             side: DoubleSide,
             transparent: true,
         });
-        const iconGeom = new PlaneGeometry(aspect / 2.5, 1 / 2.5);
+        const iconGeom = new PlaneGeometry(aspect / GALLERY_ICON_SCALE, 1 / GALLERY_ICON_SCALE);
         const iconMesh = new Mesh(iconGeom, mat);
 
         addIconAt(iconMesh, g.latitude, g.longitude);
@@ -186,7 +190,7 @@ const buildObjects = async () => {
             side: DoubleSide,
             transparent: true,
         });
-        const iconGeom = new PlaneGeometry(aspect / 2.5, 1 / 2.5);
+        const iconGeom = new PlaneGeometry(aspect / LINK_ICON_SCALE, 1 / LINK_ICON_SCALE);
         const iconMesh = new Mesh(iconGeom, mat);
 
         addIconAt(iconMesh, a.latitude, a.longitude);

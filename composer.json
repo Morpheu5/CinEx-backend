@@ -13,7 +13,8 @@
         "laravel/wayfinder": "^0.1.9",
         "spatie/laravel-data": "^4.17",
         "spatie/laravel-typescript-transformer": "^2.5",
-        "tightenco/ziggy": "^2.6"
+        "tightenco/ziggy": "^2.6",
+        "vlucas/phpdotenv": "^5.6"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",
