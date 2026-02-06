@@ -12,7 +12,7 @@ import { useObjectUrl } from '@vueuse/core';
 import type { BreadcrumbItem } from '@/types';
 import GalleryForm from './_Form.vue';
 import { galleryCreateSchema, type GalleryCreateSchema } from './_schema';
-import { FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 const props = defineProps<{
     photospheres: Array<App.Data.PhotosphereData>;

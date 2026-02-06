@@ -1,5 +1,5 @@
 <template>
-    <dialog ref="dialogEl" class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-5xl rounded-xl bg-black/60 backdrop-blur-sm p-0 shadow-3xl">
+    <dialog ref="dialogEl" class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-5xl rounded-xl bg-black/30 backdrop-blur-sm p-0 shadow-3xl">
         <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div class="text-lg ml-17 font-medium text-slate-100">
                 {{ title ?? 'Gallery' }}
